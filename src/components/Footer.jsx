@@ -12,7 +12,7 @@ const Footer = () => {
     }`}>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-12 max-w-4xl mx-auto">
           
           {/* Column 1: Info & Brand */}
           <div className="flex flex-col gap-4 text-left">
@@ -64,25 +64,6 @@ const Footer = () => {
                 <Globe size={14} className="text-slate-400 shrink-0" />
                 <a href="https://www.chksoumya.in/" className="hover:text-yellow-400 transition-colors">www.chksoumya.in</a>
               </div>
-            </div>
-          </div>
-
-          {/* Column 3: Map IFrame */}
-          <div className="w-full flex flex-col gap-4 text-left">
-            <h4 className="font-coc text-xs text-yellow-400 tracking-wider">
-              BATTLE ARENA VENUE
-            </h4>
-            <div className="w-full h-40 rounded-xl overflow-hidden border-2 border-slate-800 bg-slate-900 shadow-inner">
-              <iframe 
-                title="Kolkata Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29448.37549646487!2d88.40693582455913!3d22.572646011364506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d29448.37549646487!2d88.40693582455913!3d22.572646011364506!2m2!1sen!2sin!5e0!3m2!1sen!2sin!4v1655000000000!5m2!1sen!2sin" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              />
             </div>
           </div>
 
