@@ -46,13 +46,20 @@ const CardGenerator = () => {
     
     setIsGenerating(true);
     try {
-      // Detect mobile device
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      // Detect touch/mobile devices (including iPads mimicking macOS desktop)
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                       ('ontouchstart' in window) || 
+                       (navigator.maxTouchPoints > 0);
       
-      // Temporarily scale up for high-res download
+      // Use 1.5x scale on mobile to save memory and avoid Safari canvas size limits, 2x on desktop for high-res
+      const captureScale = isMobile ? 1.5 : 2;
+
       const canvas = await html2canvas(cardRef.current, {
-        scale: 2,
+        scale: captureScale,
         useCORS: true,
+        allowTaint: false,
+        logging: true,
+        imageTimeout: 0,
         backgroundColor: null,
       });
 
@@ -71,6 +78,7 @@ const CardGenerator = () => {
       }
     } catch (err) {
       console.error('Error generating card download: ', err);
+      alert(`⚠️ Laboratory alert: Failed to craft your recruitment card due to device restrictions. Try taking a screenshot instead! Error: ${err.message || err}`);
     } finally {
       setIsGenerating(false);
     }
@@ -183,7 +191,7 @@ const CardGenerator = () => {
               ref={cardRef}
               className="relative w-80 h-[420px] rounded-3xl overflow-hidden shadow-2xl bg-slate-950 select-none"
               style={{
-                backgroundImage: "url('/ID/card-background.png')",
+                backgroundImage: `url("${window.location.origin}/ID/card-background.png")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 boxShadow: '0 20px 40px rgba(0,0,0,0.7), inset 0 0 40px rgba(0,0,0,0.5)'
@@ -210,7 +218,7 @@ const CardGenerator = () => {
 
               {/* Header: Title Banner */}
               <div className="relative z-10 p-5 flex flex-col items-center">
-                <div className="flex items-center gap-2 bg-black/45 backdrop-blur-sm px-4 py-1.5 rounded-full border border-yellow-500/20 shadow-inner">
+                <div className="flex items-center gap-2 bg-black/75 px-4 py-1.5 rounded-full border border-yellow-500/20 shadow-inner">
                   <div className="relative w-7 h-7 rounded-xl flex items-center justify-center shadow-md border border-yellow-400/40" style={{ background: 'linear-gradient(135deg, #ffd700, #ff8c00)' }}>
                     <span className="text-white text-xs">🧪</span>
                   </div>
@@ -239,15 +247,14 @@ const CardGenerator = () => {
                   key={selectedChar}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  src={characters[selectedChar].image} 
+                  src={window.location.origin + characters[selectedChar].image} 
                   alt={characters[selectedChar].name} 
                   className="max-h-full max-w-[80%] object-contain"
-                  style={{ filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.6))' }}
                 />
               </div>
 
               {/* Player Tag */}
-              <div className="absolute bottom-16 right-5 z-20 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded border border-sky-400/35">
+              <div className="absolute bottom-16 right-5 z-20 bg-black/80 px-2.5 py-1 rounded border border-sky-400/35">
                 <span className="font-coc text-[8px] text-sky-400 select-all">
                   #{getPlayerTag(name)}
                 </span>
@@ -257,7 +264,7 @@ const CardGenerator = () => {
               <div className="absolute bottom-4 inset-x-4 z-20 flex items-center justify-center gap-3">
                 
                 {/* Trophy Stats Box */}
-                <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-xl px-3 py-1.5 border border-yellow-600/30 w-[45%] shadow-inner">
+                <div className="flex items-center gap-2 bg-black/80 rounded-xl px-3 py-1.5 border border-yellow-600/30 w-[45%] shadow-inner">
                   <span className="text-sm">🏆</span>
                   <div className="flex flex-col text-left">
                     <span className="font-coc text-[6px] text-yellow-400 leading-none">DEV SCORE</span>
@@ -266,7 +273,7 @@ const CardGenerator = () => {
                 </div>
 
                 {/* Level Stats Box */}
-                <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm rounded-xl px-3 py-1.5 border border-purple-600/30 w-[45%] shadow-inner">
+                <div className="flex items-center gap-2 bg-black/80 rounded-xl px-3 py-1.5 border border-purple-600/30 w-[45%] shadow-inner">
                   <span className="text-sm">🧪</span>
                   <div className="flex flex-col text-left">
                     <span className="font-coc text-[6px] text-purple-400 leading-none">DEV RANK</span>
