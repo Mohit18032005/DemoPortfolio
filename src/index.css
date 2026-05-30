@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Supercell-Magic';
+  src: url('/supercell-magic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #0b041a;
+  color: #ffffff;
+}
+
+/* Custom Clash of Clans Styles */
+.font-coc {
+  font-family: 'Supercell-Magic', sans-serif;
+}
+
+.coc-logo-text {
+  font-family: 'Supercell-Magic', sans-serif;
+  background: linear-gradient(to bottom, #ffe875 0%, #f7b11d 40%, #e27c00 70%, #993d00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 2px 0px #000) 
+          drop-shadow(2px 0px 0px #000) 
+          drop-shadow(-2px 0px 0px #000) 
+          drop-shadow(0px -2px 0px #000)
+          drop-shadow(0px 5px 0px #502800) 
+          drop-shadow(0px 8px 6px rgba(0,0,0,0.7));
+}
+
+/* CoC styled buttons */
+/* CoC styled buttons */
+.btn-coc-gold {
+  position: relative;
+  font-family: 'Supercell-Magic', sans-serif;
+  background: linear-gradient(to bottom, #ffd700 0%, #ff8c00 100%);
+  border: 3px solid #502800;
+  box-shadow: 0 4px 0 #281000, 0 6px 12px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
+  color: #ffffff;
+  text-shadow: -2px -2px 0 #281000, 2px -2px 0 #281000, -2px 2px 0 #281000, 2px 2px 0 #281000, 0 2px 4px rgba(0,0,0,0.8);
+  border-radius: 8px;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-coc-gold:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 0 0 #281000, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.btn-coc-purple {
+  position: relative;
+  font-family: 'Supercell-Magic', sans-serif;
+  background: linear-gradient(to bottom, #d889ff, #8b1fe6);
+  border: 3px solid #2d0059;
+  box-shadow: 0 4px 0 #180033, 0 6px 12px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
+  color: #ffffff;
+  text-shadow: -2px -2px 0 #180033, 2px -2px 0 #180033, -2px 2px 0 #180033, 2px 2px 0 #180033, 0 2px 4px rgba(0,0,0,0.8);
+  border-radius: 8px;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-coc-purple:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 0 0 #180033, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.btn-coc-blue {
+  position: relative;
+  font-family: 'Supercell-Magic', sans-serif;
+  background: linear-gradient(to bottom, #5865F2, #4752C4);
+  border: 3px solid #1a1e4a;
+  box-shadow: 0 4px 0 #0d0f25, 0 6px 12px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
+  color: #ffffff;
+  text-shadow: -2px -2px 0 #0d0f25, 2px -2px 0 #0d0f25, -2px 2px 0 #0d0f25, 2px 2px 0 #0d0f25, 0 2px 4px rgba(0,0,0,0.8);
+  border-radius: 8px;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-coc-blue:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 0 0 #0d0f25, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Panels with Wood styling */
+.panel-wood-day {
+  background: linear-gradient(180deg, rgba(80, 50, 20, 0.95) 0%, rgba(50, 30, 10, 0.98) 100%);
+  border: 4px solid #b8860b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0,0,0,0.4);
+  border-radius: 16px;
+}
+
+.panel-wood-night {
+  background: linear-gradient(180deg, rgba(40, 20, 80, 0.95) 0%, rgba(20, 10, 40, 0.98) 100%);
+  border: 4px solid #a855f7;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0,0,0,0.4);
+  border-radius: 16px;
+}
+
+/* Card Flipping Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.character-idle {
+  animation: floatChar 3.5s ease-in-out infinite;
+}
+
+@keyframes floatChar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
