@@ -104,18 +104,49 @@ const CardGenerator = () => {
         throw new Error('Generated canvas has zero dimensions. Please try again.');
       }
 
-      const url = canvas.toDataURL('image/png');
-      setGeneratedImgUrl(url);
+      const fileName = `${name ? name.replace(/\s+/g, '_') : 'recruiter'}_soumya_recruitment_card.png`;
 
-      if (isMobile) {
-        // On mobile, show the tap-and-hold saving modal
-        setShowPreviewModal(true);
+      // Convert canvas to blob for reliable download across all devices
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+
+      if (isMobile && navigator.share && navigator.canShare) {
+        // Use native Web Share API for direct save/share on mobile
+        const file = new File([blob], fileName, { type: 'image/png' });
+        if (navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: 'Recruitment Card',
+            });
+          } catch (shareErr) {
+            // User cancelled the share sheet — not an error, just ignore
+            if (shareErr.name !== 'AbortError') {
+              // If share genuinely failed, fall back to blob download
+              const blobUrl = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.download = fileName;
+              link.href = blobUrl;
+              link.click();
+              URL.revokeObjectURL(blobUrl);
+            }
+          }
+        } else {
+          // canShare returned false, fall back to blob download
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.download = fileName;
+          link.href = blobUrl;
+          link.click();
+          URL.revokeObjectURL(blobUrl);
+        }
       } else {
-        // On desktop, trigger standard download
+        // Desktop or mobile without Web Share — trigger standard download
+        const blobUrl = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = `${name ? name.replace(/\s+/g, '_') : 'recruiter'}_soumya_recruitment_card.png`;
-        link.href = url;
+        link.download = fileName;
+        link.href = blobUrl;
         link.click();
+        URL.revokeObjectURL(blobUrl);
       }
     } catch (err) {
       console.error('Error generating card download: ', err);
