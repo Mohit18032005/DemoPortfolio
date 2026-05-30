@@ -44,7 +44,6 @@ const CardGenerator = () => {
   const preloadImage = useCallback((src) => {
     return new Promise((resolve) => {
       const img = new Image();
-      img.crossOrigin = 'anonymous';
       img.onload = () => {
         // Use decode() if available for full GPU/memory decode on mobile
         if (img.decode) {
@@ -90,13 +89,6 @@ const CardGenerator = () => {
         logging: false,
         imageTimeout: 15000,
         backgroundColor: null,
-        onclone: (clonedDoc) => {
-          // Ensure all images in the cloned document have crossOrigin set
-          const images = clonedDoc.querySelectorAll('img');
-          images.forEach((img) => {
-            img.crossOrigin = 'anonymous';
-          });
-        },
       });
 
       // Validate the canvas isn't empty (0x0)
