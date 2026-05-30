@@ -190,6 +190,40 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Bottom Troop Deployment Navigation Bar */}
+      <div className={`fixed bottom-0 left-0 right-0 z-50 md:hidden flex justify-around items-center px-2 py-1.5 border-t-3 transition-colors duration-500 ${
+        isNight 
+          ? 'bg-purple-950/95 border-purple-500 shadow-[0_-4px_10px_rgba(168,85,247,0.3)]' 
+          : 'bg-amber-950/95 border-yellow-700 shadow-[0_-4px_10px_rgba(40,16,0,0.5)]'
+      } backdrop-blur-md pb-safe`}>
+        {[
+          { id: 'projects', label: 'WAR MAP', icon: '/Gold Coin Icon.webp' },
+          { id: 'journey', label: 'JOURNEY', icon: '/Elixir Drop Icon.webp' },
+          { id: 'skills', label: 'SKILLS', icon: '/Dark Elixir Icon.webp' },
+          { id: 'card-generator', label: 'CARD', icon: '/ShieldClan Badge Icon.webp' },
+          { id: 'contact', label: 'HIRE ME', icon: '/Gem Icon.webp', highlight: true }
+        ].map((item) => (
+          <button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            className={`flex flex-col items-center justify-center p-1 w-14 rounded-lg border transition-all active:scale-90 focus:outline-none ${
+              item.highlight
+                ? 'border-emerald-500 bg-emerald-950/40 animate-pulse'
+                : isNight
+                  ? 'border-purple-800/40 bg-purple-900/20'
+                  : 'border-yellow-800/40 bg-amber-900/20'
+            }`}
+          >
+            <img src={item.icon} alt={item.label} className="w-5 h-5 object-contain mb-0.5" />
+            <span className={`font-coc text-[7px] text-white tracking-wide truncate max-w-full ${
+              item.highlight ? 'text-emerald-400 font-semibold' : ''
+            }`}>
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
     </>
   );
 };

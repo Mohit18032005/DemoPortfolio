@@ -45,6 +45,9 @@ const CardGenerator = () => {
     if (!cardRef.current || isGenerating) return;
     
     setIsGenerating(true);
+    // Add small delay to let browser finish user interaction paints and transition states
+    await new Promise((resolve) => setTimeout(resolve, 250));
+
     try {
       // Detect touch/mobile devices (including iPads mimicking macOS desktop)
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
@@ -85,7 +88,7 @@ const CardGenerator = () => {
   };
 
   return (
-    <section className="relative py-24 bg-black/40">
+    <section id="card-generator" className="relative py-24 bg-black/40">
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Section Heading */}
@@ -199,6 +202,7 @@ const CardGenerator = () => {
             >
               {/* Inner glowing aura */}
               <div 
+                data-html2canvas-ignore="true"
                 className="absolute inset-0 transition-colors duration-1000"
                 style={{
                   background: `radial-gradient(circle at center, ${characters[selectedChar].glowColor} 0%, transparent 70%)`
