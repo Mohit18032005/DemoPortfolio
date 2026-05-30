@@ -4,29 +4,53 @@ import { Mail, Github } from 'lucide-react';
 
 const Footer = () => {
   const { isNight, playCoinSound } = useTheme();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ 
+    'fi-sender-fullName': '', 
+    'fi-sender-email': '', 
+    'fi-text-message': '' 
+  });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     playCoinSound();
+    setIsSubmitting(true);
+    setErrorMessage('');
 
-    const subject = encodeURIComponent(`Clan Invite from ${formData.name}`);
-    const body = encodeURIComponent(`Hi Soumya,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`);
-    
-    // Trigger mailto redirection
-    window.location.href = `mailto:soumya.chk101@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      if (!window.Forminit) {
+        throw new Error("Forminit SDK not loaded yet. Please wait a moment and try again.");
+      }
 
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 5000);
+      const forminit = new window.Forminit();
+      const { data, error } = await forminit.submit('k3wd6gj1om6', new FormData(e.target));
+
+      if (error) {
+        throw new Error(error.message || "Failed to submit form.");
+      }
+
+      setShowSuccess(true);
+      setFormData({ 
+        'fi-sender-fullName': '', 
+        'fi-sender-email': '', 
+        'fi-text-message': '' 
+      });
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    } catch (err) {
+      console.error('Error submitting form to Forminit: ', err);
+      setErrorMessage(err.message || "Failed to send clan invite. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,14 +145,19 @@ const Footer = () => {
             
             {showSuccess ? (
               <div className="p-4 rounded-lg bg-emerald-950/60 border border-emerald-500 text-xs text-emerald-300 font-coc leading-relaxed animate-pulse">
-                🏆 CLAN INVITE SENT! OPENING MAIL CLIENT...
+                🏆 CLAN INVITE SENT SUCCESSFULLY! WELCOME TO SOUMYA'S BASE.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                {errorMessage && (
+                  <div className="p-3 rounded-lg bg-rose-950/60 border border-rose-500/50 text-[10px] text-rose-300 font-body leading-relaxed">
+                    ⚠️ {errorMessage}
+                  </div>
+                )}
                 <input 
                   type="text" 
-                  name="name"
-                  value={formData.name}
+                  name="fi-sender-fullName"
+                  value={formData['fi-sender-fullName']}
                   onChange={handleInputChange}
                   required
                   placeholder="Recruiter / Company Name"
@@ -136,16 +165,16 @@ const Footer = () => {
                 />
                 <input 
                   type="email" 
-                  name="email"
-                  value={formData.email}
+                  name="fi-sender-email"
+                  value={formData['fi-sender-email']}
                   onChange={handleInputChange}
                   required
                   placeholder="your@email.com"
                   className="w-full px-3 py-2 bg-black/40 border border-slate-700/80 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-yellow-500 transition-colors font-body"
                 />
                 <textarea 
-                  name="message"
-                  value={formData.message}
+                  name="fi-text-message"
+                  value={formData['fi-text-message']}
                   onChange={handleInputChange}
                   required
                   placeholder="Enter your message details..."
@@ -154,9 +183,12 @@ const Footer = () => {
                 />
                 <button 
                   type="submit"
-                  className="btn-coc-gold w-full py-2.5 text-[9px] sm:text-[10px] cursor-pointer focus:outline-none"
+                  disabled={isSubmitting}
+                  className={`btn-coc-gold w-full py-2.5 text-[9px] sm:text-[10px] cursor-pointer focus:outline-none transition-all ${
+                    isSubmitting ? 'opacity-65 cursor-not-allowed' : ''
+                  }`}
                 >
-                  SEND INVITE
+                  {isSubmitting ? 'SENDING INVITE...' : 'SEND INVITE'}
                 </button>
               </form>
             )}
