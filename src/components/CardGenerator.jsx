@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import html2canvas from 'html2canvas';
 import { Download, X } from 'lucide-react';
@@ -40,13 +40,29 @@ const CardGenerator = () => {
     return tag;
   };
 
+  // Preload a single image and return a promise that resolves when it's fully decoded
+  const preloadImage = useCallback((src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        // Use decode() if available for full GPU/memory decode on mobile
+        if (img.decode) {
+          img.decode().then(() => resolve(true)).catch(() => resolve(true));
+        } else {
+          resolve(true);
+        }
+      };
+      img.onerror = () => resolve(false);
+      img.src = src;
+    });
+  }, []);
+
   const handleDownload = async () => {
     playCoinSound();
     if (!cardRef.current || isGenerating) return;
     
     setIsGenerating(true);
-    // Add small delay to let browser finish user interaction paints and transition states
-    await new Promise((resolve) => setTimeout(resolve, 250));
 
     try {
       // Detect touch/mobile devices (including iPads mimicking macOS desktop)
@@ -54,17 +70,39 @@ const CardGenerator = () => {
                        ('ontouchstart' in window) || 
                        (navigator.maxTouchPoints > 0);
       
-      // Use 1.5x scale on mobile to save memory and avoid Safari canvas size limits, 2x on desktop for high-res
-      const captureScale = isMobile ? 1.5 : 2;
+      // Preload all images used in the card so html2canvas doesn't hit 0-dimension canvas errors
+      const imageSources = [
+        '/ID/card-background.png',
+        characters[selectedChar].image,
+      ];
+      await Promise.all(imageSources.map((src) => preloadImage(src)));
+
+      // Give browser time to finish layout and paint after preload
+      await new Promise((resolve) => setTimeout(resolve, 400));
+
+      // Use 1x scale on mobile to stay under Safari's canvas size limits, 2x on desktop for high-res
+      const captureScale = isMobile ? 1 : 2;
 
       const canvas = await html2canvas(cardRef.current, {
         scale: captureScale,
         useCORS: true,
-        allowTaint: false,
-        logging: true,
-        imageTimeout: 0,
+        allowTaint: true,
+        logging: false,
+        imageTimeout: 15000,
         backgroundColor: null,
+        onclone: (clonedDoc) => {
+          // Ensure all images in the cloned document have crossOrigin set
+          const images = clonedDoc.querySelectorAll('img');
+          images.forEach((img) => {
+            img.crossOrigin = 'anonymous';
+          });
+        },
       });
+
+      // Validate the canvas isn't empty (0x0)
+      if (!canvas.width || !canvas.height) {
+        throw new Error('Generated canvas has zero dimensions. Please try again.');
+      }
 
       const url = canvas.toDataURL('image/png');
       setGeneratedImgUrl(url);
@@ -194,7 +232,7 @@ const CardGenerator = () => {
               ref={cardRef}
               className="relative w-80 h-[420px] rounded-3xl overflow-hidden shadow-2xl bg-slate-950 select-none"
               style={{
-                backgroundImage: `url("${window.location.origin}/ID/card-background.png")`,
+                backgroundImage: `url("/ID/card-background.png")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 boxShadow: '0 20px 40px rgba(0,0,0,0.7), inset 0 0 40px rgba(0,0,0,0.5)'
@@ -251,7 +289,7 @@ const CardGenerator = () => {
                   key={selectedChar}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  src={window.location.origin + characters[selectedChar].image} 
+                  src={characters[selectedChar].image} 
                   alt={characters[selectedChar].name} 
                   className="max-h-full max-w-[80%] object-contain"
                 />
