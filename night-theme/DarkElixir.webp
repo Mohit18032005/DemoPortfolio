@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon - InnoFusion 3.0 -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-32x32.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- DNS Prefetch for performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <title>InnoFusion 3.0 | The Clan Wars - 30-Hour India's Premier Software + Hardware Hackathon</title>
+  <meta name="description"
+    content="Join InnoFusion 3.0, the ultimate 30-hour India's Premier Software + Hardware Hackathon. Clash with Codes, Conquer with Vision!~" />
+  <meta name="keywords"
+    content="hackathon, coding competition, InnoFusion, tech event, programming, developers, 2026" />
+  <meta name="author" content="InnoFusion Team" />
+
+  <link rel="canonical" href="https://www.innofusion.tech/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="InnoFusion 3.0 | The Clan Wars Begin" />
+  <meta property="og:description"
+    content="Join InnoFusion 3.0, the ultimate 30-hour India's Premier Software + Hardware Hackathon. Clash with Codes, Conquer with Vision!~" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.innofusion.tech/" />
+  <meta property="og:image" content="https://www.innofusion.tech/og-image.webp" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="InnoFusion 3.0 | The Clan Wars Begin" />
+  <meta name="twitter:description"
+    content="Join InnoFusion 3.0, the ultimate 30-hour India's Premier Software + Hardware Hackathon. Clash with Codes, Conquer with Vision!~" />
+  <meta name="twitter:image" content="https://www.innofusion.tech/og-image.webp" />
+  <meta name="twitter:site" content="@InnoFusion" />
+
+  <!-- Critical images - preload with high priority (Loading Screen & Hero) -->
+  <link rel="preload" href="/Intro/COC_Intro.webp" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preload" href="/Intro/COC_Intro_Mobile.webp" as="image" type="image/png" fetchpriority="high" />
+  <link rel="preload" href="/Intro/Intro_Button.webp" as="image" type="image/png" fetchpriority="high" />
+
+  <link rel="prefetch" href="/night-theme/BuilderBaseBackground.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Background.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Clash_of_Clans_Logo_Style_Text.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Clash of Clans Logo Style Text.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Mouse.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Barbarian.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/ArcherQueen.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/ShieldClan Badge Icon.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Innofusion3.0_Logo.webp" as="image" fetchpriority="high" />
+  <link rel="preload" href="/Valkyrie_Warrior_Girl_Character.webp" as="image" />
+  <link rel="preload" href="/DragonElectro_Dragon-removebg-preview.webp" as="image" />
+
+  <!-- Resource icons - preload -->
+  <link rel="preload" href="/Gold Coin Icon.webp" as="image" />
+  <link rel="preload" href="/Elixir Drop Icon.webp" as="image" />
+  <link rel="preload" href="/Gem Icon.webp" as="image" />
+  <link rel="preload" href="/Dark Elixir Icon.webp" as="image" />
+
+  <!-- Secondary images - prefetch (load after critical content) -->
+  <link rel="prefetch" href="/War Map Background.webp" as="image" />
+  <link rel="prefetch" href="/TorchCampfire.webp" as="image" />
+  <link rel="prefetch" href="/TrophyIcon.webp" as="image" />
+  <link rel="prefetch" href="/Town_Hall_Building.webp" as="image" />
+  <link rel="prefetch" href="/Spell Factory Building.webp" as="image" />
+  <link rel="prefetch" href="/Archer.webp" as="image" />
+  <link rel="prefetch" href="/Wizard.webp" as="image" />
+  <link rel="prefetch" href="/Builder.webp" as="image" />
+
+  <!-- Night theme images - prefetch (lower priority) -->
+
+  <link rel="prefetch" href="/night-theme/RagedBarbarian.webp" as="image" />
+  <link rel="prefetch" href="/night-theme/NightWitch.webp" as="image" />
+  <link rel="prefetch" href="/night-theme/DropShip.webp" as="image" />
+  <link rel="prefetch" href="/night-theme/BattleMachine.webp" as="image" />
+  <link rel="prefetch" href="/night-theme/SuperPekka.webp" as="image" />
+  <link rel="prefetch" href="/night-theme/BetaMinion.webp" as="image" />
+
+  <!-- Audio preload -->
+  <link rel="preload" href="/theme_music.ogg" as="audio" />
+  <script type="module" crossorigin src="/assets/index-CjbYjrWz.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-react-DjpVV35h.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-motion-X55wFYbS.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor-gsap-D7WUu43W.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-C2-xvSGp.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
