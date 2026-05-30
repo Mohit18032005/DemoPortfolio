@@ -6,6 +6,21 @@ const Prizes = () => {
   const { isNight, playCoinSound } = useTheme();
   const [activeFlippedCard, setActiveFlippedCard] = useState(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastTimeoutId, setToastTimeoutId] = useState(null);
+
+  const triggerToast = (projectName) => {
+    if (toastTimeoutId) {
+      clearTimeout(toastTimeoutId);
+    }
+    setToastMessage(`🧪 Spell Factory building! The Live Demo for "${projectName}" is currently training in the laboratory. Check out GitHub for setup and build instructions!`);
+    setShowToast(true);
+    const timeout = setTimeout(() => {
+      setShowToast(false);
+    }, 4000);
+    setToastTimeoutId(timeout);
+  };
 
   const mainPrizes = [
     {
@@ -17,7 +32,8 @@ const Prizes = () => {
       characterImage: '/Second Prize.webp',
       glow: 'shadow-purple-500/20',
       border: 'border-purple-500/40',
-      link: 'https://github.com/soumyachk101/Cortex'
+      github: 'https://github.com/soumyachk101/Cortex',
+      live: '#'
     },
     {
       id: 1,
@@ -28,7 +44,8 @@ const Prizes = () => {
       characterImage: '/FIrst Prize.webp',
       glow: 'shadow-yellow-500/30',
       border: 'border-yellow-500/40',
-      link: 'https://github.com/soumyachk101/Drishti-Security'
+      github: 'https://github.com/soumyachk101/Drishti-Security',
+      live: '#'
     },
     {
       id: 3,
@@ -39,7 +56,8 @@ const Prizes = () => {
       characterImage: '/Third Prize.webp',
       glow: 'shadow-orange-500/20',
       border: 'border-orange-500/40',
-      link: 'https://github.com/soumyachk101/Neeti-AI'
+      github: 'https://github.com/soumyachk101/Neeti-AI',
+      live: '#'
     }
   ];
 
@@ -214,22 +232,44 @@ const Prizes = () => {
                     ))}
                   </ul>
 
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      playCoinSound();
-                      window.open(prize.link, '_blank');
-                    }}
-                    className={`w-full py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                      isFirst 
-                        ? 'bg-yellow-500 text-slate-950 hover:bg-yellow-600 border-yellow-300' 
-                        : isNight 
-                          ? 'bg-purple-950/60 text-purple-200 border-purple-500/40 hover:bg-purple-900/60' 
-                          : 'bg-amber-950/60 text-yellow-200 border-yellow-700/40 hover:bg-amber-900/60'
-                    }`}
-                  >
-                    VIEW BLUEPRINT
-                  </button>
+                  <div className="flex items-center gap-2 mt-auto">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playCoinSound();
+                        window.open(prize.github, '_blank');
+                      }}
+                      className={`flex-1 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
+                        isFirst 
+                          ? 'bg-yellow-600 text-slate-950 border-yellow-400 hover:bg-yellow-700' 
+                          : isNight 
+                            ? 'bg-purple-950/60 text-purple-200 border-purple-500/40 hover:bg-purple-900/60' 
+                            : 'bg-amber-950/60 text-yellow-200 border-yellow-700/40 hover:bg-amber-900/60'
+                      }`}
+                    >
+                      GITHUB
+                    </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playCoinSound();
+                        if (prize.live !== '#') {
+                          window.open(prize.live, '_blank');
+                        } else {
+                          triggerToast(prize.title);
+                        }
+                      }}
+                      className={`flex-1 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
+                        isFirst 
+                          ? 'bg-yellow-500 text-slate-950 border-yellow-300 hover:bg-yellow-600' 
+                          : isNight 
+                            ? 'bg-purple-600 text-white border-purple-400 hover:bg-purple-500' 
+                            : 'bg-yellow-500 text-slate-950 border-yellow-300 hover:bg-yellow-600'
+                      }`}
+                    >
+                      LIVE
+                    </button>
+                  </div>
 
                 </div>
               </motion.div>
@@ -308,21 +348,23 @@ const Prizes = () => {
                       >
                         GITHUB
                       </button>
-                      {project.live !== '#' && (
-                        <button
-                          onClick={() => {
-                            playCoinSound();
+                      <button
+                        onClick={() => {
+                          playCoinSound();
+                          if (project.live !== '#') {
                             window.open(project.live, '_blank');
-                          }}
-                          className={`flex-1 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                            isNight 
-                              ? 'bg-purple-600 text-white border-purple-400 hover:bg-purple-500' 
-                              : 'bg-yellow-500 text-slate-950 border-yellow-300 hover:bg-yellow-600'
-                          }`}
-                        >
-                          LIVE
-                        </button>
-                      )}
+                          } else {
+                            triggerToast(project.title);
+                          }
+                        }}
+                        className={`flex-1 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
+                          isNight 
+                            ? 'bg-purple-600 text-white border-purple-400 hover:bg-purple-500' 
+                            : 'bg-yellow-500 text-slate-950 border-yellow-300 hover:bg-yellow-600'
+                        }`}
+                      >
+                        LIVE
+                      </button>
                     </div>
                   </motion.div>
                 ))}
@@ -445,6 +487,37 @@ const Prizes = () => {
         </div>
 
       </div>
+
+      {/* Floating Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-6 right-6 z-50 max-w-sm p-4 rounded-xl border-2 shadow-2xl font-coc text-[10px] text-white flex items-center gap-3 backdrop-blur-md"
+            style={{
+              backgroundImage: isNight 
+                ? "radial-gradient(circle at center, rgba(168, 85, 247, 0.2) 0%, rgba(24, 0, 51, 0.95) 100%)"
+                : "radial-gradient(circle at center, rgba(234, 179, 8, 0.2) 0%, rgba(40, 16, 0, 0.95) 100%)",
+              borderColor: isNight ? '#a855f7' : '#eab308',
+              boxShadow: isNight ? '0 10px 30px rgba(168, 85, 247, 0.3)' : '0 10px 30px rgba(234, 179, 8, 0.3)',
+            }}
+          >
+            <div className="text-2xl animate-bounce">⚡</div>
+            <div className="flex-1 leading-normal font-body text-xs text-slate-100">
+              <span className="font-coc text-yellow-400 block mb-1">LABORATORY UPGRADE!</span>
+              {toastMessage}
+            </div>
+            <button 
+              onClick={() => setShowToast(false)}
+              className="text-slate-400 hover:text-white font-coc text-xs focus:outline-none"
+            >
+              ✕
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

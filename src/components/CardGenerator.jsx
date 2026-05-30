@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import html2canvas from 'html2canvas';
-import { Download } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Download, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const CardGenerator = () => {
   const { isNight, playCoinSound } = useTheme();
@@ -10,6 +10,9 @@ const CardGenerator = () => {
   
   const [name, setName] = useState('');
   const [selectedChar, setSelectedChar] = useState(0);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [generatedImgUrl, setGeneratedImgUrl] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const characters = [
     { name: 'Barbarian', role: 'Full-Stack Developer', image: '/ID/Barbarian.png', glowColor: 'rgba(234, 179, 8, 0.4)' },
@@ -39,9 +42,13 @@ const CardGenerator = () => {
 
   const handleDownload = async () => {
     playCoinSound();
-    if (!cardRef.current) return;
+    if (!cardRef.current || isGenerating) return;
     
+    setIsGenerating(true);
     try {
+      // Detect mobile device
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
       // Temporarily scale up for high-res download
       const canvas = await html2canvas(cardRef.current, {
         scale: 2,
@@ -50,12 +57,22 @@ const CardGenerator = () => {
       });
 
       const url = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.download = `${name ? name.replace(/\s+/g, '_') : 'recruiter'}_soumya_recruitment_card.png`;
-      link.href = url;
-      link.click();
+      setGeneratedImgUrl(url);
+
+      if (isMobile) {
+        // On mobile, show the tap-and-hold saving modal
+        setShowPreviewModal(true);
+      } else {
+        // On desktop, trigger standard download
+        const link = document.createElement('a');
+        link.download = `${name ? name.replace(/\s+/g, '_') : 'recruiter'}_soumya_recruitment_card.png`;
+        link.href = url;
+        link.click();
+      }
     } catch (err) {
       console.error('Error generating card download: ', err);
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -146,12 +163,15 @@ const CardGenerator = () => {
             {/* CTA Button to trigger screenshot */}
             <button
               onClick={handleDownload}
-              className={`w-full mt-4 flex items-center justify-center gap-2 py-3 px-6 text-xs sm:text-sm font-coc ${
+              disabled={isGenerating}
+              className={`w-full mt-4 flex items-center justify-center gap-2 py-3 px-6 text-xs sm:text-sm font-coc transition-all ${
+                isGenerating ? 'opacity-65 cursor-not-allowed' : ''
+              } ${
                 isNight ? 'btn-coc-purple' : 'btn-coc-gold'
               }`}
             >
               <Download size={14} />
-              <span>DOWNLOAD RECRUIT CARD</span>
+              <span>{isGenerating ? 'GENERATING BLUEPRINT...' : 'DOWNLOAD RECRUIT CARD'}</span>
             </button>
           </div>
 
@@ -263,6 +283,72 @@ const CardGenerator = () => {
         </div>
 
       </div>
+
+      {/* Mobile Download/Preview Modal */}
+      <AnimatePresence>
+        {showPreviewModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className={`w-full max-w-sm p-6 rounded-2xl border-3 shadow-2xl relative text-center ${
+                isNight ? 'panel-wood-night border-purple-500 shadow-purple-500/20' : 'panel-wood-day border-yellow-600 shadow-yellow-600/20'
+              }`}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => {
+                  playCoinSound();
+                  setShowPreviewModal(false);
+                }}
+                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors focus:outline-none"
+              >
+                <X size={20} />
+              </button>
+
+              <h3 className="font-coc text-sm text-white mb-2 tracking-wide uppercase">
+                🛡️ CARD GENERATED!
+              </h3>
+              
+              <p className="text-[11px] text-slate-300 font-body leading-relaxed mb-6 px-2">
+                👇 <strong className="text-yellow-400">TAP AND HOLD (LONG PRESS)</strong> the image below, then select <strong className="text-yellow-400">"Save to Photos"</strong> or <strong className="text-yellow-400">"Download Image"</strong> to save your card.
+              </p>
+
+              {/* Image Preview Container */}
+              <div className="flex justify-center mb-6 max-h-[350px] overflow-hidden rounded-xl border border-slate-800 bg-slate-950 p-2 shadow-inner">
+                <img
+                  src={generatedImgUrl}
+                  alt="Recruitment Card"
+                  className="max-h-[330px] w-auto object-contain rounded-lg pointer-events-auto"
+                  style={{
+                    WebkitTouchCallout: 'default',
+                  }}
+                />
+              </div>
+
+              <button
+                onClick={() => {
+                  playCoinSound();
+                  setShowPreviewModal(false);
+                }}
+                className={`w-full py-2.5 font-coc text-[10px] sm:text-xs rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
+                  isNight 
+                    ? 'bg-purple-600 text-white border-purple-400 hover:bg-purple-500' 
+                    : 'bg-yellow-500 text-slate-950 border-yellow-300 hover:bg-yellow-600'
+                }`}
+              >
+                RETURN TO VILLAGE
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
