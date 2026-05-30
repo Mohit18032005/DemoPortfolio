@@ -1,5 +1,5 @@
 import { useTheme } from '../context/ThemeContext';
-import { Mail, MapPin, Globe, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Globe, Github } from 'lucide-react';
 
 const Footer = () => {
   const { isNight, playCoinSound } = useTheme();
@@ -29,12 +29,7 @@ const Footer = () => {
             </p>
 
             <div className="flex items-center gap-3 mt-2">
-              <a 
-                href="https://linkedin.com" target="_blank" rel="noopener noreferrer" onClick={playCoinSound}
-                className="p-2 bg-black/40 rounded-lg text-slate-400 hover:text-white border border-slate-800 transition-colors"
-              >
-                <Linkedin size={14} />
-              </a>
+
               <a 
                 href="https://github.com" target="_blank" rel="noopener noreferrer" onClick={playCoinSound}
                 className="p-2 bg-black/40 rounded-lg text-slate-400 hover:text-white border border-slate-800 transition-colors"
@@ -42,7 +37,7 @@ const Footer = () => {
                 <Github size={14} />
               </a>
               <a 
-                href="mailto:soumyachk1@gmail.com" onClick={playCoinSound}
+                href="mailto:soumya.chk101@gmail.com" onClick={playCoinSound}
                 className="p-2 bg-black/40 rounded-lg text-slate-400 hover:text-white border border-slate-800 transition-colors"
               >
                 <Mail size={14} />
@@ -63,11 +58,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="text-slate-400 shrink-0" />
-                <a href="mailto:soumyachk1@gmail.com" className="hover:text-yellow-400 transition-colors">soumyachk1@gmail.com</a>
+                <a href="mailto:soumya.chk101@gmail.com" className="hover:text-yellow-400 transition-colors">soumya.chk101@gmail.com</a>
               </div>
               <div className="flex items-center gap-2">
                 <Globe size={14} className="text-slate-400 shrink-0" />
-                <a href="https://soumyachakraborty.dev" className="hover:text-yellow-400 transition-colors">soumyachakraborty.dev</a>
+                <a href="https://www.chksoumya.in/" className="hover:text-yellow-400 transition-colors">www.chksoumya.in</a>
               </div>
             </div>
           </div>

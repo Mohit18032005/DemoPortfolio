@@ -26,7 +26,7 @@ const FAQs = () => {
     },
     {
       question: "How can we start a project together?",
-      answer: "You can click on the 'SEND CLAN INVITE' button or scroll to the 'War Room' (Contact) section to drop me an email or connect with me via LinkedIn/GitHub. I respond to all invitations within 24 hours!"
+      answer: "You can click on the 'SEND CLAN INVITE' button or scroll to the 'War Room' (Contact) section to drop me an email or connect with me via GitHub. I respond to all invitations within 24 hours!"
     }
   ];
 

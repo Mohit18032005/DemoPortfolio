@@ -4,15 +4,69 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Certificates = () => {
   const { isNight, playCoinSound } = useTheme();
-  const [selectedCategory, setSelectedCategory] = useState('ai');
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [
-    { id: 'ai', label: 'AI & ML' },
-    { id: 'gen-ai', label: 'Generative AI' },
-    { id: 'cyber', label: 'Cybersecurity' },
-    { id: 'cloud', label: 'Cloud & IT' },
-    { id: 'dev', label: 'Programming' },
-    { id: 'data', label: 'Data Analytics' }
+    {
+      id: 'ai',
+      label: 'AI & ML',
+      desc: 'Neural networks, machine learning models, computer vision pipelines, and NVIDIA/IBM workflow specializations.',
+      icon: '/Dark Elixir Icon.webp',
+      count: 12,
+      color: 'text-purple-400',
+      borderColor: 'border-purple-500/40 hover:border-purple-400 hover:shadow-[0_0_25px_rgba(168,85,247,0.35)]',
+      bgColor: 'bg-purple-950/20'
+    },
+    {
+      id: 'gen-ai',
+      label: 'Generative AI',
+      desc: 'Prompt engineering, Google prompting essentials, task automation, and leveraging AI as a creative partner.',
+      icon: '/Gem Icon.webp',
+      count: 5,
+      color: 'text-teal-400',
+      borderColor: 'border-teal-500/40 hover:border-teal-400 hover:shadow-[0_0_25px_rgba(20,184,166,0.35)]',
+      bgColor: 'bg-teal-950/20'
+    },
+    {
+      id: 'cyber',
+      label: 'Cybersecurity',
+      desc: 'Defensive fundamentals, cybersecurity tools, digital system attacks, and threat environment analysis.',
+      icon: '/ShieldClan Badge Icon.webp',
+      count: 4,
+      color: 'text-red-400',
+      borderColor: 'border-red-500/40 hover:border-red-400 hover:shadow-[0_0_25px_rgba(239,68,68,0.35)]',
+      bgColor: 'bg-red-950/20'
+    },
+    {
+      id: 'cloud',
+      label: 'Cloud & IT',
+      desc: 'Microsoft AZ-204 solution development, AWS cloud environments, IT support, and Git/GitHub workflows.',
+      icon: '/TownHall.webp',
+      count: 6,
+      color: 'text-blue-400',
+      borderColor: 'border-blue-500/40 hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)]',
+      bgColor: 'bg-blue-950/20'
+    },
+    {
+      id: 'dev',
+      label: 'Programming',
+      desc: 'Python automation, JavaScript engines, mobile application development, and algorithms/data structures.',
+      icon: '/Elixir Drop Icon.webp',
+      count: 13,
+      color: 'text-pink-400',
+      borderColor: 'border-pink-500/40 hover:border-pink-400 hover:shadow-[0_0_25px_rgba(236,72,153,0.35)]',
+      bgColor: 'bg-pink-950/20'
+    },
+    {
+      id: 'data',
+      label: 'Data Analytics',
+      desc: 'Process automation, business intelligence dashboards, real-world data analysis, and scripting solutions.',
+      icon: '/Gold Coin Icon.webp',
+      count: 3,
+      color: 'text-yellow-400',
+      borderColor: 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-[0_0_25px_rgba(234,179,8,0.35)]',
+      bgColor: 'bg-yellow-950/20'
+    }
   ];
 
   const certificates = [
@@ -72,12 +126,21 @@ const Certificates = () => {
     { title: "Intro to Data Analytics", issuer: "Meta", category: "data", date: "2024", icon: "/Gold Coin Icon.webp", link: "/certificates/Introduction to Data Analytics By META.pdf" }
   ];
 
-  const filteredCertificates = certificates.filter(cert => cert.category === selectedCategory);
+  const filteredCertificates = selectedCategory 
+    ? certificates.filter(cert => cert.category === selectedCategory) 
+    : [];
 
   const handleCategorySelect = (categoryId) => {
     playCoinSound();
     setSelectedCategory(categoryId);
   };
+
+  const handleCardClick = (link) => {
+    playCoinSound();
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  const activeCategory = categories.find(cat => cat.id === selectedCategory);
 
   return (
     <section id="certificates" className="relative py-24 bg-[#0b041a] overflow-hidden">
@@ -87,105 +150,187 @@ const Certificates = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Section Heading */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+            className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-pulse"
           >
             📜 SPELLS & SCROLLS (CERTIFICATIONS)
           </motion.h2>
-          <div className={`w-32 h-1 mx-auto rounded-full mb-8 ${
+          <div className={`w-40 h-1.5 mx-auto rounded-full mb-8 ${
             isNight ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]' : 'bg-yellow-500 shadow-[0_0_8px_rgba(255,215,0,0.8)]'
           }`} />
         </div>
 
-        {/* Categories Tab Selector */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12 max-w-4xl mx-auto">
-          {categories.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => handleCategorySelect(cat.id)}
-                className={`px-4 py-2 font-coc text-[8px] sm:text-[9px] rounded-full border-2 transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                  isSelected
-                    ? isNight
-                      ? 'bg-purple-600 text-white border-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.6)]'
-                      : 'bg-yellow-500 text-slate-950 border-yellow-300 shadow-[0_0_12px_rgba(255,215,0,0.6)]'
-                    : isNight
-                      ? 'bg-purple-950/40 text-purple-200 border-purple-500/30 hover:bg-purple-900/40'
-                      : 'bg-amber-950/40 text-yellow-200 border-yellow-700/30 hover:bg-amber-900/40'
-                }`}
-              >
-                {cat.label.toUpperCase()}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Certificates Grid with AnimatePresence */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredCertificates.map((cert) => (
+        {/* Drilldown Container with AnimatePresence */}
+        <div className="min-h-[400px]">
+          <AnimatePresence mode="wait">
+            {!selectedCategory ? (
               <motion.div
-                layout
-                key={cert.title}
-                initial={{ opacity: 0, scale: 0.9, y: 15 }}
+                key="categories-grid"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -15 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
                 transition={{ duration: 0.25 }}
-                className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 bg-black/35 relative overflow-hidden group ${
-                  isNight 
-                    ? 'border-purple-500/40 hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]' 
-                    : 'border-yellow-600/40 hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.25)]'
-                }`}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
               >
-                <div>
-                  {/* Top row: Icon & Issuer */}
-                  <div className="flex justify-between items-start mb-4">
-                    <span className={`font-coc text-[9px] px-2 py-1 rounded bg-black/40 border border-slate-700 ${
-                      isNight ? 'text-purple-300' : 'text-yellow-400'
-                    }`}>
-                      {cert.issuer}
-                    </span>
-                    <img src={cert.icon} alt={cert.issuer} className="w-8 h-8 object-contain" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-coc text-xs sm:text-sm text-white mb-2 leading-snug tracking-wide group-hover:text-yellow-300 transition-colors">
-                    {cert.title}
-                  </h3>
-                </div>
-
-                {/* Bottom Row: Date & Action */}
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800">
-                  <span className="font-body text-[10px] text-slate-400 font-semibold">
-                    LEARNED: {cert.date}
-                  </span>
-                  
-                  <a
-                    href={cert.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={playCoinSound}
-                    className={`px-3 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                      isNight 
-                        ? 'bg-purple-950/60 text-purple-200 border-purple-500/40 hover:bg-purple-900/60' 
-                        : 'bg-amber-950/60 text-yellow-200 border-yellow-700/40 hover:bg-amber-900/60'
-                    }`}
+                {categories.map((cat) => (
+                  <motion.div
+                    key={cat.id}
+                    onClick={() => handleCategorySelect(cat.id)}
+                    whileHover={{ y: -6 }}
+                    className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 bg-black/45 relative overflow-hidden group cursor-pointer ${cat.borderColor}`}
                   >
-                    VIEW SCROLL
-                  </a>
-                </div>
+                    <div>
+                      {/* Top Header: Category Icon & Title */}
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="font-coc text-xs sm:text-sm text-white group-hover:text-yellow-300 transition-colors leading-snug tracking-wider">
+                          {cat.label}
+                        </h3>
+                        <motion.img 
+                          src={cat.icon} 
+                          alt={cat.label} 
+                          className="w-14 h-14 object-contain group-hover:scale-110 transition-transform duration-300"
+                          animate={{ y: [0, -5, 0] }}
+                          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        />
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-body mt-2">
+                        {cat.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom stats row */}
+                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
+                      <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full border border-slate-700 font-coc text-[8px] sm:text-[9px] text-slate-300">
+                        <span className={cat.color}>⚡</span>
+                        <span>{cat.count} SPELL SCROLLS</span>
+                      </div>
+                      
+                      <div className={`px-2.5 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 ${
+                        isNight 
+                          ? 'bg-purple-950/60 text-purple-200 border-purple-500/40 group-hover:bg-purple-900/60' 
+                          : 'bg-amber-950/60 text-yellow-200 border-yellow-700/40 group-hover:bg-amber-900/60'
+                      }`}>
+                        REVEAL
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            ) : (
+              <motion.div
+                key="certificates-view"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                transition={{ duration: 0.25 }}
+                className="max-w-5xl mx-auto"
+              >
+                {/* Back controls and header details */}
+                <div className="flex flex-col gap-6 mb-12">
+                  <motion.button
+                    onClick={() => {
+                      playCoinSound();
+                      setSelectedCategory(null);
+                    }}
+                    whileHover={{ scale: 1.04, x: -3 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="btn-coc-blue self-start px-6 py-2.5 text-[9px] sm:text-[10px] cursor-pointer focus:outline-none flex items-center gap-2"
+                  >
+                    <span>←</span>
+                    <span>BACK TO SPELLBOOK</span>
+                  </motion.button>
+
+                  <div className={`p-6 md:p-8 rounded-2xl border-2 bg-black/40 backdrop-blur-sm flex flex-col md:flex-row items-center gap-6 ${activeCategory.borderColor}`}>
+                    <motion.img 
+                      src={activeCategory.icon} 
+                      alt={activeCategory.label} 
+                      className="w-20 h-20 md:w-24 md:h-24 object-contain"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                    />
+                    <div className="text-center md:text-left flex-1">
+                      <h3 className="font-coc text-base sm:text-lg md:text-xl text-white mb-2 tracking-widest">
+                        {activeCategory.label} SPELLS
+                      </h3>
+                      <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-body mb-4">
+                        {activeCategory.desc}
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 bg-black/45 px-3 py-1.5 rounded-full border border-slate-700/80 font-coc text-[9px] text-slate-300">
+                        <span className={activeCategory.color}>⚡</span>
+                        <span>{activeCategory.count} ACTIVE CERTIFICATES</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Sub-Certificates Grid */}
+                <motion.div 
+                  layout
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  <AnimatePresence mode="popLayout">
+                    {filteredCertificates.map((cert) => (
+                      <motion.div
+                        layout
+                        key={cert.title}
+                        initial={{ opacity: 0, scale: 0.9, y: 15 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: -15 }}
+                        transition={{ duration: 0.25 }}
+                        onClick={() => handleCardClick(cert.link)}
+                        className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 bg-black/35 relative overflow-hidden group cursor-pointer ${
+                          isNight 
+                            ? 'border-purple-500/40 hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]' 
+                            : 'border-yellow-600/40 hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(255,215,0,0.25)]'
+                        }`}
+                      >
+                        <div>
+                          {/* Top row: Issuer & Icon */}
+                          <div className="flex justify-between items-start mb-4">
+                            <span className={`font-coc text-[9px] px-2 py-1 rounded bg-black/40 border border-slate-700 ${
+                              isNight ? 'text-purple-300' : 'text-yellow-400'
+                            }`}>
+                              {cert.issuer}
+                            </span>
+                            <img src={cert.icon} alt={cert.issuer} className="w-8 h-8 object-contain" />
+                          </div>
+
+                          {/* Title */}
+                          <h4 className="font-coc text-[10px] sm:text-xs text-white mb-2 leading-snug tracking-wider group-hover:text-yellow-300 transition-colors">
+                            {cert.title}
+                          </h4>
+                        </div>
+
+                        {/* Bottom Row: Date & Action */}
+                        <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
+                          <span className="font-body text-[10px] text-slate-400 font-semibold">
+                            LEARNED: {cert.date}
+                          </span>
+                          
+                          <div
+                            className={`px-3 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 focus:outline-none ${
+                              isNight 
+                                ? 'bg-purple-950/60 text-purple-200 border-purple-500/40 group-hover:bg-purple-900/60' 
+                                : 'bg-amber-950/60 text-yellow-200 border-yellow-700/40 group-hover:bg-amber-900/60'
+                            }`}
+                          >
+                            VIEW SCROLL
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
+              </motion.div>
+            )}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
       </div>
     </section>

@@ -24,17 +24,10 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black select-none"
           >
-            {/* Desktop Intro Background */}
-            <img 
-              src="/Intro/COC_Intro.webp" 
-              alt="Clash of Clans Loading Screen" 
-              className="absolute inset-0 w-full h-full object-cover hidden sm:block"
-            />
-            {/* Mobile Intro Background */}
-            <img 
-              src="/Intro/COC_Intro_Mobile.webp" 
-              alt="Clash of Clans Loading Screen" 
-              className="absolute inset-0 w-full h-full object-cover block sm:hidden"
+            {/* Intro Background */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[6px] scale-105 brightness-[0.4]"
+              style={{ backgroundImage: "url('/Background.webp')" }}
             />
 
             {/* Intro Content & Button (Enter Base / Attack style) */}
@@ -50,13 +43,9 @@ const Hero = () => {
                 onClick={handleEnterBase}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative cursor-pointer focus:outline-none mt-4"
+                className="btn-coc-gold px-12 py-5 text-base sm:text-lg md:text-xl cursor-pointer focus:outline-none mt-4 tracking-widest font-coc"
               >
-                <img 
-                  src="/Intro/Intro_Button.webp" 
-                  alt="Attack / Enter Base" 
-                  className="h-16 sm:h-20 md:h-24 w-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]"
-                />
+                ENTER BASE
               </motion.button>
             </div>
           </motion.div>
@@ -131,19 +120,6 @@ const Hero = () => {
       {/* Hero Content Panel (Wood board style) */}
       <div className="relative z-20 max-w-4xl mx-auto px-4 text-center mt-12 sm:mt-16 md:mt-24">
         
-        {/* Badge Icon */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 100, delay: 0.3 }}
-          className="mb-4"
-        >
-          <img 
-            src={isNight ? '/night-theme/NightShield.webp' : '/ShieldClan Badge Icon.webp'} 
-            alt="War Clan Shield" 
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]"
-          />
-        </motion.div>
 
         {/* The Clan Wars Logo text */}
         <motion.div

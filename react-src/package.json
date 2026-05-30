@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "cp dist/index.html ../ && cp -r dist/assets/* ../assets/ && cp -r dist/* ../dist/ && cp dist/*.webp ../ && cp dist/*.png ../ && cp dist/*.mp3 ../",
     "lint": "eslint .",
     "preview": "vite preview"
   },

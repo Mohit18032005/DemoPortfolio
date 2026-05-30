@@ -1,6 +1,6 @@
 import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Github } from 'lucide-react';
 
 const Team = () => {
   const { isNight, playCoinSound } = useTheme();
@@ -11,9 +11,8 @@ const Team = () => {
       role: 'Animations, CSS, React, Next.js',
       avatar: '/Wizard.webp',
       socials: {
-        linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:soumyachk1@gmail.com'
+        email: 'mailto:soumya.chk101@gmail.com'
       }
     },
     {
@@ -21,29 +20,26 @@ const Team = () => {
       role: 'Node.js, Postgres, Express, REST APIs',
       avatar: '/Giant.webp',
       socials: {
-        linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:soumyachk1@gmail.com'
+        email: 'mailto:soumya.chk101@gmail.com'
       }
     },
     {
       name: 'UI/UX Archer Queen',
       role: 'Figma, Micro-interactions, Polish',
-      avatar: '/Archer.webp',
+      avatar: '/ArcherQueen.webp',
       socials: {
-        linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:soumyachk1@gmail.com'
+        email: 'mailto:soumya.chk101@gmail.com'
       }
     },
     {
       name: 'System Builder',
       role: 'DevOps, CI/CD, AWS, System Architect',
-      avatar: '/Builder.webp',
+      avatar: '/night-theme/Master_Builder.webp',
       socials: {
-        linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:soumyachk1@gmail.com'
+        email: 'mailto:soumya.chk101@gmail.com'
       }
     }
   ];
@@ -103,15 +99,7 @@ const Team = () => {
 
               {/* Social icons */}
               <div className="flex items-center justify-center gap-3">
-                <a 
-                  href={leader.socials.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  onClick={playCoinSound}
-                  className="p-1.5 bg-black/35 rounded-lg text-slate-400 hover:text-white transition-colors border border-slate-800"
-                >
-                  <Linkedin size={14} />
-                </a>
+
                 <a 
                   href={leader.socials.github} 
                   target="_blank" 
