@@ -89,17 +89,10 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const svgIcon = document.querySelector('link[type="image/svg+xml"]');
     const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
-    const defaultIcon = document.querySelector('link[type="image/x-icon"]');
+    const iconPath = isNight ? '/favicon_akatsuki.svg' : '/favicon.svg';
     
-    if (isNight) {
-      if (svgIcon) svgIcon.setAttribute('href', '/favicon_akatsuki.svg');
-      if (appleIcon) appleIcon.setAttribute('href', '/favicon_akatsuki.svg');
-      if (defaultIcon) defaultIcon.setAttribute('href', '/favicon_akatsuki.svg');
-    } else {
-      if (svgIcon) svgIcon.setAttribute('href', '/favicon.svg');
-      if (appleIcon) appleIcon.setAttribute('href', '/favicon.svg');
-      if (defaultIcon) defaultIcon.setAttribute('href', '/favicon.ico');
-    }
+    if (svgIcon) svgIcon.setAttribute('href', iconPath);
+    if (appleIcon) appleIcon.setAttribute('href', iconPath);
   }, [isNight]);
 
   // Programmatic Web Audio Synthesizer for thematic Naruto sound effects
