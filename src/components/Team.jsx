@@ -84,7 +84,14 @@ const Team = () => {
   };
 
   return (
-    <section id="skills" className="relative py-24 bg-gradient-to-b from-[#0b041a] via-[#120a2a]/45 to-[#0b041a]">
+    <section 
+      id="skills" 
+      className={`relative py-24 transition-colors duration-1000 ${
+        isAkatsuki 
+          ? 'bg-gradient-to-b from-[#070102] via-[#0e0305]/95 to-[#070102]' 
+          : 'bg-gradient-to-b from-[#05130e] via-[#072219]/85 to-[#05130e]'
+      }`}
+    >
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Section Heading */}

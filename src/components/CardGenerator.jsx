@@ -120,7 +120,12 @@ const CardGenerator = () => {
   };
 
   return (
-    <section id="card-generator" className="relative py-24 bg-black/40">
+    <section 
+      id="card-generator" 
+      className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
+        isAkatsuki ? 'bg-[#070102]' : 'bg-[#05130e]'
+      }`}
+    >
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Section Heading */}

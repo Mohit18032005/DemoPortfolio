@@ -173,7 +173,12 @@ const Certificates = () => {
   const activeCategory = categories.find(cat => cat.id === selectedCategory);
 
   return (
-    <section id="certificates" className="relative py-24 bg-[#0b041a] overflow-hidden">
+    <section 
+      id="certificates" 
+      className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
+        isAkatsuki ? 'bg-[#070102]' : 'bg-[#05130e]'
+      }`}
+    >
       <div className="absolute inset-0 bg-stone-texture opacity-5 pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">

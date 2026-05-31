@@ -36,7 +36,11 @@ const FAQs = () => {
   };
 
   return (
-    <section className="relative py-24 bg-[#0b041a] overflow-hidden">
+    <section 
+      className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
+        isAkatsuki ? 'bg-[#070102]' : 'bg-[#05130e]'
+      }`}
+    >
       
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         
