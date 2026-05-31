@@ -233,8 +233,8 @@ const Prizes = () => {
         isAkatsuki ? 'bg-gradient-to-b from-[#070102] via-[#0f0406]/90 to-[#070102]' : 'bg-gradient-to-b from-[#05130e] via-[#082218]/85 to-[#05130e]'
       }`}
     >
-      {/* Dynamic Background */}
-      <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+      {/* Dynamic Background (blurred for depth-of-field effect) */}
+      <div className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 filter blur-[4px] scale-[1.02] ${
         isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-20' : 'bg-[url("/konoha-bg.png")] opacity-12'
       }`} />
 
