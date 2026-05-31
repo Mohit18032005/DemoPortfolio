@@ -115,11 +115,16 @@ const Timeline = () => {
   };
 
   return (
-    <section id="journey" className="relative py-28 overflow-hidden bg-black/50">
+    <section 
+      id="journey" 
+      className={`relative py-28 overflow-hidden transition-colors duration-1000 ${
+        isAkatsuki ? 'bg-black/80' : 'bg-slate-950/60'
+      }`}
+    >
       
       {/* Dynamic Background */}
-      <div className={`absolute inset-0 bg-cover bg-center opacity-5 transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")]' : 'bg-[url("/konoha-bg.png")]'
+      <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-25' : 'bg-[url("/konoha-bg.png")] opacity-15'
       }`} />
 
       {/* Radial fade for visual depth */}
