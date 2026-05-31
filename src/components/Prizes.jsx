@@ -230,7 +230,9 @@ const Prizes = () => {
     <section 
       id="projects" 
       className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
-        isAkatsuki ? 'bg-gradient-to-b from-[#070102] via-[#0f0406]/90 to-[#070102]' : 'bg-gradient-to-b from-[#05130e] via-[#082218]/85 to-[#05130e]'
+        isAkatsuki 
+          ? 'bg-gradient-to-b from-black via-[#070102]/95 to-black' 
+          : 'bg-gradient-to-b from-black via-[#05130e]/90 to-black'
       }`}
     >
       {/* Dynamic Background (blurred for depth-of-field effect) */}
