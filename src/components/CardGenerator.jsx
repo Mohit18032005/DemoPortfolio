@@ -142,15 +142,20 @@ const CardGenerator = () => {
                        ('ontouchstart' in window) || 
                        (navigator.maxTouchPoints > 0);
       
+      // Wait for fonts to be fully loaded in the browser
+      if (document.fonts) {
+        await document.fonts.ready;
+      }
+
       // Give browser time to finish layout and paint
-      await new Promise((resolve) => setTimeout(resolve, 400));
+      await new Promise((resolve) => setTimeout(resolve, 200));
 
       const captureScale = isMobile ? 1.5 : 2.5;
 
       const canvas = await html2canvas(cardRef.current, {
         scale: captureScale,
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false,
         logging: false,
         backgroundColor: null,
       });
@@ -244,7 +249,7 @@ const CardGenerator = () => {
                 </label>
                 <input 
                   type="text" 
-                  maxLength={15}
+                  maxLength={24}
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value.toUpperCase());
@@ -393,9 +398,16 @@ const CardGenerator = () => {
                 <div className={`w-[80%] h-[1.5px] bg-gradient-to-r from-transparent via-slate-600/40 to-transparent my-3`} />
 
                 {/* Recruiter Name */}
-                <h3 className={`font-coc text-xs text-center tracking-wide max-w-[240px] truncate uppercase leading-tight ${
-                  isAkatsuki ? 'text-white' : 'text-slate-900'
-                }`}>
+                <h3 
+                  className={`font-coc text-center tracking-wide max-w-[250px] uppercase leading-tight ${
+                    name.length > 16 ? 'text-[8px]' : name.length > 12 ? 'text-[10px]' : 'text-xs'
+                  } ${
+                    isAkatsuki ? 'text-white' : 'text-amber-950 font-bold'
+                  }`}
+                  style={{
+                    wordBreak: 'break-word',
+                  }}
+                >
                   {name || 'NINJA ALLY'}
                 </h3>
                 
