@@ -227,7 +227,17 @@ const Prizes = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 bg-gradient-to-b from-[#0b041a] via-[#120a2a]/45 to-[#0b041a]">
+    <section 
+      id="projects" 
+      className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
+        isAkatsuki ? 'bg-gradient-to-b from-[#070102] via-[#0f0406]/90 to-[#070102]' : 'bg-gradient-to-b from-[#05130e] via-[#082218]/85 to-[#05130e]'
+      }`}
+    >
+      {/* Dynamic Background */}
+      <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-20' : 'bg-[url("/konoha-bg.png")] opacity-12'
+      }`} />
+
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         
         {/* Section Title */}
