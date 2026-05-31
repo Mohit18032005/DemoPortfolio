@@ -77,8 +77,8 @@ const Timeline = () => {
     <section id="journey" className="relative py-24 overflow-hidden bg-black/40">
       
       {/* Background elements */}
-      <div className={`absolute inset-0 bg-cover opacity-5 transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/night-theme/NightStars.webp")]' : 'bg-[url("/Background.webp")]'
+      <div className={`absolute inset-0 bg-cover bg-center opacity-5 transition-opacity duration-1000 ${
+        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")]' : 'bg-[url("/konoha-bg.png")]'
       }`} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
