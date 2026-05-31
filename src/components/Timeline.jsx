@@ -188,7 +188,9 @@ const Timeline = () => {
                       }`}
                     >
                       {/* Ribbon Banner for Status */}
-                      <div className={`absolute top-0 right-4 px-3 py-1 text-[8px] font-coc rounded-b border-l border-r border-b ${
+                      <div className={`absolute right-4 px-3 py-1 text-[8px] font-coc rounded-b border-l border-r border-b z-20 ${
+                        isAkatsuki ? 'top-2' : 'top-[10px]'
+                      } ${
                         item.status === 'Active' 
                           ? 'bg-emerald-600 border-emerald-400 text-white shadow-[0_2px_5px_rgba(16,185,129,0.3)] animate-pulse' 
                           : 'bg-zinc-800 border-zinc-700 text-zinc-400'
