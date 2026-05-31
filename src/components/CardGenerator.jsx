@@ -17,103 +17,13 @@ const CardGenerator = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const characters = [
-    { name: 'Naruto Uzumaki', role: 'Ninjutsu Master', glowColor: 'rgba(249, 115, 22, 0.4)', element: 'Wind (Fūton)' },
-    { name: 'Sasuke Uchiha', role: 'Special Ops / Spy', glowColor: 'rgba(168, 85, 247, 0.4)', element: 'Lightning (Raiton)' },
-    { name: 'Kakashi Hatake', role: 'Tactical Commander', glowColor: 'rgba(59, 130, 246, 0.4)', element: 'All Elements' },
-    { name: 'Itachi Uchiha', role: 'Genjutsu Master', glowColor: 'rgba(239, 68, 68, 0.4)', element: 'Fire (Katon)' },
-    { name: 'Gaara', role: 'Absolute Security / QA', glowColor: 'rgba(234, 179, 8, 0.4)', element: 'Earth (Doton)' },
-    { name: 'Minato Namikaze', role: 'DevOps / Speed Engine', glowColor: 'rgba(253, 224, 71, 0.4)', element: 'Space-Time' }
+    { name: 'Naruto Uzumaki', role: 'Ninjutsu Master', glowColor: 'rgba(249, 115, 22, 0.4)', element: 'Wind (Fūton)', image: '/naruto_portrait.png' },
+    { name: 'Sasuke Uchiha', role: 'Special Ops / Spy', glowColor: 'rgba(168, 85, 247, 0.4)', element: 'Lightning (Raiton)', image: '/sasuke_portrait.png' },
+    { name: 'Kakashi Hatake', role: 'Tactical Commander', glowColor: 'rgba(59, 130, 246, 0.4)', element: 'All Elements', image: '/kakashi_portrait.png' },
+    { name: 'Itachi Uchiha', role: 'Genjutsu Master', glowColor: 'rgba(239, 68, 68, 0.4)', element: 'Fire (Katon)', image: '/itachi_portrait.png' },
+    { name: 'Tobi', role: 'Space-Time Specialist', glowColor: 'rgba(234, 88, 12, 0.4)', element: 'Earth (Doton)', image: '/tobi_portrait.png' },
+    { name: 'Minato Namikaze', role: 'DevOps / Speed Engine', glowColor: 'rgba(253, 224, 71, 0.4)', element: 'Space-Time', image: '/minato_portrait.png' }
   ];
-
-  // Helper to render flat vector SVGs for ninja characters
-  const renderCharacterSVG = (idx, isForList = false) => {
-    const size = isForList ? "w-10 h-10" : "w-36 h-36";
-    if (idx === 0) {
-      // Naruto (Orange/Yellow)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#fbc531" />
-          <rect x="25" y="42" width="50" height="10" fill="#2f3640" rx="1" />
-          <rect x="40" y="43" width="20" height="8" fill="#dcdde1" rx="0.5" />
-          <path d="M47 47c1-1 3-1 4 0" fill="none" stroke="#2f3640" strokeWidth="1" />
-          <ellipse cx="40" cy="58" rx="2.5" ry="1.5" fill="#2f3640" />
-          <ellipse cx="60" cy="58" rx="2.5" ry="1.5" fill="#2f3640" />
-          <path d="M45 68s2 3 5 3 5-3 5-3" fill="none" stroke="#2f3640" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M22 45l8-15 12 10L50 20l8 20 12-10 8 15Z" fill="#e1b12c" />
-        </svg>
-      );
-    } else if (idx === 1) {
-      // Sasuke (Purple/Dark)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#3f3d56" />
-          <rect x="25" y="44" width="50" height="8" fill="#1e272e" />
-          <path d="M38 56a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm24 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" fill="#ff3f34" />
-          <path d="M44 67s2 2 6 2 6-2 6-2" fill="none" stroke="#ff3f34" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M20 40l6-18 14 12 10-18 10 18 16-12 4 18Z" fill="#2c2c54" />
-        </svg>
-      );
-    } else if (idx === 2) {
-      // Kakashi (Grey/Blue)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#7f8c8d" />
-          {/* Tilted Mask */}
-          <path d="M25 45 L75 50 L70 75 C60 85 40 85 30 75 Z" fill="#2c3e50" />
-          {/* Headband */}
-          <rect x="23" y="40" width="54" height="11" fill="#1e272e" transform="rotate(3 50 45)" />
-          <rect x="38" y="41" width="22" height="9" fill="#bdc3c7" transform="rotate(3 50 45)" />
-          <circle cx="43" cy="52" r="2.5" fill="#c0392b" />
-          <path d="M41 50l4 4" stroke="#2c3e50" strokeWidth="1" />
-        </svg>
-      );
-    } else if (idx === 3) {
-      // Itachi (Crimson/Crows)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#2c1a1d" />
-          <rect x="25" y="44" width="50" height="9" fill="#180c0e" rx="1" />
-          <rect x="37" y="45" width="26" height="7" fill="#5a6065" rx="0.5" />
-          {/* Sharingan eyes */}
-          <circle cx="40" cy="58" r="2" fill="#e74c3c" />
-          <circle cx="60" cy="58" r="2" fill="#e74c3c" />
-          {/* Subtle tears lines */}
-          <path d="M40 60c-2 4-3 8-3 12M60 60c2 4 3 8 3 12" fill="none" stroke="#000" strokeWidth="1" opacity="0.4" />
-          <path d="M44 68s2 2 6 2 6-2 6-2" fill="none" stroke="#e74c3c" strokeWidth="1" />
-          <path d="M22 45l5-12 10 8 13-16 13 16 10-8 5 12Z" fill="#180c0e" />
-        </svg>
-      );
-    } else if (idx === 4) {
-      // Gaara (Red/Sandy)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#d2a679" />
-          {/* Red Hair */}
-          <path d="M22 40l6-16 14 10 8-16 12 16 12-10 6 16Z" fill="#a62c2c" />
-          {/* Eyes with black ring */}
-          <ellipse cx="38" cy="56" rx="5" ry="3" fill="#fff" stroke="#000" strokeWidth="2.5" />
-          <ellipse cx="62" cy="56" rx="5" ry="3" fill="#fff" stroke="#000" strokeWidth="2.5" />
-          <circle cx="38" cy="56" r="2" fill="#2d6a4f" />
-          <circle cx="62" cy="56" r="2" fill="#2d6a4f" />
-          {/* Kanji for love symbol */}
-          <path d="M60 38h4m-2-2v4M58 41h6M61 41l-2 3m2-3l3 3" fill="none" stroke="#a62c2c" strokeWidth="1" />
-          <path d="M45 68s2 2 5 2 5-2 5-2" fill="none" stroke="#000" strokeWidth="1" />
-        </svg>
-      );
-    } else {
-      // Minato (Yellow Flash)
-      return (
-        <svg className={`${size} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`} viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" fill="#ffe169" />
-          <rect x="25" y="44" width="50" height="9" fill="#1e272e" />
-          <ellipse cx="40" cy="58" rx="2.5" ry="1.5" fill="#2c3e50" />
-          <ellipse cx="60" cy="58" rx="2.5" ry="1.5" fill="#2c3e50" />
-          <path d="M45 68s2 2 5 2 5-2 5-2" fill="none" stroke="#2c3e50" strokeWidth="1.5" />
-          <path d="M18 42l10-18 10 12 12-18 12 18 10-12 10 18Z" fill="#ffd166" />
-        </svg>
-      );
-    }
-  };
 
   const getPlayerTag = (inputName) => {
     if (!inputName) return 'SHINOBIWAY';
@@ -335,7 +245,11 @@ const CardGenerator = () => {
                           : 'border-slate-800'
                       }`}
                     >
-                      {renderCharacterSVG(idx, true)}
+                      <img 
+                        src={char.image} 
+                        alt={char.name} 
+                        className="w-full h-full object-cover select-none pointer-events-none" 
+                      />
                     </button>
                   ))}
                 </div>
@@ -430,8 +344,18 @@ const CardGenerator = () => {
               </div>
 
               {/* Central Character Graphic */}
-              <div className="flex items-center justify-center py-2 relative z-10">
-                {renderCharacterSVG(selectedChar)}
+              <div className="flex items-center justify-center py-2 relative z-10 select-none pointer-events-none">
+                <div className={`w-32 h-32 rounded-full overflow-hidden border-3 shadow-lg bg-black/40 ${
+                  isAkatsuki 
+                    ? 'border-red-600 shadow-red-500/20 bg-red-950/20' 
+                    : 'border-amber-700 shadow-orange-500/20 bg-amber-950/20'
+                }`}>
+                  <img 
+                    src={characters[selectedChar].image} 
+                    alt={characters[selectedChar].name} 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
               </div>
 
               {/* Stats Footer panel */}
