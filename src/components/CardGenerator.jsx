@@ -123,12 +123,12 @@ const CardGenerator = () => {
     <section 
       id="card-generator" 
       className={`relative py-24 overflow-hidden transition-colors duration-1000 ${
-        isAkatsuki ? 'bg-black/80' : 'bg-slate-950/60'
+        isAkatsuki ? 'bg-black/90' : 'bg-[#05020a]/90'
       }`}
     >
       {/* Dynamic Background */}
       <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-20' : 'bg-[url("/konoha-bg.png")] opacity-12'
+        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-15' : 'bg-[url("/konoha-bg.png")] opacity-8'
       }`} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
