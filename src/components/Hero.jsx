@@ -106,8 +106,6 @@ const Hero = () => {
     startMusic, 
     playJutsuSound,
     playSharinganSound,
-    playLightningSound,
-    playFireSound 
   } = useTheme();
   const [showIntro, setShowIntro] = useState(true);
 
@@ -179,66 +177,6 @@ const Hero = () => {
         <div className={`absolute inset-0 transition-opacity duration-1000 ${
           isAkatsuki ? 'bg-red-950/25 backdrop-brightness-[0.55]' : 'bg-black/35 backdrop-brightness-[0.8]'
         }`} />
-      </div>
-
-      {/* Floating Characters (Dynamic based on theme, fully animated with spring entries and hover styles) */}
-      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
-        
-        {/* Left Side Character: Naruto (Konoha) / Itachi (Akatsuki) */}
-        <motion.img 
-          key={isAkatsuki ? 'akatsuki-left' : 'konoha-left'}
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 50, delay: 0.5 }}
-          src={isAkatsuki ? '/itachi_portrait.png' : '/naruto_portrait.png'} 
-          alt="Left Character" 
-          className={`absolute left-[3%] lg:left-[8%] bottom-[12%] md:bottom-[15%] h-[30%] md:h-[40%] lg:h-[48%] w-auto object-contain character-idle pointer-events-auto cursor-pointer rounded-2xl border-3 shadow-2xl transition-all hover:scale-105 active:scale-95 ${
-            isAkatsuki ? 'border-red-500/40 shadow-red-500/10' : 'border-orange-500/40 shadow-orange-500/10'
-          }`}
-          onClick={() => isAkatsuki ? playSharinganSound() : playJutsuSound()}
-        />
-
-        {/* Right Side Character: Kakashi (Konoha) / Pain (Akatsuki) */}
-        <motion.img 
-          key={isAkatsuki ? 'akatsuki-right' : 'konoha-right'}
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 50, delay: 0.7 }}
-          src={isAkatsuki ? '/pain_portrait.png' : '/kakashi_portrait.png'} 
-          alt="Right Character" 
-          className={`absolute right-[3%] lg:right-[8%] bottom-[12%] md:bottom-[15%] h-[30%] md:h-[40%] lg:h-[48%] w-auto object-contain character-idle pointer-events-auto cursor-pointer rounded-2xl border-3 shadow-2xl transition-all hover:scale-105 active:scale-95 ${
-            isAkatsuki ? 'border-red-500/40 shadow-red-500/10' : 'border-orange-500/40 shadow-orange-500/10'
-          }`}
-          onClick={() => isAkatsuki ? playFireSound() : playLightningSound()}
-        />
-
-        {/* Center Bottom Character: Sasuke (Konoha) / Obito (Akatsuki) */}
-        <motion.img 
-          key={isAkatsuki ? 'akatsuki-center' : 'konoha-center'}
-          initial={{ y: 150, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 60, delay: 0.9 }}
-          src={isAkatsuki ? '/tobi_portrait.png' : '/sasuke_portrait.png'} 
-          alt="Center Character" 
-          className={`absolute left-1/2 -translate-x-1/2 bottom-[2%] md:bottom-[5%] h-[24%] md:h-[32%] lg:h-[38%] w-auto object-contain pointer-events-auto cursor-pointer rounded-2xl border-3 shadow-2xl transition-all hover:scale-105 active:scale-95 ${
-            isAkatsuki ? 'border-red-500/40 shadow-red-500/10' : 'border-orange-500/40 shadow-orange-500/10'
-          }`}
-          onClick={() => isAkatsuki ? playSharinganSound() : playLightningSound()}
-        />
-
-        {/* Flying Sky Character: Minato (Konoha) / Deidara (Akatsuki) */}
-        <motion.img 
-          key={isAkatsuki ? 'akatsuki-sky' : 'konoha-sky'}
-          initial={{ y: -50, x: -100, opacity: 0 }}
-          animate={{ y: 0, x: 0, opacity: 1 }}
-          transition={{ duration: 8, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-          src={isAkatsuki ? '/deidara_portrait.png' : '/minato_portrait.png'} 
-          alt="Sky Character" 
-          className={`absolute left-[15%] top-[18%] h-[12%] md:h-[18%] lg:h-[22%] w-auto object-contain pointer-events-auto cursor-pointer rounded-2xl border-3 shadow-2xl transition-all hover:scale-105 active:scale-95 ${
-            isAkatsuki ? 'border-red-500/40 shadow-red-500/10' : 'border-orange-500/40 shadow-orange-500/10'
-          }`}
-          onClick={() => isAkatsuki ? playFireSound() : playJutsuSound()}
-        />
       </div>
 
       {/* Hero Content Panel (Ninja scroll/steel style) */}

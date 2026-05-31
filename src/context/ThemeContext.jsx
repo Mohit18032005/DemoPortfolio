@@ -12,29 +12,15 @@ export const ThemeProvider = ({ children }) => {
   const nightAudioRef = useRef(null);
   const coinAudioRef = useRef(null);
 
-  // Initialize Audio with Naruto streaming BGM and local fallbacks
+  // Initialize Audio with local Naruto BGM
   useEffect(() => {
-    const dayURL = 'https://archive.org/download/tvtunes_21704/Naruto%20Shippuden%20-%20Sadness%20and%20Sorrow%20-%20Full%20-%20Theme%20Song.mp3';
-    const dayFallback = '/theme_music.ogg';
-
-    dayAudioRef.current = new Audio(dayURL);
+    dayAudioRef.current = new Audio('/theme_music.mp3');
     dayAudioRef.current.loop = true;
     dayAudioRef.current.volume = 0.25;
-    dayAudioRef.current.addEventListener('error', () => {
-      console.log("Streaming Day OST failed, switching to local fallback...");
-      if (dayAudioRef.current) dayAudioRef.current.src = dayFallback;
-    });
 
-    const nightURL = 'https://archive.org/download/tvtunes_21703/Naruto%20Shippuden%20-%20Opening%207%20-%20Full%20-%20Theme%20Song.mp3';
-    const nightFallback = '/night-theme/Builder_Base_theme.ogg';
-
-    nightAudioRef.current = new Audio(nightURL);
+    nightAudioRef.current = new Audio('/night-theme/Builder_Base_theme.mp3');
     nightAudioRef.current.loop = true;
     nightAudioRef.current.volume = 0.25;
-    nightAudioRef.current.addEventListener('error', () => {
-      console.log("Streaming Night OST failed, switching to local fallback...");
-      if (nightAudioRef.current) nightAudioRef.current.src = nightFallback;
-    });
 
     coinAudioRef.current = new Audio('/Coins.mp3');
     coinAudioRef.current.volume = 0.3;
@@ -168,7 +154,7 @@ export const ThemeProvider = ({ children }) => {
         osc1.stop(now + 0.25);
         osc2.stop(now + 0.5);
       } else if (type === 'lightning') {
-        // Chidori crackle (multiple rapid impulses)
+        // Chidori crackle (impulsive crackle burst)
         const impulses = 10;
         for (let i = 0; i < impulses; i++) {
           const osc = ctx.createOscillator();
@@ -241,7 +227,6 @@ export const ThemeProvider = ({ children }) => {
   };
 
   const playCoinSound = () => {
-    // Play fallback physical chime sound or synthesized sound
     playSynthSound('select');
   };
 
