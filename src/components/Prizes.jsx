@@ -271,24 +271,26 @@ const Prizes = () => {
                 </div>
 
                 {/* Podium Column Card */}
-                <div className={`w-full p-6 text-center select-none ${
-                  isAkatsuki ? 'panel-steel-akatsuki border-red-500/40 shadow-red-500/10' : 'panel-scroll-konoha border-orange-500/40 shadow-orange-500/10'
-                } border-2 ${prize.glow} shadow-xl relative`}>
+                <div className={`w-full p-6 text-center select-none rounded-2xl border-2 transition-all duration-300 backdrop-blur-md shadow-xl relative ${
+                  isAkatsuki 
+                    ? 'bg-gradient-to-b from-[#130305]/95 via-[#070102]/98 to-[#030000]/100 border-red-500/40 shadow-red-500/10 hover:shadow-red-500/20 text-white' 
+                    : 'bg-gradient-to-b from-[#091f17]/95 via-[#05130e]/98 to-[#020b08]/100 border-orange-500/40 shadow-orange-500/10 hover:shadow-orange-500/20 text-white'
+                } ${prize.glow}`}>
                   
                   <span className={`font-coc text-[9px] ${isFirst ? 'text-yellow-500' : 'text-slate-400'} block mb-1 uppercase`}>
                     {prize.place}
                   </span>
 
-                  <h3 className="font-coc text-sm sm:text-base mb-2 tracking-wide leading-tight">
+                  <h3 className="font-coc text-sm sm:text-base mb-2 tracking-wide leading-tight text-white">
                     {prize.title}
                   </h3>
 
-                  <div className={`font-coc text-base sm:text-lg tracking-wide text-emerald-500 mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]`}>
+                  <div className={`font-coc text-base sm:text-lg tracking-wide text-emerald-400 mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]`}>
                     {prize.amount}
                   </div>
 
                   {/* Extra Rewards List */}
-                  <ul className="text-[10px] sm:text-xs font-body space-y-1 bg-black/30 p-3 rounded-lg border border-slate-800 mb-4 text-left">
+                  <ul className="text-[10px] sm:text-xs font-body space-y-1 bg-black/40 p-3 rounded-lg border border-slate-800/80 mb-4 text-left">
                     {prize.extras.map((ex, i) => (
                       <li key={i} className="flex items-center gap-1.5">
                         <span className="text-emerald-400 font-coc text-[9px]">✔</span>
@@ -309,7 +311,7 @@ const Prizes = () => {
                           ? 'bg-orange-600 text-white border-orange-400 hover:bg-orange-700' 
                           : isAkatsuki 
                             ? 'bg-red-950/60 text-red-200 border-red-500/40 hover:bg-red-900/60' 
-                            : 'bg-orange-950/60 text-orange-900 border-orange-700/40 hover:bg-orange-900/60'
+                            : 'bg-orange-950/40 text-orange-300 border-orange-500/35 hover:bg-orange-900/60 hover:text-white'
                       }`}
                     >
                       GITHUB
@@ -373,24 +375,26 @@ const Prizes = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className={`p-6 flex flex-col justify-between rounded-xl border-2 transition-all duration-300 ${
+                    className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 backdrop-blur-md ${
                       isAkatsuki 
-                        ? 'panel-steel-akatsuki hover:shadow-[0_0_15px_rgba(200,16,46,0.2)]' 
-                        : 'panel-scroll-konoha hover:shadow-[0_0_15px_rgba(249,115,22,0.2)]'
+                        ? 'bg-gradient-to-b from-[#130305]/95 via-[#070102]/98 to-[#030000]/100 border-red-500/40 hover:border-red-400 hover:shadow-[0_0_20px_rgba(200,16,46,0.25)] text-white' 
+                        : 'bg-gradient-to-b from-[#091f17]/95 via-[#05130e]/98 to-[#020b08]/100 border-orange-500/40 hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.25)] text-white'
                     }`}
                   >
                     <div>
-                      <h4 className="font-coc text-xs mb-2 tracking-wide leading-snug">
+                      <h4 className="font-coc text-xs mb-2 tracking-wide leading-snug text-white">
                         {project.title}
                       </h4>
-                      <p className="text-[11px] font-body leading-relaxed mb-4">
+                      <p className="text-[11px] font-body leading-relaxed mb-4 text-slate-300">
                         {project.desc}
                       </p>
                       {/* Tags */}
                       <div className="flex flex-wrap gap-1.5 mb-6">
                         {project.tags.map((tag, tIdx) => (
                           <span key={tIdx} className={`text-[8px] px-2 py-0.5 rounded font-coc border ${
-                            isAkatsuki ? 'bg-red-950/60 border-red-500/30 text-red-300' : 'bg-orange-950/60 border-orange-700/30 text-orange-700'
+                            isAkatsuki 
+                              ? 'bg-red-950/60 border-red-500/30 text-red-300' 
+                              : 'bg-orange-950/60 border-orange-500/30 text-orange-300'
                           }`}>
                             {tag}
                           </span>
@@ -408,7 +412,7 @@ const Prizes = () => {
                         className={`flex-1 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 cursor-pointer focus:outline-none ${
                           isAkatsuki 
                             ? 'bg-red-950/60 text-red-200 border-red-500/40 hover:bg-red-900/60' 
-                            : 'bg-orange-950/60 text-orange-900 border-orange-700/40 hover:bg-orange-900/60'
+                            : 'bg-orange-950/40 text-orange-300 border-orange-500/35 hover:bg-orange-900/60 hover:text-white'
                         }`}
                       >
                         GITHUB
@@ -453,8 +457,10 @@ const Prizes = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 onClick={playJutsuSound}
-                className={`p-4 flex flex-col items-center justify-between text-center cursor-pointer transition-all duration-300 ${
-                  isAkatsuki ? 'panel-steel-akatsuki hover:scale-105' : 'panel-scroll-konoha hover:scale-105'
+                className={`p-5 flex flex-col items-center justify-between text-center cursor-pointer transition-all duration-300 rounded-2xl border-2 backdrop-blur-md ${
+                  isAkatsuki 
+                    ? 'bg-gradient-to-b from-[#130305]/95 via-[#070102]/98 to-[#030000]/100 border-red-500/40 hover:border-red-400 hover:shadow-[0_0_20px_rgba(200,16,46,0.25)] hover:scale-105 text-white' 
+                    : 'bg-gradient-to-b from-[#091f17]/95 via-[#05130e]/98 to-[#020b08]/100 border-orange-500/40 hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.25)] hover:scale-105 text-white'
                 }`}
               >
                 <div className="h-28 flex items-center justify-center mb-3 select-none pointer-events-none">
@@ -462,9 +468,9 @@ const Prizes = () => {
                 </div>
 
                 <div className="w-full">
-                  <h4 className="font-coc text-xs mb-1">{track.name}</h4>
+                  <h4 className="font-coc text-xs mb-1 text-white">{track.name}</h4>
                   <span className={`font-coc text-[8px] ${track.color} block mb-3`}>{track.theme}</span>
-                  <div className="bg-black/30 border border-slate-800 rounded py-1 px-3 inline-block">
+                  <div className="bg-black/40 border border-slate-800/80 rounded py-1 px-3 inline-block">
                     <span className="font-coc text-[8px] text-emerald-400">{track.tech}</span>
                   </div>
                 </div>
@@ -491,34 +497,34 @@ const Prizes = () => {
                 }`}>
                   
                   {/* Card Front Side */}
-                  <div className={`absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6 border-3 rounded-2xl ${
+                  <div className={`absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6 border-3 rounded-2xl text-white ${
                     isAkatsuki 
-                      ? 'bg-red-950/80 border-red-500/60 shadow-red-500/10' 
-                      : 'bg-[#f4ebd0] border-orange-500/60 shadow-orange-500/10 text-orange-950'
+                      ? 'bg-gradient-to-b from-[#130305]/95 to-[#030000]/98 border-red-500/50 shadow-red-500/10' 
+                      : 'bg-gradient-to-b from-[#091f17]/95 to-[#020b08]/98 border-orange-500/50 shadow-orange-500/10'
                   }`}>
                     {/* Scroll Icon Front */}
-                    <div className="w-full h-24 flex items-center justify-center mb-6 bg-black/20 p-4 rounded-xl border border-slate-800">
-                      <svg className={`w-16 h-16 ${isAkatsuki ? 'text-red-500' : 'text-orange-600'}`} viewBox="0 0 24 24" fill="currentColor">
+                    <div className="w-full h-24 flex items-center justify-center mb-6 bg-black/40 p-4 rounded-xl border border-slate-800/80">
+                      <svg className={`w-16 h-16 ${isAkatsuki ? 'text-red-500' : 'text-orange-500'}`} viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v4c0 .88.58 1.62 1.38 1.87C3.58 11.13 3 11.87 3 12.75V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.25c0-.88-.58-1.62-1.38-1.87.8-.25 1.38-.99 1.38-1.87V5c0-1.1-.9-2-2-2zM5 5h2v4H5V5zm14 14h-2v-6.25h2V19zm0-10h-2V5h2v4zM7 12.75H5V19h2v-6.25z" />
                       </svg>
                     </div>
-                    <h4 className="font-coc text-xs mb-2 text-center">{sponsor.name}</h4>
-                    <span className={`font-coc text-[8px] ${isAkatsuki ? 'text-red-400' : 'text-orange-700 animate-pulse'}`}>
+                    <h4 className="font-coc text-xs mb-2 text-center text-white">{sponsor.name}</h4>
+                    <span className={`font-coc text-[8px] ${isAkatsuki ? 'text-red-400' : 'text-orange-400 animate-pulse'}`}>
                       CLICK TO OPEN SCROLL
                     </span>
                   </div>
 
                   {/* Card Back Side (Flipped) */}
-                  <div className={`absolute inset-0 backface-hidden rotate-y-180 flex flex-col justify-between p-6 border-3 rounded-2xl ${
+                  <div className={`absolute inset-0 backface-hidden rotate-y-180 flex flex-col justify-between p-6 border-3 rounded-2xl text-white ${
                     isAkatsuki 
-                      ? 'bg-red-900 border-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]' 
-                      : 'bg-[#e3d5ca] border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]'
+                      ? 'bg-gradient-to-b from-[#22070b]/95 to-[#0a0203]/98 border-red-400 shadow-[0_0_20px_rgba(239,68,68,0.25)]' 
+                      : 'bg-gradient-to-b from-[#0c2a20]/95 to-[#04120e]/98 border-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.25)]'
                   }`}>
                     <div>
-                      <h4 className="font-coc text-xs mb-3 text-center border-b border-black/20 pb-2">
+                      <h4 className="font-coc text-xs mb-3 text-center border-b border-white/10 pb-2 text-white">
                         {sponsor.name}
                       </h4>
-                      <p className={`text-[11px] font-body leading-relaxed text-center ${isAkatsuki ? 'text-white' : 'text-orange-950'}`}>
+                      <p className="text-[11px] font-body leading-relaxed text-center text-slate-300">
                         {sponsor.description}
                       </p>
                     </div>

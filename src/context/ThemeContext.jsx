@@ -87,12 +87,12 @@ export const ThemeProvider = ({ children }) => {
 
   // Sync browser favicon and apple touch icon dynamically based on active alliance mode
   useEffect(() => {
-    const svgIcon = document.querySelector('link[type="image/svg+xml"]');
-    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    const faviconNode = document.getElementById('dynamic-favicon');
+    const appleIconNode = document.getElementById('dynamic-apple-icon');
     const iconPath = isNight ? '/favicon_akatsuki.svg' : '/favicon.svg';
     
-    if (svgIcon) svgIcon.setAttribute('href', iconPath);
-    if (appleIcon) appleIcon.setAttribute('href', iconPath);
+    if (faviconNode) faviconNode.setAttribute('href', iconPath);
+    if (appleIconNode) appleIconNode.setAttribute('href', iconPath);
   }, [isNight]);
 
   // Programmatic Web Audio Synthesizer for thematic Naruto sound effects
