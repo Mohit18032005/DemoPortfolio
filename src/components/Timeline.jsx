@@ -2,50 +2,83 @@ import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
 
 const Timeline = () => {
-  const { isNight, playCoinSound } = useTheme();
+  const { isAkatsuki, playJutsuSound } = useTheme();
 
   const timelineData = [
     {
       id: 1,
-      title: 'Town Hall Level 8: Foundations',
+      title: 'Genin Rank: Basic Elements',
       date: '2021 - 2024',
-      description: 'Upgraded basic barracks: mastered HTML, CSS, JavaScript, and responsive design layouts. Completed Python Programming Internship at CodeAlpha (2024), building robust applications and solving algorithmic challenges.',
-      dayBuilding: '/Barracks.webp',
-      nightBuilding: '/night-theme/OttoHut.webp',
-      dayCharacter: '/Barbarian.webp',
-      nightCharacter: '/night-theme/BetaMinion.webp',
+      description: 'Learned basic chakra control: mastered HTML, CSS, JavaScript, and responsive design layouts. Completed Python Programming Internship at CodeAlpha (2024), building robust applications and solving algorithmic challenges.',
+      rank: 'Genin',
+      element: '🍃 Wind',
       status: 'Completed',
     },
     {
       id: 2,
-      title: 'Town Hall Level 9: The Laboratory',
+      title: 'Chūnin Rank: Jutsu Specialization',
       date: '2024 - 2025',
       description: 'Researched advanced spells in the laboratory: learned React, Next.js, Node.js, and API structures. Completed virtual internships with AICTE (Data Analytics Process Automation) & IBM SkillsBuild (Data Analytics & Business Intelligence).',
-      dayBuilding: '/Laboratory.webp',
-      nightBuilding: '/night-theme/BuilderHall.webp',
-      dayCharacter: '/Wizard.webp',
-      nightCharacter: '/night-theme/NightWitch.webp',
+      rank: 'Chunin',
+      element: '⚡ Lightning',
       status: 'Completed',
     },
     {
       id: 3,
-      title: 'Town Hall Level 10: Master Builder',
+      title: 'Jōnin / ANBU Rank: Master of Elements',
       date: '2025 - Present',
       description: 'Constructing high-level defenses and systems: full-stack applications, interactive game-like designs, custom animations, and cloud bases. Media & Entertainment Cloud Engineering intern at AWS (2025), and MERN Stack Developer Intern at Codec Technologies (2026).',
-      dayBuilding: '/TownHall.webp',
-      nightBuilding: '/night-theme/Master_Builder.webp',
-      dayCharacter: '/ArcherQueen.webp',
-      nightCharacter: '/night-theme/BattleMachine.webp',
+      rank: 'Jonin',
+      element: '🔥 Fire',
       status: 'Active',
     }
   ];
+
+  // Helper SVGs to represent Shinobi Ranks
+  const getRankBuildingIcon = (id, color) => {
+    if (id === 1) {
+      // Academy Training Log/Dummy
+      return (
+        <svg className={`w-12 h-12 ${color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M8 5h8M8 10h8M8 15h8" strokeLinecap="round" />
+          <circle cx="12" cy="5" r="1" fill="currentColor" />
+          <circle cx="12" cy="10" r="1" fill="currentColor" />
+          <circle cx="12" cy="15" r="1" fill="currentColor" />
+        </svg>
+      );
+    } else if (id === 2) {
+      // Ninja Scroll
+      return (
+        <svg className={`w-12 h-12 ${color}`} viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v4c0 .88.58 1.62 1.38 1.87C3.58 11.13 3 11.87 3 12.75V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.25c0-.88-.58-1.62-1.38-1.87.8-.25 1.38-.99 1.38-1.87V5c0-1.1-.9-2-2-2zM5 5h2v4H5V5zm14 14h-2v-6.25h2V19zm0-10h-2V5h2v4zM7 12.75H5V19h2v-6.25z" />
+        </svg>
+      );
+    } else {
+      // Hokage Residence / Gates
+      return (
+        <svg className={`w-12 h-12 ${color}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-4a3 3 0 0 1 6 0v4" />
+        </svg>
+      );
+    }
+  };
+
+  const getRankBadge = (id, color) => {
+    if (id === 1) {
+      return <span className={`text-xs font-coc ${color}`}>🍃 GENIN</span>;
+    } else if (id === 2) {
+      return <span className={`text-xs font-coc ${color}`}>⚡ CHUNIN</span>;
+    } else {
+      return <span className={`text-xs font-coc ${color}`}>🔥 JONIN</span>;
+    }
+  };
 
   return (
     <section id="journey" className="relative py-24 overflow-hidden bg-black/40">
       
       {/* Background elements */}
       <div className={`absolute inset-0 bg-cover opacity-5 transition-opacity duration-1000 ${
-        isNight ? 'bg-[url("/night-theme/NightStars.webp")]' : 'bg-[url("/Background.webp")]'
+        isAkatsuki ? 'bg-[url("/night-theme/NightStars.webp")]' : 'bg-[url("/Background.webp")]'
       }`} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
@@ -58,10 +91,10 @@ const Timeline = () => {
             viewport={{ once: true }}
             className={`font-coc text-2xl sm:text-3xl md:text-4xl text-center mb-4 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}
           >
-            ⚔️ DEVELOPER JOURNEY
+            ⚔️ SHINOBI RANKINGS (JOURNEY)
           </motion.h2>
-          <div className={`w-32 h-1 mx-auto rounded-full ${
-            isNight ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]' : 'bg-yellow-500 shadow-[0_0_8px_rgba(255,215,0,0.8)]'
+          <div className={`w-32 h-1.5 mx-auto rounded-full ${
+            isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
           }`} />
         </div>
 
@@ -70,7 +103,7 @@ const Timeline = () => {
           
           {/* Vertical Connecting Path Line (Mobile) */}
           <div className={`absolute top-0 bottom-0 left-[35px] md:left-1/2 w-1 border-r-4 border-dashed -translate-x-1/2 z-0 opacity-40 transition-colors duration-500 ${
-            isNight ? 'border-purple-500' : 'border-yellow-600'
+            isAkatsuki ? 'border-red-500' : 'border-orange-500'
           }`} />
 
           {/* Timeline Milestones */}
@@ -93,40 +126,36 @@ const Timeline = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: '-100px' }}
                       whileHover={{ scale: 1.02 }}
-                      onClick={playCoinSound}
+                      onClick={playJutsuSound}
                       className={`cursor-pointer p-6 relative overflow-hidden transition-all duration-500 ${
-                        isNight ? 'panel-wood-night hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]' : 'panel-wood-day hover:shadow-[0_0_20px_rgba(255,215,0,0.4)]'
+                        isAkatsuki 
+                          ? 'panel-steel-akatsuki hover:shadow-[0_0_20px_rgba(200,16,46,0.4)]' 
+                          : 'panel-scroll-konoha hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]'
                       }`}
                     >
                       {/* Ribbon banner indicating status */}
                       <div className={`absolute top-0 right-0 px-3 py-1 text-[8px] font-coc rounded-bl border-l border-b ${
                         item.status === 'Active' 
                           ? 'bg-emerald-600 border-emerald-400 text-white' 
-                          : item.status === 'Ongoing'
-                            ? 'bg-blue-600 border-blue-400 text-white animate-pulse'
-                            : 'bg-zinc-800 border-zinc-700 text-zinc-400'
+                          : 'bg-zinc-800 border-zinc-700 text-zinc-400'
                       }`}>
                         {item.status.toUpperCase()}
                       </div>
 
                       {/* Content */}
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="relative">
-                          <img 
-                            src={isNight ? item.nightBuilding : item.dayBuilding} 
-                            alt={item.title} 
-                            className="w-16 h-16 object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]" 
-                          />
+                        <div className="relative p-2 rounded-xl bg-black/40 border border-slate-700/50">
+                          {getRankBuildingIcon(item.id, isAkatsuki ? 'text-red-400' : 'text-orange-600')}
                         </div>
                         <div>
-                          <h3 className="font-coc text-sm sm:text-base text-white tracking-wide">{item.title}</h3>
-                          <span className={`font-coc text-[10px] ${isNight ? 'text-purple-400' : 'text-yellow-400'}`}>
+                          <h3 className="font-coc text-sm sm:text-base tracking-wide">{item.title}</h3>
+                          <span className={`font-coc text-[10px] ${isAkatsuki ? 'text-red-400' : 'text-orange-700'}`}>
                             {item.date}
                           </span>
                         </div>
                       </div>
 
-                      <p className="text-xs text-slate-300 font-body leading-relaxed">
+                      <p className="text-xs font-body leading-relaxed">
                         {item.description}
                       </p>
 
@@ -140,16 +169,12 @@ const Timeline = () => {
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-3 flex items-center justify-center shadow-lg bg-slate-950 overflow-hidden ${
-                        isNight 
-                          ? 'border-purple-500 shadow-purple-500/30' 
-                          : 'border-yellow-500 shadow-yellow-500/30'
+                        isAkatsuki 
+                          ? 'border-red-500 shadow-red-500/30' 
+                          : 'border-orange-500 shadow-orange-500/30'
                       }`}
                     >
-                      <img 
-                        src={isNight ? item.nightCharacter : item.dayCharacter} 
-                        alt="Troop Avatar" 
-                        className="w-[85%] h-[85%] object-contain mt-1"
-                      />
+                      {getRankBadge(item.id, isAkatsuki ? 'text-red-400' : 'text-orange-500')}
                     </motion.div>
                   </div>
 

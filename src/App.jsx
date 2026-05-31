@@ -10,11 +10,11 @@ import Footer from './components/Footer';
 import { useTheme } from './context/ThemeContext';
 
 function App() {
-  const { isNight } = useTheme();
+  const { isAkatsuki } = useTheme();
 
   return (
     <div className={`min-h-screen text-white transition-colors duration-500 overflow-x-hidden ${
-      isNight ? 'bg-[#0b041a]' : 'bg-[#180800]'
+      isAkatsuki ? 'bg-[#070102]' : 'bg-[#05130e]'
     }`}>
       {/* Navigation */}
       <Navbar />

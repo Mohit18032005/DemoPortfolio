@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const FAQs = () => {
-  const { isNight, playCoinSound } = useTheme();
+  const { isAkatsuki, playJutsuSound } = useTheme();
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqsData = [
@@ -26,23 +26,18 @@ const FAQs = () => {
     },
     {
       question: "How can we start a project together?",
-      answer: "You can click on the 'SEND CLAN INVITE' button or scroll to the 'War Room' (Contact) section to drop me an email or connect with me via GitHub. I respond to all invitations within 24 hours!"
+      answer: "You can click on the 'SEND SUMMONING SCROLL' button or scroll to the 'Ninja Messenger Hawk' (Contact) section to drop me a scroll or connect with me via GitHub. I respond to all messenger hawks within 24 hours!"
     }
   ];
 
   const handleToggle = (index) => {
-    playCoinSound();
+    playJutsuSound();
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
     <section className="relative py-24 bg-[#0b041a] overflow-hidden">
       
-      {/* Decorative side graphics */}
-      <div className="absolute left-[3%] bottom-[5%] opacity-15 pointer-events-none hidden lg:block">
-        <img src="/Spell Factory Building.webp" alt="decoration" className="w-24 h-auto object-contain animate-pulse-slow" />
-      </div>
-
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         
         {/* Section Heading */}
@@ -53,10 +48,10 @@ const FAQs = () => {
             viewport={{ once: true }}
             className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            ❓ FREQUENT QUESTIONS
+            ❓ SHINOBI HANDBOOK (FAQS)
           </motion.h2>
-          <div className={`w-32 h-1 mx-auto rounded-full ${
-            isNight ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]' : 'bg-yellow-500 shadow-[0_0_8px_rgba(255,215,0,0.8)]'
+          <div className={`w-32 h-1.5 mx-auto rounded-full ${
+            isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
           }`} />
         </div>
 
@@ -74,9 +69,9 @@ const FAQs = () => {
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
                 className={`overflow-hidden transition-all duration-300 border-2 rounded-xl bg-black/45 ${
                   isOpen 
-                    ? isNight 
-                      ? 'border-purple-500/80 shadow-[0_0_15px_rgba(168,85,247,0.2)]' 
-                      : 'border-yellow-600/80 shadow-[0_0_15px_rgba(255,215,0,0.15)]'
+                    ? isAkatsuki 
+                      ? 'border-red-500/80 shadow-[0_0_15px_rgba(200,16,46,0.2)]' 
+                      : 'border-orange-500/80 shadow-[0_0_15px_rgba(249,115,22,0.15)]'
                     : 'border-slate-800/80'
                 }`}
               >
@@ -87,7 +82,7 @@ const FAQs = () => {
                   className="w-full flex items-center justify-between p-4 sm:p-5 text-left focus:outline-none"
                 >
                   <div className="flex items-center gap-3">
-                    <HelpCircle size={16} className={isNight ? 'text-purple-400' : 'text-yellow-400'} />
+                    <HelpCircle size={16} className={isAkatsuki ? 'text-red-400' : 'text-orange-400'} />
                     <span className="font-coc text-xs sm:text-sm text-white tracking-wide">
                       {faq.question}
                     </span>
