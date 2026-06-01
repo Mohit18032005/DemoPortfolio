@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import TiltCard from './TiltCard';
+import CinematicReveal from './CinematicReveal';
 
 const Certificates = () => {
   const { isAkatsuki, playJutsuSound } = useTheme();
@@ -109,16 +111,35 @@ const Certificates = () => {
     { title: "Intro to Data Analytics", issuer: "Meta", category: "data", date: "2024", link: "/certificates/Introduction to Data Analytics By META.pdf" }
   ];
 
+  const categoryGlowMap = {
+    'ai': { glow: 'rgba(168,85,247,0.12)', filter: 'drop-shadow(0 0 10px rgba(168,85,247,0.6))' },
+    'gen-ai': { glow: 'rgba(20,184,166,0.12)', filter: 'drop-shadow(0 0 10px rgba(20,184,166,0.6))' },
+    'cyber': { glow: 'rgba(239,68,68,0.12)', filter: 'drop-shadow(0 0 10px rgba(239,68,68,0.6))' },
+    'cloud': { glow: 'rgba(59,130,246,0.12)', filter: 'drop-shadow(0 0 10px rgba(59,130,246,0.6))' },
+    'dev': { glow: 'rgba(236,72,153,0.12)', filter: 'drop-shadow(0 0 10px rgba(236,72,153,0.6))' },
+    'data': { glow: 'rgba(234,179,8,0.12)', filter: 'drop-shadow(0 0 10px rgba(234,179,8,0.6))' },
+  };
+
+  const categoryRadialMap = {
+    'ai': 'radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.08) 0%, transparent 55%)',
+    'gen-ai': 'radial-gradient(ellipse at 80% 20%, rgba(20,184,166,0.08) 0%, transparent 55%)',
+    'cyber': 'radial-gradient(ellipse at 80% 20%, rgba(239,68,68,0.08) 0%, transparent 55%)',
+    'cloud': 'radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.08) 0%, transparent 55%)',
+    'dev': 'radial-gradient(ellipse at 80% 20%, rgba(236,72,153,0.08) 0%, transparent 55%)',
+    'data': 'radial-gradient(ellipse at 80% 20%, rgba(234,179,8,0.08) 0%, transparent 55%)',
+  };
+
   const renderCategoryIcon = (id, colorClass) => {
+    const filterStyle = categoryGlowMap[id]?.filter || '';
     if (id === 'ai') {
       return (
-        <svg className={`w-14 h-14 ${colorClass} animate-pulse`} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={`w-16 h-16 ${colorClass} animate-pulse`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2c-.5 2-2 3.5-3.5 4.5A7 7 0 0 0 12 19c3.3 0 6-2.7 6-6 0-3.3-2.7-6-6-11z" />
         </svg>
       );
     } else if (id === 'gen-ai') {
       return (
-        <svg className={`w-14 h-14 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className={`w-16 h-16 ${colorClass}`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="8" cy="8" r="4" />
           <path d="M2 18v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" />
           <circle cx="16" cy="7" r="3" />
@@ -127,28 +148,29 @@ const Certificates = () => {
       );
     } else if (id === 'cyber') {
       return (
-        <svg className={`w-14 h-14 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className={`w-16 h-16 ${colorClass}`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="10" width="18" height="11" rx="2" />
           <path d="M7 10V7a5 5 0 0 1 10 0v3" />
         </svg>
       );
     } else if (id === 'cloud') {
       return (
-        <svg className={`w-14 h-14 ${colorClass} animate-spin-slow`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg className={`w-16 h-16 ${colorClass} animate-spin-slow`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3,3" opacity="0.4" />
           <path d="M12 2a10 10 0 0 0-10 10" />
           <path d="M12 6a6 6 0 0 0-6 6" />
         </svg>
       );
     } else if (id === 'dev') {
       return (
-        <svg className={`w-14 h-14 ${colorClass}`} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={`w-16 h-16 ${colorClass}`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5L12 2z" />
         </svg>
       );
     } else {
       return (
-        <svg className={`w-14 h-14 ${colorClass}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className={`w-16 h-16 ${colorClass}`} style={{ filter: filterStyle }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
           <circle cx="12" cy="12" r="3" />
         </svg>
@@ -179,22 +201,24 @@ const Certificates = () => {
         isAkatsuki ? 'bg-[#070102]' : 'bg-[#05130e]'
       }`}
     >
-      <div className="absolute inset-0 bg-stone-texture opacity-5 pointer-events-none" />
+      {/* Background Graphic */}
+      <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-[0.14]' : 'bg-[url("/konoha-bg.png")] opacity-[0.1]'
+      }`} />
+
+      {/* Atmospheric fog layers */}
+      <div className="fog-layer-1 opacity-15" />
+      <div className="fog-layer-2 opacity-10" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] animate-pulse"
-          >
+        <CinematicReveal preset="cinematic" duration={1} className="text-center mb-16">
+          <h2 className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             📜 SPELLS & SCROLLS (CERTIFICATIONS)
-          </motion.h2>
+          </h2>
           <div className={`w-40 h-1.5 mx-auto rounded-full mb-8 ${
             isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
           }`} />
-        </div>
+        </CinematicReveal>
 
         <div className="min-h-[400px]">
           <AnimatePresence mode="wait">
@@ -211,38 +235,49 @@ const Certificates = () => {
                   <motion.div
                     key={cat.id}
                     onClick={() => handleCategorySelect(cat.id)}
-                    whileHover={{ y: -6 }}
-                    className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 bg-black/45 relative overflow-hidden group cursor-pointer ${cat.borderColor}`}
+                    className="cursor-pointer"
                   >
-                    <div>
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="font-coc text-xs sm:text-sm text-white group-hover:text-yellow-300 transition-colors leading-snug tracking-wider">
-                          {cat.label}
-                        </h3>
-                        <div className="group-hover:scale-110 transition-transform duration-300">
-                          {renderCategoryIcon(cat.id, cat.color)}
+                    <TiltCard intensity={14} glowColor={categoryGlowMap[cat.id]?.glow}>
+                      <div 
+                        className={`p-6 h-full flex flex-col justify-between rounded-2xl border-4 transition-all duration-300 relative overflow-hidden group tilt-card-shadow backdrop-blur-sm ${cat.borderColor}`}
+                        style={{
+                          backgroundImage: categoryRadialMap[cat.id],
+                          backgroundColor: 'rgba(0,0,0,0.5)',
+                        }}
+                      >
+                        <div>
+                          <div className="flex justify-between items-start mb-4">
+                            <h3 className="font-coc text-xs sm:text-sm text-white group-hover:text-amber-300 transition-colors leading-snug tracking-wider">
+                              {cat.label}
+                            </h3>
+                            <div className="group-hover:scale-110 transition-transform duration-300">
+                              <div className={`w-18 h-18 rounded-full flex items-center justify-center ${cat.bgColor}`}>
+                                {renderCategoryIcon(cat.id, cat.color)}
+                              </div>
+                            </div>
+                          </div>
+
+                          <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-body mt-2">
+                            {cat.desc}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
+                          <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full border border-slate-700 font-coc text-[8px] sm:text-[9px] text-slate-300">
+                            <span className={cat.color}>⚡</span>
+                            <span>{cat.count} ACTIVE JUTSUS</span>
+                          </div>
+                          
+                          <div className={`px-3 py-1.5 font-coc text-[8px] rounded-lg border-2 transition-all active:scale-95 ${
+                            isAkatsuki 
+                              ? 'bg-red-950/60 text-red-200 border-red-500/40 group-hover:bg-red-900/60 shadow-[0_2px_0_#200002]' 
+                              : 'bg-amber-950/60 text-amber-200 border-amber-600/40 group-hover:bg-amber-900/60 shadow-[0_2px_0_#3d1a04]'
+                          }`}>
+                            REVEAL
+                          </div>
                         </div>
                       </div>
-
-                      <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-body mt-2">
-                        {cat.desc}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
-                      <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full border border-slate-700 font-coc text-[8px] sm:text-[9px] text-slate-300">
-                        <span className={cat.color}>⚡</span>
-                        <span>{cat.count} ACTIVE JUTSUS</span>
-                      </div>
-                      
-                      <div className={`px-2.5 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 ${
-                        isAkatsuki 
-                          ? 'bg-red-950/60 text-red-200 border-red-500/40 group-hover:bg-red-900/60' 
-                          : 'bg-orange-950/60 text-orange-900 border-orange-700/40 group-hover:bg-orange-900/60'
-                      }`}>
-                        REVEAL
-                      </div>
-                    </div>
+                    </TiltCard>
                   </motion.div>
                 ))}
               </motion.div>
@@ -269,8 +304,13 @@ const Certificates = () => {
                     <span>BACK TO SPELLBOOK</span>
                   </motion.button>
 
-                  <div className={`p-6 md:p-8 rounded-2xl border-2 bg-black/40 backdrop-blur-sm flex flex-col md:flex-row items-center gap-6 ${activeCategory.borderColor}`}>
-                    <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center">
+                  <div className={`p-6 md:p-8 rounded-2xl border-4 backdrop-blur-sm flex flex-col md:flex-row items-center gap-6 ${activeCategory.borderColor}`}
+                    style={{
+                      backgroundImage: categoryRadialMap[activeCategory.id],
+                      backgroundColor: 'rgba(0,0,0,0.5)',
+                    }}
+                  >
+                    <div className={`w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full ${activeCategory.bgColor}`}>
                       {renderCategoryIcon(activeCategory.id, activeCategory.color)}
                     </div>
                     <div className="text-center md:text-left flex-1">
@@ -302,44 +342,56 @@ const Certificates = () => {
                         exit={{ opacity: 0, scale: 0.9, y: -15 }}
                         transition={{ duration: 0.25 }}
                         onClick={() => handleCardClick(cert.link)}
-                        className={`p-6 flex flex-col justify-between rounded-2xl border-2 transition-all duration-300 bg-black/35 relative overflow-hidden group cursor-pointer ${
-                          isAkatsuki 
-                            ? 'border-red-500/40 hover:border-red-400 hover:shadow-[0_0_20px_rgba(200,16,46,0.25)]' 
-                            : 'border-orange-500/40 hover:border-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.25)]'
-                        }`}
+                        className="cursor-pointer"
                       >
-                        <div>
-                          <div className="flex justify-between items-start mb-4">
-                            <span className={`font-coc text-[9px] px-2 py-1 rounded bg-black/40 border border-slate-700 ${
-                              isAkatsuki ? 'text-red-300' : 'text-orange-400'
-                            }`}>
-                              {cert.issuer}
-                            </span>
-                            <svg className={`w-5 h-5 ${isAkatsuki ? 'text-red-400' : 'text-orange-500'}`} viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M19 3H5c-1.1 0-2 .9-2 2v4c0 .88.58 1.62 1.38 1.87C3.58 11.13 3 11.87 3 12.75V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.25c0-.88-.58-1.62-1.38-1.87.8-.25 1.38-.99 1.38-1.87V5c0-1.1-.9-2-2-2z" />
-                            </svg>
-                          </div>
-
-                          <h4 className="font-coc text-[10px] sm:text-xs text-white mb-2 leading-snug tracking-wider group-hover:text-yellow-300 transition-colors">
-                            {cert.title}
-                          </h4>
-                        </div>
-
-                        <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
-                          <span className="font-body text-[10px] text-slate-400 font-semibold">
-                            LEARNED: {cert.date}
-                          </span>
-                          
-                          <div
-                            className={`px-3 py-1.5 font-coc text-[8px] rounded border transition-all active:scale-95 focus:outline-none ${
+                        <TiltCard intensity={14} glowColor={isAkatsuki ? 'rgba(239,68,68,0.1)' : 'rgba(245,158,11,0.1)'}>
+                          <div 
+                            className={`p-6 h-full flex flex-col justify-between rounded-2xl border-4 transition-all duration-300 relative overflow-hidden group tilt-card-shadow backdrop-blur-sm ${
                               isAkatsuki 
-                                ? 'bg-red-950/60 text-red-200 border-red-500/40 group-hover:bg-red-900/60' 
-                                : 'bg-orange-950/60 text-orange-900 border-orange-700/40 group-hover:bg-orange-900/60'
+                                ? 'border-red-500/40 hover:border-red-400 hover:shadow-[0_0_25px_rgba(200,16,46,0.3)] text-white' 
+                                : 'border-amber-600/40 hover:border-amber-400 hover:shadow-[0_0_25px_rgba(245,158,11,0.3)] text-white'
                             }`}
+                            style={{
+                              backgroundImage: isAkatsuki 
+                                ? 'radial-gradient(ellipse at 50% 0%, rgba(239,68,68,0.06) 0%, transparent 50%)'
+                                : 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 50%)',
+                              backgroundColor: 'rgba(0,0,0,0.4)',
+                            }}
                           >
-                            VIEW SCROLL
+                            <div>
+                              <div className="flex justify-between items-start mb-4">
+                                <span className={`font-coc text-[9px] px-2.5 py-1 rounded border ${
+                                  isAkatsuki ? 'bg-red-950/40 border-red-800/50 text-red-300' : 'bg-amber-950/30 border-amber-700/40 text-amber-400'
+                                }`}>
+                                  {cert.issuer}
+                                </span>
+                                <svg className={`w-5 h-5 ${isAkatsuki ? 'text-red-400' : 'text-amber-500'}`} style={{ filter: `drop-shadow(0 0 4px ${isAkatsuki ? 'rgba(239,68,68,0.4)' : 'rgba(245,158,11,0.4)'})` }} viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M19 3H5c-1.1 0-2 .9-2 2v4c0 .88.58 1.62 1.38 1.87C3.58 11.13 3 11.87 3 12.75V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.25c0-.88-.58-1.62-1.38-1.87.8-.25 1.38-.99 1.38-1.87V5c0-1.1-.9-2-2-2z" />
+                                </svg>
+                              </div>
+
+                              <h4 className="font-coc text-[10px] sm:text-xs text-white mb-2 leading-snug tracking-wider group-hover:text-amber-300 transition-colors">
+                                {cert.title}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-800/80">
+                              <span className="font-body text-[10px] text-slate-400 font-semibold">
+                                LEARNED: {cert.date}
+                              </span>
+                              
+                              <div
+                                className={`px-3 py-1.5 font-coc text-[8px] rounded-lg border-2 transition-all active:scale-95 focus:outline-none ${
+                                  isAkatsuki 
+                                    ? 'bg-red-950/60 text-red-200 border-red-500/40 group-hover:bg-red-900/60 shadow-[0_2px_0_#200002]' 
+                                    : 'bg-amber-950/60 text-amber-200 border-amber-600/40 group-hover:bg-amber-900/60 shadow-[0_2px_0_#3d1a04]'
+                                }`}
+                              >
+                                VIEW SCROLL
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </TiltCard>
                       </motion.div>
                     ))}
                   </AnimatePresence>

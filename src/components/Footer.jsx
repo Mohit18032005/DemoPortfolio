@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Mail, Github } from 'lucide-react';
+import CinematicReveal from './CinematicReveal';
 
 const Footer = () => {
   const { isAkatsuki, playJutsuSound } = useTheme();
@@ -74,7 +75,10 @@ const Footer = () => {
   return (
     <footer id="contact" className="relative pt-12 pb-16 px-4">
       
-      <div className={`max-w-6xl mx-auto p-8 sm:p-10 md:p-12 transition-all duration-500 ${
+      {/* Atmospheric fog layers */}
+      <div className="fog-layer-1 opacity-10" />
+
+      <CinematicReveal preset="cinematic" duration={1} className={`max-w-6xl mx-auto p-8 sm:p-10 md:p-12 transition-all duration-500 ${
         isAkatsuki ? 'panel-steel-akatsuki' : 'panel-scroll-konoha'
       }`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-start mb-12">
@@ -268,7 +272,7 @@ const Footer = () => {
           </div>
         </div>
 
-      </div>
+      </CinematicReveal>
 
     </footer>
   );

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import CinematicReveal from './CinematicReveal';
 
 const FAQs = () => {
   const { isAkatsuki, playJutsuSound } = useTheme();
@@ -42,22 +43,21 @@ const FAQs = () => {
       }`}
     >
       
+      {/* Atmospheric fog layers */}
+      <div className="fog-layer-1 opacity-15" />
+      <div className="fog-layer-2 opacity-10" />
+
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         
         {/* Section Heading */}
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-          >
+        <CinematicReveal preset="cinematic" duration={1} className="text-center mb-16">
+          <h2 className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
             ❓ SHINOBI HANDBOOK (FAQS)
-          </motion.h2>
+          </h2>
           <div className={`w-32 h-1.5 mx-auto rounded-full ${
             isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
           }`} />
-        </div>
+        </CinematicReveal>
 
         {/* FAQs Accordion list */}
         <div className="space-y-4 max-w-3xl mx-auto">
@@ -71,12 +71,12 @@ const FAQs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className={`overflow-hidden transition-all duration-300 border-2 rounded-xl bg-black/45 ${
+                className={`overflow-hidden transition-all duration-300 border-2 rounded-2xl backdrop-blur-sm ${
                   isOpen 
                     ? isAkatsuki 
-                      ? 'border-red-500/80 shadow-[0_0_15px_rgba(200,16,46,0.2)]' 
-                      : 'border-orange-500/80 shadow-[0_0_15px_rgba(249,115,22,0.15)]'
-                    : 'border-slate-800/80'
+                      ? 'border-red-500/70 shadow-[0_0_20px_rgba(200,16,46,0.2),_0_8px_30px_rgba(0,0,0,0.4)] bg-black/55' 
+                      : 'border-orange-500/70 shadow-[0_0_20px_rgba(249,115,22,0.15),_0_8px_30px_rgba(0,0,0,0.4)] bg-black/55'
+                    : 'border-slate-800/60 bg-black/35 hover:border-slate-700/80 hover:bg-black/45'
                 }`}
               >
                 
@@ -108,7 +108,9 @@ const FAQs = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="p-4 sm:p-5 pt-0 border-t border-slate-800 text-xs sm:text-sm text-slate-300 font-body leading-relaxed bg-black/20">
+                      <div className={`p-4 sm:p-5 pt-0 border-t text-xs sm:text-sm font-body leading-relaxed bg-black/20 ${
+                        isAkatsuki ? 'border-red-500/20 text-slate-300' : 'border-orange-500/20 text-slate-300'
+                      }`}>
                         {faq.answer}
                       </div>
                     </motion.div>

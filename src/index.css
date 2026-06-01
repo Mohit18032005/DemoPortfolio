@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --chakra-glow-konoha: 0 0 20px rgba(249, 115, 22, 0.35);
+  --chakra-glow-akatsuki: 0 0 20px rgba(239, 68, 68, 0.45);
+}
+
 @font-face {
   font-family: 'Supercell-Magic';
   src: url('/supercell-magic.ttf') format('truetype');
@@ -11,77 +18,116 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', 'Inter', sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #05020a;
+  background-color: #040106;
   color: #ffffff;
 }
 
-/* Custom Naruto / Shinobi Styles */
+/* Emil Kowalski Design Engineering Utilities */
+.ease-out-custom {
+  transition-timing-function: var(--ease-out);
+}
+.ease-in-out-custom {
+  transition-timing-function: var(--ease-in-out);
+}
+
+/* True 3D Depth Utilities for TiltCards */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.pop-out-1 {
+  transform: translateZ(20px);
+}
+.pop-out-2 {
+  transform: translateZ(40px);
+}
+.pop-out-3 {
+  transform: translateZ(60px);
+}
+.pop-out-image {
+  transform: translateZ(30px) scale(1.05);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020604;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff9f1c, #ff6700);
+  border-radius: 4px;
+}
+.akatsuki-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ef4444, #c8102e);
+}
+
+/* Custom Naruto Font Config */
 .font-coc {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
 }
 
+/* Highly Polished Typography Gradients */
 .coc-logo-text {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
-  background: linear-gradient(to bottom, #ff9f1c 0%, #ff6700 50%, #c44e00 100%);
+  background: linear-gradient(to bottom, #ffe875 0%, #ff9f1c 40%, #ff6700 80%, #9e3d00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0px 2px 0px #000) 
           drop-shadow(2px 0px 0px #000) 
           drop-shadow(-2px 0px 0px #000) 
           drop-shadow(0px -2px 0px #000)
-          drop-shadow(0px 5px 0px #3a1600) 
-          drop-shadow(0px 8px 6px rgba(0,0,0,0.7));
+          drop-shadow(0px 4px 0px #421b01) 
+          drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.8));
 }
 
 .akatsuki-logo-text {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
-  background: linear-gradient(to bottom, #ff3333 0%, #c8102e 50%, #50000a 100%);
+  background: linear-gradient(to bottom, #ff9999 0%, #ef233c 45%, #c8102e 80%, #50000a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0px 2px 0px #000) 
           drop-shadow(2px 0px 0px #000) 
           drop-shadow(-2px 0px 0px #000) 
           drop-shadow(0px -2px 0px #000)
-          drop-shadow(0px 5px 0px #200005) 
-          drop-shadow(0px 8px 6px rgba(0,0,0,0.8));
+          drop-shadow(0px 4px 0px #240003) 
+          drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.8));
 }
 
-/* Shinobi Styled Buttons */
+/* Shinobi Styled Buttons with Satisfying iOS-like active scaling feedback */
 .btn-shinobi-orange {
   position: relative;
   font-family: 'Shojumaru', 'Permanent Marker', sans-serif;
-  background: linear-gradient(to bottom, #ff9f1c 0%, #ff6700 100%);
+  background: linear-gradient(to bottom, #ffb443 0%, #ff6700 100%);
   border: 3px solid #3d1a04;
   box-shadow: 0 4px 0 #1b0c02, 0 6px 12px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.4);
   color: #ffffff;
-  text-shadow: -2px -2px 0 #1b0c02, 2px -2px 0 #1b0c02, -2px 2px 0 #1b0c02, 2px 2px 0 #1b0c02, 0 2px 4px rgba(0,0,0,0.8);
+  text-shadow: -2px -2px 0 #1b0c02, 2px -2px 0 #1b0c02, -2px 2px 0 #1b0c02, 2px 2px 0 #1b0c02;
   border-radius: 12px;
-  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
 }
 
 .btn-shinobi-orange:active {
-  transform: translateY(2px) scale(0.97);
+  transform: translateY(2px) scale(0.96);
   box-shadow: 0 0 0 #1b0c02, 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .btn-rogue-crimson {
   position: relative;
   font-family: 'Shojumaru', 'Permanent Marker', sans-serif;
-  background: linear-gradient(to bottom, #ef233c 0%, #c8102e 100%);
+  background: linear-gradient(to bottom, #ef4444 0%, #c8102e 100%);
   border: 3px solid #300005;
   box-shadow: 0 4px 0 #150002, 0 6px 12px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.3);
   color: #ffffff;
-  text-shadow: -2px -2px 0 #150002, 2px -2px 0 #150002, -2px 2px 0 #150002, 2px 2px 0 #150002, 0 2px 4px rgba(0,0,0,0.8);
+  text-shadow: -2px -2px 0 #150002, 2px -2px 0 #150002, -2px 2px 0 #150002, 2px 2px 0 #150002;
   border-radius: 12px;
-  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
 }
 
 .btn-rogue-crimson:active {
-  transform: translateY(2px) scale(0.97);
+  transform: translateY(2px) scale(0.96);
   box-shadow: 0 0 0 #150002, 0 2px 4px rgba(0,0,0,0.5);
 }
 
@@ -92,43 +138,59 @@ body {
   border: 3px solid #03045e;
   box-shadow: 0 4px 0 #02022e, 0 6px 12px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.4);
   color: #ffffff;
-  text-shadow: -2px -2px 0 #02022e, 2px -2px 0 #02022e, -2px 2px 0 #02022e, 2px 2px 0 #02022e, 0 2px 4px rgba(0,0,0,0.8);
+  text-shadow: -2px -2px 0 #02022e, 2px -2px 0 #02022e, -2px 2px 0 #02022e, 2px 2px 0 #02022e;
   border-radius: 12px;
-  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
 }
 
 .btn-shinobi-blue:active {
-  transform: translateY(2px) scale(0.97);
+  transform: translateY(2px) scale(0.96);
   box-shadow: 0 0 0 #02022e, 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Panels with Scroll / Parchment Paper styling (Konoha) */
+/* Premium Scroll / Parchment Paper Styling (Konoha) — FIXED invalid rgba */
 .panel-scroll-konoha {
-  background: linear-gradient(180deg, rgba(244, 235, 208, 0.95) 0%, rgba(227, 213, 202, 0.98) 100%);
-  border: 4px solid #8b5a2b;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(139, 90, 43, 0.3);
-  border-radius: 16px;
-  color: #2b1a08 !important;
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgba(255, 200, 100, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(180, 140, 80, 0.08) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M20 20c15 0 20 15 30 15s15-15 30-15' stroke='%23e6d8b6' stroke-width='1.5' fill='none' opacity='0.15'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(252, 244, 228, 0.96) 0%, rgba(240, 228, 200, 0.98) 100%);
+  border: 3px solid #9e7b4f;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.45), 
+    inset 0 0 40px rgba(180, 140, 80, 0.12), 
+    0 0 20px rgba(249, 115, 22, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  color: #3d2009 !important;
 }
 
 .panel-scroll-konoha h2, .panel-scroll-konoha h3, .panel-scroll-konoha h4 {
-  color: #3d1a04;
+  color: #4a2508;
 }
 
 .panel-scroll-konoha p, .panel-scroll-konoha span, .panel-scroll-konoha li {
-  color: #4a3424;
+  color: #5c3d22;
 }
 
-/* Panels with Rogue Obsidian / Akatsuki styling */
+/* Premium Rogue Obsidian / Metal Plate Styling (Akatsuki) */
 .panel-steel-akatsuki {
-  background: linear-gradient(180deg, rgba(15, 10, 25, 0.95) 0%, rgba(5, 2, 10, 0.98) 100%);
-  border: 4px solid #c8102e;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(200, 16, 46, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath d='M1 3h1v1H1z' fill='%23ef233c' fill-opacity='0.03'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, rgba(18, 10, 22, 0.97) 0%, rgba(8, 3, 10, 0.99) 100%);
+  border: 3px solid #c8102e;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.7), 
+    0 0 30px rgba(200, 16, 46, 0.15), 
+    inset 0 0 40px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
   color: #ffffff !important;
 }
 
-/* Card Flipping Styles */
+/* 3D Card Mechanics */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -146,8 +208,9 @@ body {
   transform: rotateY(180deg);
 }
 
+/* Ambient animations */
 .character-idle {
-  animation: floatChar 3.5s ease-in-out infinite;
+  animation: floatChar 4s ease-in-out infinite;
 }
 
 @keyframes floatChar {
@@ -155,6 +218,282 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
+}
+
+.animate-spin-slow {
+  animation: spin 16s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Premium 3D Shadows that respond to hover */
+.tilt-card-shadow {
+  transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out);
+}
+.tilt-card-shadow:hover {
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.55), 
+    0 0 35px rgba(249, 115, 22, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.akatsuki-mode .tilt-card-shadow:hover {
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.65), 
+    0 0 35px rgba(239, 68, 68, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* Chakra glow ring animation */
+@keyframes chakraRingPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.3), inset 0 0 10px rgba(249, 115, 22, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5), inset 0 0 20px rgba(249, 115, 22, 0.15);
+  }
+}
+
+.chakra-ring-konoha {
+  animation: chakraRingPulse 3s ease-in-out infinite;
+}
+
+@keyframes chakraRingPulseRed {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3), inset 0 0 10px rgba(239, 68, 68, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.15);
+  }
+}
+
+.chakra-ring-akatsuki {
+  animation: chakraRingPulseRed 3s ease-in-out infinite;
+}
+
+/* Premium shimmer for section dividers */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.section-divider-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Holographic foil shimmer animation */
+.holo-shimmer {
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 0, 128, 0.06) 32%,
+    rgba(255, 200, 0, 0.08) 40%,
+    rgba(0, 255, 200, 0.08) 48%,
+    rgba(0, 150, 255, 0.08) 54%,
+    rgba(128, 0, 255, 0.06) 62%,
+    transparent 74%
+  );
+  background-size: 250% 100%;
+  animation: holoSweep 5s ease-in-out infinite;
+}
+
+@keyframes holoSweep {
+  0%   { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+/* Holographic shimmer for Konoha (light parchment) mode */
+.holo-shimmer-konoha {
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(180, 80, 40, 0.06) 32%,
+    rgba(160, 130, 50, 0.08) 40%,
+    rgba(40, 120, 80, 0.08) 48%,
+    rgba(40, 80, 150, 0.08) 54%,
+    rgba(100, 50, 140, 0.06) 62%,
+    transparent 74%
+  );
+  background-size: 250% 100%;
+  animation: holoSweep 5s ease-in-out infinite;
+}
+
+/* Cinematic film grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ===== CINEMATIC ATMOSPHERIC EFFECTS ===== */
+
+/* Scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9998;
+  pointer-events: none;
+  transform-origin: 0%;
+}
+
+/* Multi-layer fog/mist animation */
+@keyframes fogDrift {
+  0% { transform: translateX(-10%) translateY(0); opacity: 0.3; }
+  50% { transform: translateX(5%) translateY(-2%); opacity: 0.5; }
+  100% { transform: translateX(-10%) translateY(0); opacity: 0.3; }
+}
+
+@keyframes fogDriftReverse {
+  0% { transform: translateX(10%) translateY(0); opacity: 0.25; }
+  50% { transform: translateX(-5%) translateY(2%); opacity: 0.4; }
+  100% { transform: translateX(10%) translateY(0); opacity: 0.25; }
+}
+
+.fog-layer-1 {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 50% at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  animation: fogDrift 12s ease-in-out infinite;
+}
+
+.fog-layer-2 {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 70%);
+  animation: fogDriftReverse 16s ease-in-out infinite;
+}
+
+/* Floating ember/petal animations */
+@keyframes floatEmber {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-120vh) translateX(20px) scale(0.3); opacity: 0; }
+}
+
+@keyframes floatEmberAlt {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-100vh) translateX(-30px) scale(0.2); opacity: 0; }
+}
+
+.ember {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatEmber 8s ease-out infinite;
+}
+
+.ember-alt {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatEmberAlt 10s ease-out infinite;
+}
+
+/* Cinematic gradient shift */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease-in-out infinite;
+}
+
+/* Cinematic vignette overlay */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Cinematic letterbox bars */
+@keyframes letterboxFade {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.letterbox-top,
+.letterbox-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 8vh;
+  background: #000;
+  z-index: 9997;
+  pointer-events: none;
+}
+
+.letterbox-top { top: 0; }
+.letterbox-bottom { bottom: 0; }
+
+/* Cinematic spotlight effect */
+@keyframes spotlightPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(1.05); }
+}
+
+.cinematic-spotlight {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: spotlightPulse 6s ease-in-out infinite;
+}
+
+/* Atmospheric dust particles */
+@keyframes dustFloat {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  25% { opacity: 0.4; }
+  75% { opacity: 0.3; }
+  100% { transform: translateY(-50vh) translateX(40px) rotate(180deg); opacity: 0; }
+}
+
+.dust-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dustFloat 15s linear infinite;
 }
