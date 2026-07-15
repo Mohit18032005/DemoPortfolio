@@ -10,48 +10,48 @@ const Timeline = () => {
   const timelineData = [
     {
       id: 1,
-      title: 'Genin Rank: Basic Elements',
-      date: '2021 - 2024',
-      description: 'Learned basic chakra control: mastered HTML, CSS, JavaScript, and responsive design layouts. Completed Python Programming Internship at CodeAlpha (2024), building robust applications and solving algorithmic challenges.',
-      rank: 'Genin',
-      element: '🍃 Wind',
+      title: 'Madhyamik & Uccha Madhyamik',
+      date: 'Completed before 2022',
+      description: 'Completed Class 10 at Saldha High School (81%) and Class 12 at Sabrakone High School (76.6%). Developed strong foundational knowledge in science and mathematics.',
+      rank: 'Rookie',
+      element: '⚓ Foundation',
       status: 'Completed',
-      chakraLevel: '35%',
-      missions: '12+ D-Rank Missions',
+      hakiLevel: '35%',
+      missions: '2+ Base Degrees',
       sound: 'wind',
-      portraitDay: '/naruto_portrait.png',
-      portraitNight: '/deidara_portrait.png',
-      techs: ['HTML5', 'CSS3', 'JavaScript', 'Python']
+      portraitDay: '/luffy_portrait.jpg',
+      portraitNight: '/shanks_portrait.jpg',
+      techs: ['Science', 'Mathematics', 'Computer Basics']
     },
     {
       id: 2,
-      title: 'Chūnin Rank: Jutsu Specialization',
-      date: '2024 - 2025',
-      description: 'Researched advanced spells in the laboratory: learned React, Next.js, Node.js, and API structures. Completed virtual internships with AICTE (Data Analytics Process Automation) & IBM SkillsBuild (Data Analytics & Business Intelligence).',
-      rank: 'Chunin',
-      element: '⚡ Lightning',
-      status: 'Completed',
-      chakraLevel: '70%',
-      missions: '8+ C/B-Rank Missions',
+      title: 'B.Tech - Computer Science (AI)',
+      date: '2023 - 2027',
+      description: 'Pursuing Bachelor of Technology in CSE with Artificial Intelligence specialization at Institute of Engineering & Management, Kolkata (81% GPA).',
+      rank: 'Supernova',
+      element: '⚔️ AI/ML',
+      status: 'Active',
+      hakiLevel: '70%',
+      missions: '8+ Semesters',
       sound: 'lightning',
-      portraitDay: '/sasuke_portrait.png',
-      portraitNight: '/itachi_portrait.png',
-      techs: ['React', 'Next.js', 'Node.js', 'REST APIs', 'SQL']
+      portraitDay: '/zoro_portrait.jpg',
+      portraitNight: '/zoro_portrait.jpg',
+      techs: ['Python', 'C', 'Java', 'Machine Learning', 'Data Analytics']
     },
     {
       id: 3,
-      title: 'Jōnin / ANBU Rank: Master of Elements',
-      date: '2025 - Present',
-      description: 'Constructing high-level defenses and systems: full-stack applications, interactive game-like designs, custom animations, and cloud bases. Media & Entertainment Cloud Engineering intern at AWS (2025), and MERN Stack Developer Intern at Codec Technologies (2026).',
-      rank: 'Jonin',
-      element: '🔥 Fire',
-      status: 'Active',
-      chakraLevel: '98%',
-      missions: '5+ A/S-Rank Missions',
+      title: 'Artificial Intelligence Intern',
+      date: 'May 2026 - June 2026',
+      description: 'AI Intern at Codec Technologies Pvt. Ltd. Assisted in developing AI algorithms, supported data collection/preprocessing, and validated AI applications successfully.',
+      rank: 'Captain',
+      element: '🏴‍☠️ Deep Learning',
+      status: 'Completed',
+      hakiLevel: '98%',
+      missions: '1+ Industry Role',
       sound: 'fire',
-      portraitDay: '/kakashi_portrait.png',
-      portraitNight: '/pain_portrait.png',
-      techs: ['MERN Stack', 'AWS Cloud', 'Framer Motion', 'DevOps', 'CI/CD']
+      portraitDay: '/sanji_portrait.jpg',
+      portraitNight: '/sanji_portrait.jpg',
+      techs: ['AI Algorithms', 'Data Processing', 'Model Testing', 'IoT']
     }
   ];
 
@@ -61,10 +61,10 @@ const Timeline = () => {
     else if (soundType === 'fire') playFireSound();
   };
 
-  // Helper SVGs to represent Shinobi Ranks with high fidelity gradients
+  // Helper SVGs to represent Pirate Ranks with high fidelity gradients
   const getRankBadgeSVG = (id) => {
     if (id === 1) {
-      // Leaf Village Logo
+      // Straw Hat Jolly Roger Logo
       return (
         <svg className="w-5 h-5 text-emerald-600 filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]" viewBox="0 0 100 100" fill="url(#leafBadgeGrad)">
           <defs>
@@ -126,11 +126,11 @@ const Timeline = () => {
 
   const getRankBadgeText = (id, color) => {
     if (id === 1) {
-      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>🍃 GENIN</span>;
+      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>⚓ ROOKIE</span>;
     } else if (id === 2) {
-      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>⚡ CHUNIN</span>;
+      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>⚔️ SUPERNOVA</span>;
     } else {
-      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>🔥 JONIN</span>;
+      return <span className={`text-[9px] font-coc tracking-wider ${color}`}>🏴‍☠️ CAPTAIN</span>;
     }
   };
 
@@ -144,7 +144,7 @@ const Timeline = () => {
       
       {/* Dynamic Background */}
       <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-[0.18]' : 'bg-[url("/konoha-bg.png")] opacity-[0.14]'
+        isAkatsuki ? 'bg-[url("/yonko-bg.png")] opacity-[0.18]' : 'bg-[url("/grand-line-bg.png")] opacity-[0.14]'
       }`} />
 
       {/* Radial fade for visual depth */}
@@ -162,7 +162,7 @@ const Timeline = () => {
               isAkatsuki ? 'text-shadow-[0_0_30px_rgba(239,68,68,0.4)]' : 'text-shadow-[0_0_30px_rgba(251,191,36,0.4)]'
             }`}
           >
-            ⚔️ SHINOBI RANKINGS (JOURNEY)
+            ⚔️ PIRATE RANKINGS (JOURNEY)
           </motion.h2>
           <div className={`w-48 h-2 mx-auto rounded-full ${
             isAkatsuki ? 'bg-gradient-to-r from-red-600 via-red-400 to-red-600 shadow-[0_0_20px_rgba(239,68,68,0.9)]' : 'bg-gradient-to-r from-amber-500 via-orange-400 to-amber-500 shadow-[0_0_20px_rgba(251,191,36,0.9)]'
@@ -172,7 +172,7 @@ const Timeline = () => {
         {/* Timeline Path & Cards Container */}
         <div className="relative flex flex-col items-center">
           
-          {/* Vertical Chakra Pipeline (Chakra conduit line) */}
+          {/* Vertical Haki Pipeline (Haki conduit line) */}
           <div className={`absolute top-0 bottom-0 left-[35px] md:left-1/2 w-[5px] -translate-x-1/2 z-0 transition-all duration-1000 ${
             isAkatsuki 
               ? 'bg-gradient-to-b from-red-600 via-purple-700 to-red-600 shadow-[0_0_22px_rgba(239,68,68,1),_0_0_44px_rgba(239,68,68,0.4)]' 
@@ -204,8 +204,8 @@ const Timeline = () => {
                         onClick={() => triggerSound(item.sound)}
                         className={`cursor-pointer relative overflow-visible transition-all duration-300 tilt-card-shadow backdrop-blur-sm preserve-3d ${
                           isAkatsuki 
-                            ? 'panel-steel-akatsuki p-7 pt-9 pb-7' 
-                            : 'panel-scroll-konoha p-7 pt-9 pb-7'
+                            ? 'panel-steel-yonko p-7 pt-9 pb-7' 
+                            : 'panel-scroll-strawhat p-7 pt-9 pb-7'
                         }`}
                       >
                         {/* Ribbon Banner for Status */}
@@ -220,7 +220,7 @@ const Timeline = () => {
                         </div>
 
                         {/* --- CARD THEMES DECORATION --- */}
-                        {/* 1. Konoha Wooden Scroll Rollers */}
+                        {/* 1. Grand Line Wooden Parchment Rollers */}
                         {!isAkatsuki && (
                           <>
                             {/* Top wooden scroll beam */}
@@ -235,7 +235,7 @@ const Timeline = () => {
                           </>
                         )}
 
-                        {/* 2. Akatsuki Metal Headband plate decoration */}
+                        {/* 2. Yonko Metal Headband plate decoration */}
                         {isAkatsuki && (
                           <>
                             {/* Rivets at four corners */}
@@ -249,7 +249,7 @@ const Timeline = () => {
                               <div className="w-1 h-1 bg-zinc-800 rounded-full absolute left-1" />
                               <div className="w-1 h-1 bg-zinc-800 rounded-full absolute right-1" />
                               <div className="w-16 h-[1.5px] bg-zinc-950 absolute rotate-[-8deg] opacity-90 shadow-sm" />
-                              <span className="font-coc text-[6px] text-zinc-900 tracking-widest">AKATSUKI</span>
+                              <span className="font-coc text-[6px] text-zinc-900 tracking-widest">YONKO</span>
                             </div>
                           </>
                         )}
@@ -257,7 +257,7 @@ const Timeline = () => {
                         {/* Card Content Layout */}
                         <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
                           
-                          {/* Dynamic character portrait frame with spinning chakra aura background */}
+                          {/* Dynamic character portrait frame with spinning haki aura background */}
                           <div className="relative flex-shrink-0 hover:scale-105 transition-transform duration-300 preserve-3d">
                             {/* Spinning Glowing Aura */}
                             <div className={`absolute -inset-2 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity animate-spin-slow ${
@@ -334,13 +334,13 @@ const Timeline = () => {
                               isAkatsuki ? 'border-red-800/30' : 'border-amber-700/30'
                             }`}>
                               <div className="flex flex-col text-left">
-                                <span className={`font-coc text-[7.5px] uppercase tracking-wider ${isAkatsuki ? 'text-red-400/70' : 'text-amber-700/70'}`}>CHAKRA CONTROL</span>
+                                <span className={`font-coc text-[7.5px] uppercase tracking-wider ${isAkatsuki ? 'text-red-400/70' : 'text-amber-700/70'}`}>HAKI MASTERY</span>
                                 <div className={`w-full rounded-full h-3 mt-1.5 overflow-hidden border shadow-inner ${
                                   isAkatsuki ? 'bg-black/70 border-red-900/40' : 'bg-black/50 border-amber-800/30'
                                 }`}>
                                   <motion.div 
                                     initial={{ width: 0 }}
-                                    whileInView={{ width: item.chakraLevel }}
+                                    whileInView={{ width: item.hakiLevel }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                                     className={`h-full rounded-full ${
@@ -351,11 +351,11 @@ const Timeline = () => {
                                   />
                                 </div>
                                 <span className={`font-coc text-[9px] mt-1 font-bold ${isAkatsuki ? 'text-red-400' : 'text-amber-600'}`}>
-                                  {item.chakraLevel}
+                                  {item.hakiLevel}
                                 </span>
                               </div>
                               <div className="flex flex-col text-right sm:text-left">
-                                <span className={`font-coc text-[7.5px] uppercase tracking-wider ${isAkatsuki ? 'text-red-400/70' : 'text-amber-700/70'}`}>BATTLE SCROLLS</span>
+                                <span className={`font-coc text-[7.5px] uppercase tracking-wider ${isAkatsuki ? 'text-red-400/70' : 'text-amber-700/70'}`}>COMPLETED BOUNTIES</span>
                                 <span className={`font-semibold mt-1.5 font-coc text-[9px] leading-tight animate-pulse ${
                                   isAkatsuki ? 'text-red-300 drop-shadow-[0_0_4px_rgba(239,68,68,0.5)]' : 'text-emerald-500 drop-shadow-[0_0_4px_rgba(16,185,129,0.5)]'
                                 }`}>
@@ -374,7 +374,7 @@ const Timeline = () => {
                   {/* Central Node Badge */}
                   <div className="absolute left-[15px] md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
                     
-                    {/* Pulsing chakra rings behind node */}
+                    {/* Pulsing haki rings behind node */}
                     <div className={`absolute w-12 h-12 rounded-full border animate-ping opacity-35 pointer-events-none ${
                       isAkatsuki ? 'border-red-500' : 'border-orange-500'
                     }`} />

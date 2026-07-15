@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Timeline from './components/Timeline';
 import Prizes from './components/Prizes';
 import CardGenerator from './components/CardGenerator';
-import Certificates from './components/Certificates';
 import Team from './components/Team';
 import FAQs from './components/FAQs';
 import Footer from './components/Footer';
@@ -47,9 +46,6 @@ function App() {
 
       {/* Clan ID generator */}
       <CardGenerator />
-
-      {/* Credentials & Certifications */}
-      <Certificates />
 
       {/* War Chiefs / Team */}
       <Team />

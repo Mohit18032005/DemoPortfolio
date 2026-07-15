@@ -121,7 +121,7 @@ const TiltCard = ({ children, className = '', active = true, intensity = 12, glo
               }}
             />
             <div className={`holo-shimmer absolute inset-0 z-[7] pointer-events-none rounded-[inherit] ${
-              isAkatsuki ? '' : 'holo-shimmer-konoha'
+              isAkatsuki ? '' : 'holo-shimmer-strawhat'
             }`} />
           </>
         )}

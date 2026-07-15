@@ -14,71 +14,71 @@ const Team = () => {
 
   const leaders = [
     {
-      name: 'Ninjutsu Master',
-      role: 'Animations, CSS, React, Next.js',
+      name: 'Algorithm Specialist',
+      role: 'Python, C, Java',
       id: 'ninjutsu',
-      konohaName: 'Naruto Uzumaki',
-      akatsukiName: 'Pain (Nagato)',
-      konohaImage: '/naruto_portrait.png',
-      akatsukiImage: '/pain_portrait.png',
+      strawHatName: 'Monkey D. Luffy',
+      yonkoName: 'Marshall D. Teach',
+      strawHatImage: '/luffy_portrait.jpg',
+      yonkoImage: '/shanks_portrait.jpg',
       sound: 'jutsu',
       colorClass: 'border-orange-500/50 shadow-orange-500/10 text-orange-400',
       glow: 'rgba(249, 115, 22, 0.4)',
-      stats: { chakra: '99', atk: '95', def: '92' },
+      stats: { haki: '99', atk: '95', def: '92' },
       socials: {
-        github: 'https://github.com/soumyachk101',
-        email: 'mailto:soumya.chk101@gmail.com'
+        github: 'https://github.com/',
+        email: 'mailto:mk8212581@gmail.com'
       }
     },
     {
-      name: 'Taijutsu Engine',
-      role: 'Node.js, Postgres, Express, APIs',
+      name: 'AI & Machine Learning',
+      role: 'Neural Networks, Deep Learning, OpenCV',
       id: 'taijutsu',
-      konohaName: 'Sasuke Uchiha',
-      akatsukiName: 'Deidara',
-      konohaImage: '/sasuke_portrait.png',
-      akatsukiImage: '/deidara_portrait.png',
+      strawHatName: 'Roronoa Zoro',
+      yonkoName: 'Kaido',
+      strawHatImage: '/zoro_portrait.jpg',
+      yonkoImage: '/zoro_portrait.jpg',
       sound: 'lightning',
       colorClass: 'border-sky-500/50 shadow-sky-500/10 text-sky-400',
       glow: 'rgba(56, 189, 248, 0.4)',
-      stats: { chakra: '92', atk: '98', def: '88' },
+      stats: { haki: '92', atk: '98', def: '88' },
       socials: {
-        github: 'https://github.com/soumyachk101',
-        email: 'mailto:soumya.chk101@gmail.com'
+        github: 'https://github.com/',
+        email: 'mailto:mk8212581@gmail.com'
       }
     },
     {
-      name: 'Genjutsu Interface',
-      role: 'Figma, Micro-interactions, Polish',
+      name: 'Data Analytics',
+      role: 'Data Collection, Preprocessing, Visualization',
       id: 'genjutsu',
-      konohaName: 'Kakashi Hatake',
-      akatsukiName: 'Itachi Uchiha',
-      konohaImage: '/kakashi_portrait.png',
-      akatsukiImage: '/itachi_portrait.png',
+      strawHatName: 'Vinsmoke Sanji',
+      yonkoName: 'Big Mom',
+      strawHatImage: '/sanji_portrait.jpg',
+      yonkoImage: '/sanji_portrait.jpg',
       sound: 'sharingan',
       colorClass: 'border-red-500/50 shadow-red-500/10 text-red-400',
       glow: 'rgba(239, 68, 68, 0.4)',
-      stats: { chakra: '88', atk: '94', def: '95' },
+      stats: { haki: '88', atk: '94', def: '95' },
       socials: {
-        github: 'https://github.com/soumyachk101',
-        email: 'mailto:soumya.chk101@gmail.com'
+        github: 'https://github.com/',
+        email: 'mailto:mk8212581@gmail.com'
       }
     },
     {
-      name: 'Kamui Space-Time',
-      role: 'DevOps, CI/CD, AWS, Systems',
+      name: 'IoT & Embedded Systems',
+      role: 'Raspberry Pi, Sensors, Voice Recognition',
       id: 'kamui',
-      konohaName: 'Minato Namikaze',
-      akatsukiName: 'Tobi (Obito)',
-      konohaImage: '/minato_portrait.png',
-      akatsukiImage: '/tobi_portrait.png',
+      strawHatName: 'Red-Haired Shanks',
+      yonkoName: 'Buggy the Clown',
+      strawHatImage: '/shanks_portrait.jpg',
+      yonkoImage: '/shanks_portrait.jpg',
       sound: 'lightning',
       colorClass: 'border-yellow-500/50 shadow-yellow-500/10 text-yellow-400',
       glow: 'rgba(234, 179, 8, 0.4)',
-      stats: { chakra: '95', atk: '96', def: '90' },
+      stats: { haki: '95', atk: '96', def: '90' },
       socials: {
-        github: 'https://github.com/soumyachk101',
-        email: 'mailto:soumya.chk101@gmail.com'
+        github: 'https://github.com/',
+        email: 'mailto:mk8212581@gmail.com'
       }
     }
   ];
@@ -106,7 +106,7 @@ const Team = () => {
     >
       {/* Background Graphic */}
       <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-[0.14]' : 'bg-[url("/konoha-bg.png")] opacity-[0.1]'
+        isAkatsuki ? 'bg-[url("/yonko-bg.jpg")] opacity-[0.14]' : 'bg-[url("/grand-line-bg.jpg")] opacity-[0.1]'
       }`} />
 
       {/* Atmospheric fog layers */}
@@ -125,7 +125,7 @@ const Team = () => {
               isAkatsuki ? 'text-shadow-[0_0_30px_rgba(239,68,68,0.4)]' : 'text-shadow-[0_0_30px_rgba(251,191,36,0.4)]'
             }`}
           >
-            👑 SHINOBI SPECIALIZATIONS
+            👑 PIRATE SPECIALIZATIONS
           </motion.h2>
           <div className={`w-40 h-2 mx-auto rounded-full ${
             isAkatsuki ? 'bg-gradient-to-r from-red-600 via-red-400 to-red-600 shadow-[0_0_20px_rgba(239,68,68,0.9)]' : 'bg-gradient-to-r from-amber-500 via-orange-400 to-amber-500 shadow-[0_0_20px_rgba(251,191,36,0.9)]'
@@ -135,8 +135,8 @@ const Team = () => {
         {/* Leaders Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {leaders.map((leader, idx) => {
-            const charName = isAkatsuki ? leader.akatsukiName : leader.konohaName;
-            const charImage = isAkatsuki ? leader.akatsukiImage : leader.konohaImage;
+            const charName = isAkatsuki ? leader.yonkoName : leader.strawHatName;
+            const charImage = isAkatsuki ? leader.yonkoImage : leader.strawHatImage;
             
             return (
               <motion.div
@@ -152,8 +152,8 @@ const Team = () => {
                     onMouseEnter={() => playCardSound(leader.sound)}
                     className={`p-5 flex flex-col justify-between text-center transition-all duration-300 relative overflow-hidden border-4 tilt-card-shadow rounded-2xl backdrop-blur-sm preserve-3d ${
                       isAkatsuki 
-                        ? 'panel-steel-akatsuki hover:shadow-[0_0_25px_rgba(200,16,46,0.35)]' 
-                        : 'panel-scroll-konoha hover:shadow-[0_0_25px_rgba(249,115,22,0.35)]'
+                        ? 'panel-steel-yonko hover:shadow-[0_0_25px_rgba(200,16,46,0.35)]' 
+                        : 'panel-scroll-strawhat hover:shadow-[0_0_25px_rgba(249,115,22,0.35)]'
                     }`}
                     style={{
                       borderColor: isAkatsuki ? '#c8102e' : '#8b5a2b'
@@ -203,20 +203,20 @@ const Team = () => {
                         </span>
                       </div>
 
-                      {/* Shinobi Stats with Animated Bars */}
+                      {/* Pirate Stats with Animated Bars */}
                       <div className={`p-3 rounded-xl border space-y-2 mb-4 text-[9px] font-coc text-left ${
                         isAkatsuki 
                           ? 'bg-black/70 border-red-900/40 shadow-[inset_0_1px_4px_rgba(0,0,0,0.6)]' 
                           : 'bg-black/50 border-amber-800/30 shadow-[inset_0_1px_4px_rgba(0,0,0,0.4)]'
                       }`}>
                         <div className="flex justify-between items-center">
-                          <span className={`tracking-wider ${isAkatsuki ? 'text-sky-400/80' : 'text-sky-300/80'}`}>⚡ CHAKRA</span>
+                          <span className={`tracking-wider ${isAkatsuki ? 'text-sky-400/80' : 'text-sky-300/80'}`}>⚡ HAKI</span>
                           <div className="flex items-center gap-2">
                             <div className={`w-20 h-2 rounded-full overflow-hidden ${isAkatsuki ? 'bg-slate-800/80' : 'bg-slate-900/60'}`}>
                               <motion.div 
                                 className="h-full bg-gradient-to-r from-sky-600 via-sky-400 to-cyan-300 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.6)]"
                                 initial={{ width: '0%' }}
-                                whileInView={{ width: `${leader.stats.chakra}%` }}
+                                whileInView={{ width: `${leader.stats.haki}%` }}
                                 viewport={{ once: true, margin: '-30px' }}
                                 transition={{
                                   duration: 1.2,
@@ -225,7 +225,7 @@ const Team = () => {
                                 }}
                               />
                             </div>
-                            <span className="text-sky-400 font-bold w-6 text-right">{leader.stats.chakra}</span>
+                            <span className="text-sky-400 font-bold w-6 text-right">{leader.stats.haki}</span>
                           </div>
                         </div>
                         <div className="flex justify-between items-center">
@@ -271,30 +271,26 @@ const Team = () => {
 
                     {/* Social links */}
                     <div className="flex items-center justify-center gap-3">
-                      <a 
-                        href={leader.socials.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <div 
                         onClick={(e) => { e.stopPropagation(); playJutsuSound(); }}
-                        className={`p-2 rounded-lg border-2 transition-all duration-200 active:scale-95 ${
+                        className={`p-2 rounded-lg border-2 transition-all duration-200 active:scale-95 cursor-pointer ${
                           isAkatsuki 
                             ? 'bg-black/40 text-slate-400 hover:text-white border-slate-700 hover:border-red-500/50 hover:shadow-[0_0_10px_rgba(239,68,68,0.3)] shadow-md' 
                             : 'bg-amber-100 text-amber-950 hover:bg-amber-200 border-amber-700/40 hover:shadow-[0_0_10px_rgba(251,191,36,0.3)] shadow-md'
                         }`}
                       >
                         <Github size={14} />
-                      </a>
-                      <a 
-                        href={leader.socials.email} 
+                      </div>
+                      <div 
                         onClick={(e) => { e.stopPropagation(); playJutsuSound(); }}
-                        className={`p-2 rounded-lg border-2 transition-all duration-200 active:scale-95 ${
+                        className={`p-2 rounded-lg border-2 transition-all duration-200 active:scale-95 cursor-pointer ${
                           isAkatsuki 
                             ? 'bg-black/40 text-slate-400 hover:text-white border-slate-700 hover:border-red-500/50 hover:shadow-[0_0_10px_rgba(239,68,68,0.3)] shadow-md' 
                             : 'bg-amber-100 text-amber-950 hover:bg-amber-200 border-amber-700/40 hover:shadow-[0_0_10px_rgba(251,191,36,0.3)] shadow-md'
                         }`}
                       >
                         <Mail size={14} />
-                      </a>
+                      </div>
                     </div>
 
                   </div>

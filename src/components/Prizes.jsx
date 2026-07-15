@@ -16,7 +16,7 @@ const Prizes = () => {
     if (toastTimeoutId) {
       clearTimeout(toastTimeoutId);
     }
-    setToastMessage(`🧪 Jutsu training! The Live Demo for "${projectName}" is currently training in the laboratory scroll. Check out GitHub for setup and build instructions!`);
+    setToastMessage(`🧪 Haki training! The Live Demo for "${projectName}" is currently training in the laboratory scroll. Check out GitHub for setup and build instructions!`);
     setShowToast(true);
     const timeout = setTimeout(() => {
       setShowToast(false);
@@ -27,35 +27,35 @@ const Prizes = () => {
   const mainPrizes = [
     {
       id: 2,
-      place: 'Featured Jutsu',
-      title: 'Cortex',
-      amount: 'AI Productivity',
-      extras: ['Natural Language Tracking', 'Pomodoro Focus Timers', 'Botanical Organic UI'],
+      place: 'Featured Bounty',
+      title: 'Voice-Controlled AI Robot',
+      amount: 'Hardware & AI',
+      extras: ['Raspberry Pi Integration', 'Google/Alexa Voice API', 'Motor Control via GPIO'],
       glow: 'shadow-purple-500/25',
       border: 'border-purple-500/40 hover:border-purple-400',
-      github: 'https://github.com/soumyachk101/Cortex',
+      github: '#',
       live: '#'
     },
     {
       id: 1,
-      place: 'Supreme Seal',
-      title: 'DRISHTI AI',
-      amount: 'Risk Intelligence',
-      extras: ['AI Network Risk Scanning', 'Financial Blast Radius', 'Automated Remediation'],
+      place: 'Supreme Bounty',
+      title: 'Radar Object Detection',
+      amount: 'Embedded Systems',
+      extras: ['Ultrasonic Sensor Mapping', 'Servo Motor 180° Range', 'Real-time Python Visualization'],
       glow: 'shadow-red-500/35',
       border: 'border-red-500/40 hover:border-red-400',
-      github: 'https://github.com/soumyachk101/Drishti-Security',
+      github: '#',
       live: '#'
     },
     {
       id: 3,
-      place: 'Featured Jutsu',
-      title: 'Neeti AI',
-      amount: 'AI Recruitment',
-      extras: ['Real-Time Collab Coding', 'Automated Screen Evaluations', 'Seamless Video Platform'],
+      place: 'Featured Bounty',
+      title: 'Multimodal AI Assistant',
+      amount: 'AI Data Processing',
+      extras: ['Context-aware Responses', 'Vector Databases', 'LLM Model Interfaces'],
       glow: 'shadow-sky-500/25',
       border: 'border-sky-500/40 hover:border-sky-400',
-      github: 'https://github.com/soumyachk101/Neeti-AI',
+      github: '#',
       live: '#'
     }
   ];
@@ -65,77 +65,77 @@ const Prizes = () => {
       title: "Phygital Trace",
       desc: "A cutting-edge supply chain solution bridging physical assets with digital twins using blockchain and NFC technology.",
       tags: ["Blockchain", "Solidity", "React", "Node.js"],
-      github: "https://github.com/soumyachk101/Phygital-trace-done",
+      github: "#",
       live: "#"
     },
     {
       title: "NexusOps",
       desc: "A comprehensive CI/CD orchestration and infrastructure management platform for DevOps workflows.",
       tags: ["Docker", "Kubernetes", "AWS", "Terraform"],
-      github: "https://github.com/soumyachk101/NexusOps-3.0",
+      github: "#",
       live: "https://nexusops-sigma.vercel.app"
     },
     {
       title: "HealthTrack+",
       desc: "A comprehensive health monitoring platform for medical record management and biometric tracking.",
       tags: ["React", "Express", "Node.js", "MongoDB"],
-      github: "https://github.com/soumyachk101/HealthTrack-Client",
+      github: "#",
       live: "https://www.healthtrack.store/"
     },
     {
       title: "Stream.Tv",
       desc: "A premium video streaming client with a modern UI, real-time category filtering, and high-performance video player.",
       tags: ["React", "Vite", "Tailwind", "RapidAPI"],
-      github: "https://github.com/soumyachk101/Stream.Tv-Client",
+      github: "#",
       live: "#"
     },
     {
       title: "Country Finder",
       desc: "An interactive geographic explorer allowing users to search and discover detailed country information.",
       tags: ["React", "REST Countries API", "Tailwind"],
-      github: "https://github.com/soumyachk101/Country_Finder",
+      github: "#",
       live: "https://wcountryfinder.netlify.app/"
     },
     {
       title: "Stock Volatility",
       desc: "A financial analysis tool for monitoring market volatility and stock trends using data visualizations.",
       tags: ["React", "Finance API", "Charts.js"],
-      github: "https://github.com/soumyachk101/Stock-Volatility",
+      github: "#",
       live: "#"
     }
   ];
 
   const tracks = [
-    { name: 'Sage Jutsu Track', theme: 'Ninjutsu specialization', color: 'text-orange-400 animate-pulse', tech: 'Next.js & React' },
-    { name: 'Geninjutsu Interface', theme: 'UI/UX Polish track', color: 'text-purple-400', tech: 'Framer Motion & CSS' },
-    { name: 'Taijutsu Systems', theme: 'Backend speed engine', color: 'text-amber-500', tech: 'Node.js & Postgres' },
-    { name: 'Space-Time Kamui', theme: 'Cloud & DevOps track', color: 'text-sky-400', tech: 'Docker & AWS' }
+    { name: 'Haki Specialist Track', theme: 'Devil Fruit specialization', color: 'text-orange-400 animate-pulse', tech: 'Next.js & React' },
+    { name: 'Navigation Interface', theme: 'UI/UX Polish track', color: 'text-purple-400', tech: 'Framer Motion & CSS' },
+    { name: 'Shipwright Systems', theme: 'Backend speed engine', color: 'text-amber-500', tech: 'Node.js & Postgres' },
+    { name: 'Poneglyph Deciphering', theme: 'Cloud & DevOps track', color: 'text-sky-400', tech: 'Docker & AWS' }
   ];
 
   const sponsorPrizes = [
     {
       id: 1,
-      name: 'HACKTROPICA 2K26',
-      description: 'Developed "Phygital Trace", a blockchain-powered supply chain solution connecting physical items to digital twins using NFC technology, Solidity, and FastAPI at AEC.',
-      link: 'https://github.com/soumyachk101/Phygital-trace-done',
+      name: 'IBM GENERATIVE AI',
+      description: 'Completed comprehensive training on Generative AI concepts and applications by IBM (March 2025).',
+      link: '#',
     },
     {
       id: 2,
-      name: 'CODE FOR CHANGE 2.0',
-      description: 'Won honorable mention/award for "Neeti AI", an advanced recruitment platform featuring collaborative coding, automated speech evaluations, and video call streaming at NSHM.',
-      link: 'https://github.com/soumyachk101/Neeti-AI',
+      name: 'MICROSOFT AZURE AI',
+      description: 'Achieved certification in Artificial Intelligence on Microsoft Azure platform (July 2025).',
+      link: '#',
     },
     {
       id: 3,
-      name: 'TEKATHON 2K26',
-      description: 'Built a Multimodal RAG Assistant that processes context-aware responses from text, images, and documents using vector databases and LLM model interfaces.',
-      link: 'https://github.com/soumyachk101/RUSK-Multimodal-RAG-Assistant',
+      name: 'IOT BOOTCAMP',
+      description: 'Hands-on IoT Workshop: Raspberry Pi & NVIDIA Jetson Bootcamp from UEM Kolkata (September 2025).',
+      link: '#',
     },
     {
       id: 4,
-      name: 'CREDENTIAL LOOT',
-      description: 'Harvested 10+ professional credentials across AI, Generative AI, cloud infrastructure, and data analytics from IBM, NVIDIA, DeepLearning.AI, and AICTE.',
-      link: 'https://github.com/soumyachk101/3D-Portfolio',
+      name: 'GOOGLE FOUNDATIONS OF DATA',
+      description: 'Earned Foundations of Data certification by Google, solidifying data analytics skills (December 2025).',
+      link: '#',
     }
   ];
 
@@ -197,7 +197,7 @@ const Prizes = () => {
         </svg>
       );
     } else if (id === 2) {
-      // Cortex AI: Lotus Sage Seal with triple rings and radiant glow
+      // Cortex AI: Pirate Seal with triple rings and radiant glow
       return (
         <svg className="w-32 h-32 filter drop-shadow-[0_0_20px_rgba(168,85,247,0.8)]" viewBox="0 0 120 120">
           <defs>
@@ -324,7 +324,7 @@ const Prizes = () => {
     >
       {/* Background Graphic */}
       <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-[0.15]' : 'bg-[url("/konoha-bg.png")] opacity-[0.1]'
+        isAkatsuki ? 'bg-[url("/yonko-bg.png")] opacity-[0.15]' : 'bg-[url("/grand-line-bg.png")] opacity-[0.1]'
       }`} />
 
       {/* Atmospheric fog layers */}
@@ -361,7 +361,7 @@ const Prizes = () => {
             viewport={{ once: true }}
             className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            💰 NINDO BLUEPRINTS (MISSION BOARD)
+            💰 LOG POSE BLUEPRINTS (BOUNTY BOARD)
           </motion.h2>
           <div className={`w-32 h-1.5 mx-auto rounded-full ${
             isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
@@ -432,43 +432,8 @@ const Prizes = () => {
                         ))}
                       </ul>
 
-                      <div className="flex items-center gap-2 mt-auto">
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playJutsuSound();
-                            window.open(prize.github, '_blank');
-                          }}
-                          className={`flex-1 py-2 font-coc text-[8.5px] rounded border-2 transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                            isFirst 
-                              ? 'bg-orange-600 text-white border-orange-400 hover:bg-orange-700 shadow-[0_2px_0_#3d1a04]' 
-                              : isAkatsuki 
-                                ? 'bg-red-950/60 text-red-200 border-red-500/40 hover:bg-red-900/60 shadow-[0_2px_0_#200002]' 
-                                : 'bg-orange-950/40 text-orange-300 border-orange-500/35 hover:bg-orange-900/60 hover:text-white shadow-[0_2px_0_#1b0800]'
-                          }`}
-                        >
-                          GITHUB
-                        </button>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playJutsuSound();
-                            if (prize.live !== '#') {
-                              window.open(prize.live, '_blank');
-                            } else {
-                              triggerToast(prize.title);
-                            }
-                          }}
-                          className={`flex-1 py-2 font-coc text-[8.5px] rounded border-2 transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                            isFirst 
-                              ? 'bg-emerald-600 text-white border-emerald-400 hover:bg-emerald-700 shadow-[0_2px_0_#064e3b]' 
-                              : isAkatsuki 
-                                ? 'bg-red-600 text-white border-red-400 hover:bg-red-500 shadow-[0_2px_0_#300005]' 
-                                : 'bg-emerald-600 text-white border-emerald-400 hover:bg-emerald-700 shadow-[0_2px_0_#064e3b]'
-                          }`}
-                        >
-                          LIVE
-                        </button>
+                      <div className="flex items-center justify-center py-2.5 mt-auto border-2 rounded font-coc text-[9px] select-none border-dashed bg-black/40 border-slate-700/60 text-yellow-400">
+                        🏴‍☠️ SECURED BOUNTY
                       </div>
 
                     </div>
@@ -507,7 +472,7 @@ const Prizes = () => {
                 : 'bg-gradient-to-b from-amber-600 to-orange-700 text-white border-amber-400 shadow-[0_4px_0_#3d1a04,0_0_20px_rgba(245,158,11,0.2)] hover:from-amber-500 hover:to-orange-600'
             }`}
           >
-            {showAllProjects ? 'HIDE OTHER WAR BLUEPRINTS' : 'VIEW ALL WAR BLUEPRINTS'}
+            {showAllProjects ? 'HIDE OTHER PIRATE BLUEPRINTS' : 'VIEW ALL PIRATE BLUEPRINTS'}
           </motion.button>
         </div>
 
@@ -564,37 +529,8 @@ const Prizes = () => {
                         </div>
 
                         {/* Actions */}
-                        <div className="flex items-center gap-2 mt-auto border-t border-slate-800/50 pt-4">
-                          <button
-                            onClick={() => {
-                              playJutsuSound();
-                              window.open(project.github, '_blank');
-                            }}
-                            className={`flex-1 py-2 font-coc text-[8px] rounded border-2 transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                              isAkatsuki 
-                                ? 'bg-red-950/60 text-red-200 border-red-500/40 hover:bg-red-900/60 shadow-[0_2px_0_#150002]' 
-                                : 'bg-orange-950/40 text-orange-300 border-orange-500/35 hover:bg-orange-900/60 hover:text-white shadow-[0_2px_0_#1b0800]'
-                            }`}
-                          >
-                            GITHUB
-                          </button>
-                          <button
-                            onClick={() => {
-                              playJutsuSound();
-                              if (project.live !== '#') {
-                                window.open(project.live, '_blank');
-                              } else {
-                                triggerToast(project.title);
-                              }
-                            }}
-                            className={`flex-1 py-2 font-coc text-[8px] rounded border-2 transition-all active:scale-95 cursor-pointer focus:outline-none ${
-                              isAkatsuki 
-                                ? 'bg-red-600 text-white border-red-400 hover:bg-red-500 shadow-[0_2px_0_#300005]' 
-                                : 'bg-emerald-600 text-white border-emerald-400 hover:bg-emerald-500 shadow-[0_2px_0_#064e3b]'
-                            }`}
-                          >
-                            LIVE
-                          </button>
+                        <div className="flex items-center justify-center py-2 mt-auto border-t border-slate-800/50 pt-4 font-coc text-[8.5px] select-none text-emerald-400">
+                          ⚔️ BOUNTY CONQUERED
                         </div>
                       </div>
                     </TiltCard>
@@ -617,7 +553,7 @@ const Prizes = () => {
         {/* 3. Track Specializations Section */}
         <div className="mb-24">
           <h3 className="font-coc text-xs sm:text-sm text-center text-white mb-10 tracking-wider">
-            ⚔️ BATTLE SPECIALIZATIONS
+            ⚔️ CREW SPECIALIZATIONS
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -680,7 +616,7 @@ const Prizes = () => {
         {/* 4. Flippable Sponsor Ecosystem Prizes */}
         <div>
           <h3 className="font-coc text-xs sm:text-sm text-center text-white mb-10 tracking-wider">
-            🏆 SUMMONING SCROLLS
+            🏆 TREASURE CHESTS
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
@@ -710,7 +646,7 @@ const Prizes = () => {
                     </div>
                     <h4 className="font-coc text-xs mb-2.5 text-center text-white">{sponsor.name}</h4>
                     <span className={`font-coc text-[8.5px] ${isAkatsuki ? 'text-red-400 animate-pulse' : 'text-amber-400 animate-pulse'}`}>
-                      CLICK TO OPEN SCROLL
+                      CLICK TO OPEN CHEST
                     </span>
                   </div>
 
@@ -729,19 +665,15 @@ const Prizes = () => {
                       </p>
                     </div>
 
-                    <button 
-                      className={`block w-full text-center font-coc text-[8.5px] py-2 px-3 rounded-lg border-2 transition-all active:scale-95 cursor-pointer ${
+                    <div 
+                      className={`block w-full text-center font-coc text-[8.5px] py-2 px-3 rounded-lg border-2 select-none ${
                         isAkatsuki 
-                          ? 'bg-red-500 text-white hover:bg-red-600 border-red-300 shadow-[0_2px_0_#200002]' 
-                          : 'bg-orange-600 text-white hover:bg-orange-700 border-orange-400 shadow-[0_2px_0_#3d1a04]'
+                          ? 'bg-red-950/40 text-red-400 border-red-900/40' 
+                          : 'bg-orange-950/40 text-orange-400 border-orange-900/40'
                       }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(sponsor.link, '_blank');
-                      }}
                     >
-                      VISIT JUTSU
-                    </button>
+                      🛡️ SEALED BOUNTY
+                    </div>
                   </div>
 
                 </div>
@@ -770,7 +702,7 @@ const Prizes = () => {
           >
             <div className="text-2xl animate-bounce">⚡</div>
             <div className="flex-1 leading-normal font-body text-xs text-slate-100">
-              <span className="font-coc text-yellow-400 block mb-1">CHAKRA SUMMON!</span>
+              <span className="font-coc text-yellow-400 block mb-1">DEN DEN MUSHI!</span>
               {toastMessage}
             </div>
             <button 

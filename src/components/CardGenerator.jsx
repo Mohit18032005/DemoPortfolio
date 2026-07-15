@@ -19,16 +19,14 @@ const CardGenerator = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const characters = [
-    { name: 'Naruto Uzumaki', role: 'Ninjutsu Master', glowColor: 'rgba(249, 115, 22, 0.45)', element: 'Wind (Fūton)', image: '/naruto_portrait.png' },
-    { name: 'Sasuke Uchiha', role: 'Special Ops / Spy', glowColor: 'rgba(56, 189, 248, 0.45)', element: 'Lightning (Raiton)', image: '/sasuke_portrait.png' },
-    { name: 'Kakashi Hatake', role: 'Tactical Commander', glowColor: 'rgba(168, 85, 247, 0.45)', element: 'All Elements', image: '/kakashi_portrait.png' },
-    { name: 'Itachi Uchiha', role: 'Genjutsu Master', glowColor: 'rgba(239, 68, 68, 0.45)', element: 'Fire (Katon)', image: '/itachi_portrait.png' },
-    { name: 'Tobi', role: 'Space-Time Specialist', glowColor: 'rgba(234, 88, 12, 0.45)', element: 'Earth (Doton)', image: '/tobi_portrait.png' },
-    { name: 'Minato Namikaze', role: 'DevOps / Speed Engine', glowColor: 'rgba(253, 224, 71, 0.45)', element: 'Space-Time', image: '/minato_portrait.png' }
+    { name: 'Monkey D. Luffy', role: 'Captain / Brawler', glowColor: 'rgba(249, 115, 22, 0.45)', element: 'Conqueror (Haoshoku)', image: '/luffy_portrait.jpg' },
+    { name: 'Roronoa Zoro', role: 'Swordsman / First Mate', glowColor: 'rgba(56, 189, 248, 0.45)', element: 'Armament (Busoshoku)', image: '/zoro_portrait.jpg' },
+    { name: 'Sanji', role: 'Cook / Tactician', glowColor: 'rgba(168, 85, 247, 0.45)', element: 'Observation (Kenbunshoku)', image: '/sanji_portrait.jpg' },
+    { name: 'Shanks', role: 'Yonko / Master of Haki', glowColor: 'rgba(239, 68, 68, 0.45)', element: 'Supreme Conqueror', image: '/shanks_portrait.jpg' }
   ];
 
   const getPlayerTag = (inputName) => {
-    if (!inputName) return 'SHINOBIWAY';
+    if (!inputName) return 'GRANDLINE';
     let hash = 0;
     for (let i = 0; i < inputName.length; i++) {
       hash = inputName.charCodeAt(i) + ((hash << 5) - hash);
@@ -74,7 +72,7 @@ const CardGenerator = () => {
         throw new Error('Generated canvas has zero dimensions. Please try again.');
       }
 
-      const fileName = `${name ? name.replace(/\s+/g, '_') : 'shinobi'}_registration_card.png`;
+      const fileName = `${name ? name.replace(/\s+/g, '_') : 'pirate'}_bounty_poster.png`;
       const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
       const blobUrl = URL.createObjectURL(blob);
 
@@ -90,7 +88,7 @@ const CardGenerator = () => {
       }
     } catch (err) {
       console.error('Error generating card download: ', err);
-      alert(`⚠️ Fuinjutsu alert: Failed to summon your Shinobi card due to device restrictions. Try taking a screenshot instead!`);
+      alert(`⚠️ Log Pose alert: Failed to print your Bounty Poster due to device restrictions. Try taking a screenshot instead!`);
     } finally {
       setIsGenerating(false);
     }
@@ -99,7 +97,7 @@ const CardGenerator = () => {
   // Dynamic symbol for the card depending on alignment
   const CardWatermark = () => (
     isAkatsuki ? (
-      // Akatsuki watermarked cloud
+      // Yonko watermarked cloud
       <svg className="absolute inset-0 m-auto w-48 h-48 opacity-[0.04] text-red-500 pointer-events-none select-none" viewBox="0 0 100 60" fill="currentColor">
         <path d="M30 40c-6 0-10-4-10-10 0-5 3-9 8-10-1-2-1-4 0-6 2-4 7-6 12-4 3-4 8-6 13-4 6-6 15-4 18 3 4-2 9-2 12 1 3 3 5 7 5 10 0 7-6 12-13 12h-25z" />
       </svg>
@@ -120,7 +118,7 @@ const CardGenerator = () => {
     >
       {/* Background Graphic */}
       <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-        isAkatsuki ? 'bg-[url("/akatsuki-bg.png")] opacity-[0.14]' : 'bg-[url("/konoha-bg.png")] opacity-[0.1]'
+        isAkatsuki ? 'bg-[url("/yonko-bg.png")] opacity-[0.14]' : 'bg-[url("/grand-line-bg.png")] opacity-[0.1]'
       }`} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4">
@@ -133,10 +131,10 @@ const CardGenerator = () => {
             viewport={{ once: true }}
             className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            🎴 SHINOBI REGISTRATION CARD
+            🎴 PIRATE BOUNTY POSTER
           </motion.h2>
           <p className="text-xs sm:text-sm text-slate-400 font-body max-w-lg mx-auto leading-relaxed">
-            Customize and forge your own Leaf Village ninja registration card to trigger a summoning contract with Sage Soumya!
+            Customize and forge your own Grand Line pirate bounty poster to trigger a summoning contract with Captain Mohit!
           </p>
           <div className={`w-32 h-1.5 mx-auto mt-4 rounded-full ${
             isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'
@@ -147,17 +145,17 @@ const CardGenerator = () => {
           
           {/* Form Control Column */}
           <div className={`w-full lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between border-4 rounded-2xl shadow-2xl relative transition-all ${
-            isAkatsuki ? 'panel-steel-akatsuki border-red-500/40' : 'panel-scroll-konoha border-amber-700/50'
+            isAkatsuki ? 'panel-steel-yonko border-red-500/40' : 'panel-scroll-strawhat border-amber-700/50'
           }`}>
             <div>
               <h3 className="font-coc text-xs sm:text-sm text-white mb-6 tracking-wide uppercase border-b border-dashed border-slate-700/20 pb-3">
-                CUSTOMIZE NINJA STATS
+                CUSTOMIZE PIRATE STATS
               </h3>
 
               {/* Name Input */}
               <div className="mb-5">
                 <label className={`block font-coc text-[8.5px] mb-2 font-bold tracking-wider ${isAkatsuki ? 'text-red-400' : 'text-orange-900'}`}>
-                  SHINOBI NAME
+                  PIRATE NAME
                 </label>
                 <input 
                   type="text" 
@@ -166,17 +164,17 @@ const CardGenerator = () => {
                   onChange={(e) => {
                     setName(e.target.value.toUpperCase());
                   }}
-                  placeholder="e.g. HOKAGE RECRUITER"
+                  placeholder="e.g. PIRATE KING RECRUITER"
                   className={`w-full px-4 py-3 bg-black/55 border-2 rounded-xl font-coc text-xs text-white placeholder-slate-750 focus:outline-none transition-all shadow-inner ${
                     isAkatsuki ? 'border-red-500/50 focus:border-red-400' : 'border-orange-500/50 focus:border-orange-400'
                   }`}
                 />
               </div>
 
-              {/* Chakra Selection */}
+              {/* Haki Selection */}
               <div className="mb-5">
                 <label className={`block font-coc text-[8.5px] mb-2 font-bold tracking-wider ${isAkatsuki ? 'text-red-400' : 'text-orange-900'}`}>
-                  CHAKRA NATURE TYPE
+                  HAKI / POWER TYPE
                 </label>
                 <select
                   value={chakraNature}
@@ -185,21 +183,21 @@ const CardGenerator = () => {
                     isAkatsuki ? 'border-red-500/50' : 'border-orange-500/50'
                   }`}
                 >
-                  <option value="Wind (Fūton)" className="bg-slate-900 text-white">🍃 WIND (FŪTON)</option>
-                  <option value="Lightning (Raiton)" className="bg-slate-900 text-white">⚡ LIGHTNING (RAITON)</option>
-                  <option value="Fire (Katon)" className="bg-slate-900 text-white">🔥 FIRE (KATON)</option>
-                  <option value="Water (Suiton)" className="bg-slate-900 text-white">💧 WATER (SUITON)</option>
-                  <option value="Earth (Doton)" className="bg-slate-900 text-white">🪨 EARTH (DOTON)</option>
+                  <option value="Armament (Busoshoku)" className="bg-slate-900 text-white">💪 ARMAMENT (BUSOSHOKU)</option>
+                  <option value="Observation (Kenbunshoku)" className="bg-slate-900 text-white">👁️ OBSERVATION (KENBUNSHOKU)</option>
+                  <option value="Conqueror (Haoshoku)" className="bg-slate-900 text-white">👑 CONQUEROR (HAOSHOKU)</option>
+                  <option value="Paramecia" className="bg-slate-900 text-white">🌀 PARAMECIA</option>
+                  <option value="Zoan" className="bg-slate-900 text-white">🐺 ZOAN</option>
+                  <option value="Logia" className="bg-slate-900 text-white">🔥 LOGIA</option>
                 </select>
               </div>
 
-              {/* Shinobi Rank */}
               <div className="mb-5">
                 <label className={`block font-coc text-[8.5px] mb-2 font-bold tracking-wider ${isAkatsuki ? 'text-red-400' : 'text-orange-900'}`}>
-                  SHINOBI CLASS RANK
+                  PIRATE RANK
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {['Genin', 'Chunin', 'Jonin', 'Sage', 'Rogue'].map((r) => (
+                  {['Rookie', 'Supernova', 'Warlord', 'Yonko', 'Pirate King'].map((r) => (
                     <button
                       key={r}
                       onClick={() => setShinobiRank(r)}
@@ -215,10 +213,9 @@ const CardGenerator = () => {
                 </div>
               </div>
 
-              {/* Avatar Selection */}
               <div className="mb-6">
                 <label className={`block font-coc text-[8.5px] mb-3 font-bold tracking-wider ${isAkatsuki ? 'text-red-400' : 'text-orange-900'}`}>
-                  SELECT SHINOBI AVATAR
+                  SELECT PIRATE AVATAR
                 </label>
                 <div className="grid grid-cols-6 gap-2">
                   {characters.map((char, idx) => (
@@ -255,11 +252,11 @@ const CardGenerator = () => {
               className={`w-full mt-4 flex items-center justify-center gap-2.5 py-3.5 px-6 text-xs sm:text-sm font-coc transition-all shadow-[0_4px_0_#1b0c02] ${
                 isGenerating ? 'opacity-65 cursor-not-allowed' : ''
               } ${
-                isAkatsuki ? 'btn-rogue-crimson' : 'btn-shinobi-orange'
+                isAkatsuki ? 'btn-rogue-crimson' : 'btn-pirate-orange'
               }`}
             >
               <Download size={14} />
-              <span>{isGenerating ? 'SUMMONING SCROLL...' : 'FORGE SHINOBI CARD'}</span>
+              <span>{isGenerating ? 'PRINTING POSTER...' : 'PRINT BOUNTY POSTER'}</span>
             </button>
           </div>
 
@@ -301,14 +298,14 @@ const CardGenerator = () => {
                     <span className="text-[11px] animate-pulse">🍥</span>
                   </div>
                   <div className="flex flex-col text-left">
-                    <span className="font-coc text-[7px] text-orange-500 leading-none">SHINOBI</span>
-                    <span className="font-coc text-[6px] text-slate-400 tracking-[0.2em] mt-0.5 leading-none">REGISTRATION</span>
+                    <span className="font-coc text-[7px] text-orange-500 leading-none">PIRATE</span>
+                    <span className="font-coc text-[6px] text-slate-400 tracking-[0.2em] mt-0.5 leading-none">BOUNTY</span>
                   </div>
                 </div>
 
                 <div className="w-[85%] h-[1.5px] bg-gradient-to-r from-transparent via-slate-600/35 to-transparent my-3.5" />
 
-                {/* Shinobi Name */}
+                {/* Pirate Name */}
                 <h3 
                   className={`font-coc text-center tracking-wide max-w-[250px] uppercase leading-tight ${
                     name.length > 16 ? 'text-[8.5px]' : name.length > 12 ? 'text-[10px]' : 'text-xs'
@@ -319,7 +316,7 @@ const CardGenerator = () => {
                     wordBreak: 'break-word',
                   }}
                 >
-                  {name || 'SHINOBI RECRUIT'}
+                  {name || 'ROOKIE PIRATE'}
                 </h3>
                 
                 {/* Specialization Role */}
@@ -332,7 +329,7 @@ const CardGenerator = () => {
 
               {/* Central Character Graphic inside dynamic glow circle */}
               <div className="flex items-center justify-center py-2.5 relative z-10 select-none pointer-events-none">
-                {/* Chakra Glow Aura */}
+                {/* Haki Glow Aura */}
                 <div 
                   className="absolute w-34 h-34 rounded-full blur-md opacity-60 pointer-events-none animate-pulse"
                   style={{
@@ -353,18 +350,17 @@ const CardGenerator = () => {
                 </div>
               </div>
 
-              {/* Stats Panel */}
               <div className="relative z-10 space-y-2 font-coc text-[7px]">
                 <div className="flex justify-between items-center bg-black/85 px-3.5 py-2 rounded-xl border border-slate-800/80 shadow-md">
-                  <span className="text-slate-450 uppercase">Chakra Element:</span>
+                  <span className="text-slate-450 uppercase">Power Element:</span>
                   <span className="text-emerald-400">{chakraNature.toUpperCase()}</span>
                 </div>
                 <div className="flex justify-between items-center bg-black/85 px-3.5 py-2 rounded-xl border border-slate-800/80 shadow-md">
-                  <span className="text-slate-450 uppercase">Shinobi Rank:</span>
+                  <span className="text-slate-450 uppercase">Pirate Rank:</span>
                   <span className="text-sky-400">{shinobiRank.toUpperCase()}</span>
                 </div>
                 <div className="flex justify-between items-center bg-black/85 px-3.5 py-2 rounded-xl border border-slate-800/80 shadow-md">
-                  <span className="text-slate-450 uppercase">Registry Tag:</span>
+                  <span className="text-slate-450 uppercase">Bounty Tag:</span>
                   <span className="text-yellow-500 font-bold select-all">#{getPlayerTag(name)}</span>
                 </div>
               </div>
@@ -391,7 +387,7 @@ const CardGenerator = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               className={`w-full max-w-sm p-6 rounded-2xl border-4 shadow-2xl relative text-center ${
-                isAkatsuki ? 'panel-steel-akatsuki border-red-500 shadow-red-500/25' : 'panel-scroll-konoha border-orange-500 shadow-orange-500/20'
+                isAkatsuki ? 'panel-steel-yonko border-red-500 shadow-red-500/25' : 'panel-scroll-strawhat border-orange-500 shadow-orange-500/20'
               }`}
             >
               {/* Close Button */}
@@ -406,7 +402,7 @@ const CardGenerator = () => {
               </button>
 
               <h3 className="font-coc text-sm text-white mb-2.5 tracking-wide uppercase">
-                🛡️ CARD FORGED!
+                🛡️ POSTER PRINTED!
               </h3>
               
               <p className="text-[11px] text-slate-350 font-body leading-relaxed mb-6 px-2">
@@ -417,7 +413,7 @@ const CardGenerator = () => {
               <div className="flex justify-center mb-6 max-h-[350px] overflow-hidden rounded-xl border border-slate-800 bg-slate-950 p-2 shadow-inner">
                 <img
                   src={generatedImgUrl}
-                  alt="Shinobi Registration Card"
+                  alt="Pirate Bounty Poster"
                   className="max-h-[330px] w-auto object-contain rounded-lg pointer-events-auto"
                 />
               </div>
@@ -433,7 +429,7 @@ const CardGenerator = () => {
                     : 'bg-orange-500 text-slate-950 border-orange-400 hover:bg-orange-600 shadow-[0_2px_0_#3d1a04]'
                 }`}
               >
-                RETURN TO VILLAGE
+                RETURN TO SHIP
               </button>
             </motion.div>
           </motion.div>

@@ -12,9 +12,9 @@ export const ThemeProvider = ({ children }) => {
   const nightAudioRef = useRef(null);
   const coinAudioRef = useRef(null);
 
-  // Initialize Audio with local Naruto BGM
+  // Initialize Audio with local One Piece BGM
   useEffect(() => {
-    dayAudioRef.current = new Audio('/theme_music.mp3');
+    dayAudioRef.current = new Audio('/theme_music.webm');
     dayAudioRef.current.loop = true;
     dayAudioRef.current.volume = 0.25;
 
@@ -85,17 +85,17 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [isNight, isMuted, audioStarted]);
 
-  // Sync browser favicon and apple touch icon dynamically based on active alliance mode
+  // Sync browser favicon and apple touch icon dynamically based on active crew mode
   useEffect(() => {
     const faviconNode = document.getElementById('dynamic-favicon');
     const appleIconNode = document.getElementById('dynamic-apple-icon');
-    const iconPath = isNight ? '/favicon_akatsuki.svg' : '/favicon.svg';
+    const iconPath = '/favicon.svg';
     
     if (faviconNode) faviconNode.setAttribute('href', iconPath);
     if (appleIconNode) appleIconNode.setAttribute('href', iconPath);
   }, [isNight]);
 
-  // Programmatic Web Audio Synthesizer for thematic Naruto sound effects
+  // Programmatic Web Audio Synthesizer for thematic One Piece sound effects
   const playSynthSound = (type) => {
     if (isMuted) return;
     try {
@@ -116,7 +116,7 @@ export const ThemeProvider = ({ children }) => {
       const now = ctx.currentTime;
       
       if (type === 'jutsu') {
-        // Chakra wind sweep
+        // Sword wind sweep
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         const filter = ctx.createBiquadFilter();
@@ -175,7 +175,7 @@ export const ThemeProvider = ({ children }) => {
         osc1.stop(now + 0.25);
         osc2.stop(now + 0.5);
       } else if (type === 'lightning') {
-        // Chidori crackle (impulsive crackle burst)
+        // Lightning crackle (impulsive crackle burst)
         const impulses = 10;
         for (let i = 0; i < impulses; i++) {
           const osc = ctx.createOscillator();
@@ -199,7 +199,7 @@ export const ThemeProvider = ({ children }) => {
           osc.stop(now + (i * 0.045) + 0.05);
         }
       } else if (type === 'fire') {
-        // Fire jutsu explosion
+        // Fire explosion
         const bufferSize = ctx.sampleRate * 0.45;
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
@@ -226,7 +226,7 @@ export const ThemeProvider = ({ children }) => {
         noise.start(now);
         noise.stop(now + 0.45);
       } else if (type === 'select') {
-        // Standard shinobi chime select
+        // Standard pirate chime select
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
@@ -287,13 +287,13 @@ export const ThemeProvider = ({ children }) => {
 
   const toggleTheme = () => {
     setIsNight(prev => !prev);
-    playSynthSound('sharingan'); // Sharingan activation sound when toggling theme
+    playSynthSound('sharingan'); // Haki activation sound when toggling theme
   };
 
   return (
     <ThemeContext.Provider value={{
       isNight,
-      isAkatsuki: isNight, // Naruto alias
+      isAkatsuki: isNight, // Legacy alias
       isMuted,
       audioStarted,
       toggleTheme,

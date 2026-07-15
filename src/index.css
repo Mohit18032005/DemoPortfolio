@@ -5,8 +5,8 @@
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --chakra-glow-konoha: 0 0 20px rgba(249, 115, 22, 0.35);
-  --chakra-glow-akatsuki: 0 0 20px rgba(239, 68, 68, 0.45);
+  --haki-glow-strawhat: 0 0 20px rgba(249, 115, 22, 0.35);
+  --haki-glow-yonko: 0 0 20px rgba(239, 68, 68, 0.45);
 }
 
 @font-face {
@@ -60,17 +60,17 @@ body {
   background: linear-gradient(180deg, #ff9f1c, #ff6700);
   border-radius: 4px;
 }
-.akatsuki-mode ::-webkit-scrollbar-thumb {
+.yonko-mode ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ef4444, #c8102e);
 }
 
-/* Custom Naruto Font Config */
+/* Custom One Piece Font Config */
 .font-coc {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
 }
 
 /* Highly Polished Typography Gradients */
-.coc-logo-text {
+.strawhat-logo-text {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
   background: linear-gradient(to bottom, #ffe875 0%, #ff9f1c 40%, #ff6700 80%, #9e3d00 100%);
   -webkit-background-clip: text;
@@ -83,7 +83,7 @@ body {
           drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.8));
 }
 
-.akatsuki-logo-text {
+.yonko-logo-text {
   font-family: 'Shojumaru', 'Permanent Marker', 'Supercell-Magic', sans-serif;
   background: linear-gradient(to bottom, #ff9999 0%, #ef233c 45%, #c8102e 80%, #50000a 100%);
   -webkit-background-clip: text;
@@ -96,8 +96,8 @@ body {
           drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.8));
 }
 
-/* Shinobi Styled Buttons with Satisfying iOS-like active scaling feedback */
-.btn-shinobi-orange {
+/* Pirate Styled Buttons with Satisfying iOS-like active scaling feedback */
+.btn-pirate-orange {
   position: relative;
   font-family: 'Shojumaru', 'Permanent Marker', sans-serif;
   background: linear-gradient(to bottom, #ffb443 0%, #ff6700 100%);
@@ -109,7 +109,7 @@ body {
   transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
 }
 
-.btn-shinobi-orange:active {
+.btn-pirate-orange:active {
   transform: translateY(2px) scale(0.96);
   box-shadow: 0 0 0 #1b0c02, 0 2px 4px rgba(0,0,0,0.5);
 }
@@ -131,7 +131,7 @@ body {
   box-shadow: 0 0 0 #150002, 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.btn-shinobi-blue {
+.btn-pirate-blue {
   position: relative;
   font-family: 'Shojumaru', 'Permanent Marker', sans-serif;
   background: linear-gradient(to bottom, #4ea8de, #0077b6);
@@ -143,13 +143,13 @@ body {
   transition: transform 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
 }
 
-.btn-shinobi-blue:active {
+.btn-pirate-blue:active {
   transform: translateY(2px) scale(0.96);
   box-shadow: 0 0 0 #02022e, 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Premium Scroll / Parchment Paper Styling (Konoha) — FIXED invalid rgba */
-.panel-scroll-konoha {
+/* Premium Scroll / Parchment Paper Styling (Straw Hat) — FIXED invalid rgba */
+.panel-scroll-strawhat {
   background-image: 
     radial-gradient(circle at 30% 20%, rgba(255, 200, 100, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 70% 80%, rgba(180, 140, 80, 0.08) 0%, transparent 50%),
@@ -165,16 +165,16 @@ body {
   color: #3d2009 !important;
 }
 
-.panel-scroll-konoha h2, .panel-scroll-konoha h3, .panel-scroll-konoha h4 {
+.panel-scroll-strawhat h2, .panel-scroll-strawhat h3, .panel-scroll-strawhat h4 {
   color: #4a2508;
 }
 
-.panel-scroll-konoha p, .panel-scroll-konoha span, .panel-scroll-konoha li {
+.panel-scroll-strawhat p, .panel-scroll-strawhat span, .panel-scroll-strawhat li {
   color: #5c3d22;
 }
 
-/* Premium Rogue Obsidian / Metal Plate Styling (Akatsuki) */
-.panel-steel-akatsuki {
+/* Premium Rogue Obsidian / Metal Plate Styling (Yonko) */
+.panel-steel-yonko {
   background-image: 
     radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.06) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
@@ -245,15 +245,15 @@ body {
     0 0 35px rgba(249, 115, 22, 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.04);
 }
-.akatsuki-mode .tilt-card-shadow:hover {
+.yonko-mode .tilt-card-shadow:hover {
   box-shadow: 
     0 30px 60px rgba(0, 0, 0, 0.65), 
     0 0 35px rgba(239, 68, 68, 0.2),
     0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
-/* Chakra glow ring animation */
-@keyframes chakraRingPulse {
+/* Haki glow ring animation */
+@keyframes hakiRingPulse {
   0%, 100% {
     box-shadow: 0 0 15px rgba(249, 115, 22, 0.3), inset 0 0 10px rgba(249, 115, 22, 0.1);
   }
@@ -262,11 +262,11 @@ body {
   }
 }
 
-.chakra-ring-konoha {
-  animation: chakraRingPulse 3s ease-in-out infinite;
+.haki-ring-strawhat {
+  animation: hakiRingPulse 3s ease-in-out infinite;
 }
 
-@keyframes chakraRingPulseRed {
+@keyframes hakiRingPulseRed {
   0%, 100% {
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.3), inset 0 0 10px rgba(239, 68, 68, 0.1);
   }
@@ -275,8 +275,8 @@ body {
   }
 }
 
-.chakra-ring-akatsuki {
-  animation: chakraRingPulseRed 3s ease-in-out infinite;
+.haki-ring-yonko {
+  animation: hakiRingPulseRed 3s ease-in-out infinite;
 }
 
 /* Premium shimmer for section dividers */
@@ -316,8 +316,8 @@ body {
   100% { background-position: -50% 0; }
 }
 
-/* Holographic shimmer for Konoha (light parchment) mode */
-.holo-shimmer-konoha {
+/* Holographic shimmer for Straw Hat (light parchment) mode */
+.holo-shimmer-strawhat {
   background: linear-gradient(
     115deg,
     transparent 20%,

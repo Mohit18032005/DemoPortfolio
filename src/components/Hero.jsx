@@ -3,7 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import TiltCard from './TiltCard';
 
-// Dynamic HTML5 Canvas Particle Engine for cinematic background chakra effects
+// Dynamic HTML5 Canvas Particle Engine for cinematic background haki effects
 const ParticleCanvas = ({ isAkatsuki }) => {
   const canvasRef = useRef(null);
 
@@ -20,7 +20,7 @@ const ParticleCanvas = ({ isAkatsuki }) => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Setup particles based on active Shinobi alliance
+    // Setup particles based on active Pirate crew
     const particles = [];
     const particleCount = isAkatsuki ? 80 : 55;
 
@@ -149,7 +149,7 @@ const Hero = () => {
             {/* Intro Background */}
             <div 
               className="absolute inset-0 w-full h-full bg-cover bg-center filter blur-[8px] scale-105 brightness-[0.25] transition-all duration-1000"
-              style={{ backgroundImage: `url(${isAkatsuki ? '/akatsuki-bg.png' : '/konoha-bg.png'})` }}
+              style={{ backgroundImage: `url(${isAkatsuki ? '/yonko-bg.jpg' : '/grand-line-bg.jpg'})` }}
             />
 
             {/* Radial ambient glow behind content */}
@@ -160,12 +160,12 @@ const Hero = () => {
             {/* Intro Content & Button */}
             <div className="relative z-10 text-center flex flex-col items-center gap-5 px-4">
               <h1 className={`font-coc text-2xl sm:text-3xl md:text-5xl drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)] tracking-widest leading-none ${
-                isAkatsuki ? 'akatsuki-logo-text' : 'coc-logo-text'
+                isAkatsuki ? 'yonko-logo-text' : 'strawhat-logo-text'
               }`}>
-                {isAkatsuki ? "AKATSUKI ARCHIVE" : "KONOHA ARCHIVE"}
+                {isAkatsuki ? "YONKO ARCHIVE" : "STRAW HAT ARCHIVE"}
               </h1>
               <p className="font-coc text-[9px] sm:text-xs text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] tracking-widest max-w-sm uppercase animate-pulse">
-                Unlocking Chakra Elemental Gates...
+                Unlocking Haki Elemental Gates...
               </p>
               
               <motion.button
@@ -173,26 +173,26 @@ const Hero = () => {
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.96 }}
                 className={`px-12 py-5 text-base sm:text-lg cursor-pointer focus:outline-none mt-4 tracking-widest font-coc transition-all ${
-                  isAkatsuki ? 'btn-rogue-crimson' : 'btn-shinobi-orange'
+                  isAkatsuki ? 'btn-rogue-crimson' : 'btn-pirate-orange'
                 }`}
               >
-                UNLEASH CHAKRA
+                UNLEASH HAKI
               </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main Base Background (Transitions Konoha/Akatsuki with 3D Parallax) */}
+      {/* Main Base Background (Transitions Straw Hat/Yonko with 3D Parallax) */}
       <div className="absolute inset-0 z-0 scale-105 pointer-events-none select-none">
         <motion.img 
-          key={isAkatsuki ? 'akatsuki-bg' : 'konoha-bg'}
+          key={isAkatsuki ? 'yonko-bg' : 'grand-line-bg'}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           style={{ x: bgX, y: bgY }}
           transition={{ duration: 1 }}
-          src={isAkatsuki ? '/akatsuki-bg.png' : '/konoha-bg.png'} 
-          alt="Shinobi Base Background" 
+          src={isAkatsuki ? '/yonko-bg.jpg' : '/grand-line-bg.jpg'} 
+          alt="Pirate Base Background" 
           className="w-full h-full object-cover brightness-110 contrast-105 saturate-110"
         />
         {/* Theme-matched gradient overlays for readability and atmosphere */}
@@ -221,10 +221,10 @@ const Hero = () => {
         >
           <h1 
             className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center select-none tracking-widest leading-none ${
-              isAkatsuki ? 'akatsuki-logo-text' : 'coc-logo-text'
+              isAkatsuki ? 'yonko-logo-text' : 'strawhat-logo-text'
             }`}
           >
-            {isAkatsuki ? "SOUMYA'S NINDO" : "SOUMYA'S WAY"}
+            {isAkatsuki ? "MOHIT'S LOG POSE" : "MOHIT'S DREAM"}
           </h1>
         </motion.div>
 
@@ -240,23 +240,31 @@ const Hero = () => {
             glowColor={isAkatsuki ? 'rgba(239, 68, 68, 0.12)' : 'rgba(249, 115, 22, 0.12)'}
           >
             <div className={`p-6 sm:p-8 text-center rounded-2xl border-4 shadow-2xl relative tilt-card-shadow transition-all preserve-3d ${
-              isAkatsuki ? 'panel-steel-akatsuki' : 'panel-scroll-konoha'
+              isAkatsuki ? 'panel-steel-yonko' : 'panel-scroll-strawhat'
             }`}>
+              {/* Classified Stamp */}
+              <div className="absolute -top-4 -right-4 md:-right-8 transform rotate-[15deg] z-50 pointer-events-none pop-out-3">
+                <div className={`border-4 rounded px-3 py-1 font-coc text-xs md:text-sm tracking-[0.2em] shadow-lg backdrop-blur-sm ${
+                  isAkatsuki ? 'border-red-600 text-red-500 bg-red-950/40' : 'border-amber-600 text-amber-600 bg-amber-100/60'
+                }`}>
+                  CLASSIFIED
+                </div>
+              </div>
               
               <h2 className="font-coc text-xs sm:text-sm md:text-base mb-2.5 tracking-wide leading-relaxed drop-shadow pop-out-2">
-                {isAkatsuki ? "ROGUE SHINOBI SOUMYA" : "SAGE SOUMYA CHAKRABORTY"}
+                {isAkatsuki ? "EMPEROR MOHIT" : "PIRATE MOHIT KHAN"}
               </h2>
               
               <p className={`font-coc text-[9px] sm:text-xs tracking-widest uppercase mb-4 leading-normal drop-shadow-md font-bold pop-out-3 ${
                 isAkatsuki ? 'text-red-500' : 'text-orange-700'
               }`}>
-                LEVEL 11 CHAKRA FULL-STACK DEVELOPER
+                CONQUEROR'S HAKI AI & ML ENGINEER
               </p>
 
               <p className={`text-xs sm:text-sm font-body mb-6 max-w-md mx-auto leading-relaxed pop-out-1 ${
                 isAkatsuki ? 'text-slate-300' : 'text-amber-950/90 font-medium'
               }`}>
-                Weave Hand Signs with Code, Conquer with Architecture! Chunin of Full-Stack software engineering, crafting theme-rich jutsu and interactive web ecosystems.
+                Navigate the Grand Line with Data, Conquer with AI! Captain of Artificial Intelligence, crafting intelligent systems, IoT ecosystems, and data-driven insights.
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4 text-[9px] font-coc pop-out-2">
@@ -266,7 +274,7 @@ const Hero = () => {
                     : 'bg-amber-800/15 border-amber-700/30 text-amber-900 font-bold'
                 }`}>
                   <span>📜</span>
-                  <span>8+ S-RANK MISSIONS</span>
+                  <span>8+ GRAND LINE BOUNTIES</span>
                 </div>
                 <div className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border shadow-md ${
                   isAkatsuki 
@@ -274,7 +282,7 @@ const Hero = () => {
                     : 'bg-amber-800/15 border-amber-700/30 text-amber-900 font-bold'
                 }`}>
                   <span>🔥</span>
-                  <span>3+ YEARS SAGE TRAINING</span>
+                  <span>3+ YEARS NEW WORLD TRAINING</span>
                 </div>
               </div>
             </div>
@@ -302,10 +310,10 @@ const Hero = () => {
             whileTap={{ scale: 0.97, y: 2 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
             className={`px-8 py-3.5 text-xs sm:text-sm min-w-[220px] cursor-pointer focus:outline-none ${
-              isAkatsuki ? 'btn-rogue-crimson' : 'btn-shinobi-orange'
+              isAkatsuki ? 'btn-rogue-crimson' : 'btn-pirate-orange'
             }`}
           >
-            NINDO PATHWAYS
+            GRAND LINE PATHWAYS
           </motion.button>
 
           <motion.button 
@@ -319,9 +327,9 @@ const Hero = () => {
             }}
             whileTap={{ scale: 0.97, y: 2 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="btn-shinobi-blue px-8 py-3.5 text-xs sm:text-sm min-w-[220px] cursor-pointer focus:outline-none"
+            className="btn-pirate-blue px-8 py-3.5 text-xs sm:text-sm min-w-[220px] cursor-pointer focus:outline-none"
           >
-            SEND SUMMONING SCROLL
+            SEND DEN DEN MUSHI
           </motion.button>
         </motion.div>
 

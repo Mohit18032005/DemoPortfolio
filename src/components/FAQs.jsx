@@ -27,7 +27,7 @@ const FAQs = () => {
     },
     {
       question: "How can we start a project together?",
-      answer: "You can click on the 'SEND SUMMONING SCROLL' button or scroll to the 'Ninja Messenger Hawk' (Contact) section to drop me a scroll or connect with me via GitHub. I respond to all messenger hawks within 24 hours!"
+      answer: "You can scroll to the 'News Coo Messenger' (Contact) section to drop me a message or connect with me via GitHub. I respond to all News Coos within 24 hours!"
     }
   ];
 
@@ -52,7 +52,7 @@ const FAQs = () => {
         {/* Section Heading */}
         <CinematicReveal preset="cinematic" duration={1} className="text-center mb-16">
           <h2 className="font-coc text-2xl sm:text-3xl md:text-4xl text-white mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            ❓ SHINOBI HANDBOOK (FAQS)
+            ❓ PIRATE HANDBOOK (FAQS)
           </h2>
           <div className={`w-32 h-1.5 mx-auto rounded-full ${
             isAkatsuki ? 'bg-red-500 shadow-[0_0_8px_rgba(200,16,46,0.8)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]'

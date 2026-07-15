@@ -8,22 +8,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        'shinobi-orange': {
+        'pirate-orange': {
           DEFAULT: '#ff6700',
           shadow: '#c44e00',
           light: '#ff8533',
         },
-        'shinobi-green': {
+        'pirate-green': {
           DEFAULT: '#1b4332',
           shadow: '#081c15',
           light: '#2d6a4f',
         },
-        'akatsuki-red': {
+        'yonko-red': {
           DEFAULT: '#c8102e',
           shadow: '#820516',
           light: '#ef233c',
         },
-        'akatsuki-purple': {
+        'yonko-purple': {
           DEFAULT: '#2c1b4d',
           shadow: '#1a0e30',
           light: '#4c337a',

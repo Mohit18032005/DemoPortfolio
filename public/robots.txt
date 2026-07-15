@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://soumya.pro/sitemap.xml
+Sitemap: https://mohitkhan.dev/sitemap.xml
