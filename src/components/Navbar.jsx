@@ -41,20 +41,12 @@ const Navbar = () => {
         <path d="M30 40c-6 0-10-4-10-10 0-5 3-9 8-10-1-2-1-4 0-6 2-4 7-6 12-4 3-4 8-6 13-4 6-6 15-4 18 3 4-2 9-2 12 1 3 3 5 7 5 10 0 7-6 12-13 12h-25z" stroke="#ff8595" strokeWidth="1.5" fill="none" opacity="0.4" />
       </svg>
     ) : (
-      // Premium Straw Hat Symbol in 3D gold/orange gradient
-      <svg className="h-9 w-9 text-orange-500 filter drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" viewBox="0 0 24 24" fill="none" stroke="url(#strawHatGrad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <defs>
-          <linearGradient id="strawHatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffe875" />
-            <stop offset="50%" stopColor="#ff9f1c" />
-            <stop offset="100%" stopColor="#d44e00" />
-          </linearGradient>
-        </defs>
-        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" />
-        <path d="M12 6c-2 2-3 4-2 6s3 2 4 0 0-4-2-6z" />
-        <path d="M8 14l-2 2" />
-        <path d="M16 10l2-2" />
-      </svg>
+      // Premium Straw Hat Jolly Roger logo
+      <img 
+        src="/strawhat-logo.png" 
+        alt="Straw Hat Logo" 
+        className="h-9 w-9 object-contain filter drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]" 
+      />
     )
   );
 

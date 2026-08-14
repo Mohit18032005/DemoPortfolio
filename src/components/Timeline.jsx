@@ -257,25 +257,29 @@ const Timeline = () => {
                         {/* Card Content Layout */}
                         <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
                           
-                          {/* Dynamic character portrait frame with spinning haki aura background */}
+                          {/* Dynamic 3D badge frame with spinning aura background (No Image) */}
                           <div className="relative flex-shrink-0 hover:scale-105 transition-transform duration-300 preserve-3d">
                             {/* Spinning Glowing Aura */}
-                            <div className={`absolute -inset-2 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity animate-spin-slow ${
+                            <div className={`absolute -inset-3 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity animate-spin-slow ${
                               isAkatsuki 
                                 ? 'bg-gradient-to-r from-red-600 via-purple-600 to-red-600 shadow-[0_0_20px_rgba(239,68,68,0.6)]' 
                                 : 'bg-gradient-to-r from-orange-500 via-yellow-400 to-sky-400 shadow-[0_0_20px_rgba(249,115,22,0.6)]'
                             }`} />
                             
-                            <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-[3px] bg-black/80 relative z-10 transition-shadow duration-300 ${
+                            <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[3px] bg-black/85 flex items-center justify-center relative z-10 transition-shadow duration-300 preserve-3d shadow-inner overflow-hidden ${
                               isAkatsuki 
                                 ? 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.6)] hover:shadow-[0_0_25px_rgba(239,68,68,0.8)]' 
                                 : 'border-amber-500 shadow-[0_0_15px_rgba(251,191,36,0.6)] hover:shadow-[0_0_25px_rgba(251,191,36,0.8)]'
                             }`}>
-                              <img 
-                                src={isAkatsuki ? item.portraitNight : item.portraitDay} 
-                                alt={item.rank} 
-                                className="w-full h-full object-cover transition-transform duration-500 select-none pointer-events-none brightness-110 contrast-105 saturate-110 pop-out-image"
-                              />
+                              {/* 3D Sphere Inside */}
+                              <div className={`absolute inset-2 rounded-full ${
+                                isAkatsuki ? 'sphere-3d-red' : 'sphere-3d-orange'
+                              } opacity-70 z-0`} />
+                              
+                              {/* Floating rank icon/text with 3D Pop */}
+                              <span className="font-coc text-xl sm:text-2xl text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.9)] z-10 relative pop-out-2 select-none">
+                                {item.rank[0].toUpperCase()}
+                              </span>
                             </div>
                           </div>
 

@@ -2,9 +2,8 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Timeline from './components/Timeline';
-import Prizes from './components/Prizes';
+import PinterestBoard from './components/PinterestBoard';
 import CardGenerator from './components/CardGenerator';
-import Team from './components/Team';
 import FAQs from './components/FAQs';
 import Footer from './components/Footer';
 import { useTheme } from './context/ThemeContext';
@@ -41,14 +40,11 @@ function App() {
       {/* Battle Milestones Timeline */}
       <Timeline />
 
-      {/* Loot / Rewards */}
-      <Prizes />
+      {/* Pinterest 3D Board (Projects, Skills, Certifications) */}
+      <PinterestBoard />
 
       {/* Clan ID generator */}
       <CardGenerator />
-
-      {/* War Chiefs / Team */}
-      <Team />
 
       {/* Frequently Answered Questions */}
       <FAQs />

@@ -19,10 +19,10 @@ const CardGenerator = () => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const characters = [
-    { name: 'Monkey D. Luffy', role: 'Captain / Brawler', glowColor: 'rgba(249, 115, 22, 0.45)', element: 'Conqueror (Haoshoku)', image: '/luffy_portrait.jpg' },
-    { name: 'Roronoa Zoro', role: 'Swordsman / First Mate', glowColor: 'rgba(56, 189, 248, 0.45)', element: 'Armament (Busoshoku)', image: '/zoro_portrait.jpg' },
-    { name: 'Sanji', role: 'Cook / Tactician', glowColor: 'rgba(168, 85, 247, 0.45)', element: 'Observation (Kenbunshoku)', image: '/sanji_portrait.jpg' },
-    { name: 'Shanks', role: 'Yonko / Master of Haki', glowColor: 'rgba(239, 68, 68, 0.45)', element: 'Supreme Conqueror', image: '/shanks_portrait.jpg' }
+    { name: 'Flame Crystal', role: 'AI Accelerator', glowColor: 'rgba(239, 68, 68, 0.45)', element: 'Thermal Haki', bgClass: 'sphere-3d-red' },
+    { name: 'Storm Crystal', role: 'IoT Engine', glowColor: 'rgba(56, 189, 248, 0.45)', element: 'Storm Haki', bgClass: 'sphere-3d-sky' },
+    { name: 'Earth Crystal', role: 'Core Logic', glowColor: 'rgba(234, 179, 8, 0.45)', element: 'Stone Haki', bgClass: 'sphere-3d-orange' },
+    { name: 'Void Crystal', role: 'Neural Weights', glowColor: 'rgba(168, 85, 247, 0.45)', element: 'Cosmic Haki', bgClass: 'sphere-3d-purple' }
   ];
 
   const getPlayerTag = (inputName) => {
@@ -215,9 +215,9 @@ const CardGenerator = () => {
 
               <div className="mb-6">
                 <label className={`block font-coc text-[8.5px] mb-3 font-bold tracking-wider ${isAkatsuki ? 'text-red-400' : 'text-orange-900'}`}>
-                  SELECT PIRATE AVATAR
+                  SELECT CRYSTAL ELEMENT
                 </label>
-                <div className="grid grid-cols-6 gap-2">
+                <div className="grid grid-cols-4 gap-2">
                   {characters.map((char, idx) => (
                     <button
                       key={idx}
@@ -226,7 +226,7 @@ const CardGenerator = () => {
                         setSelectedChar(idx);
                         setChakraNature(char.element);
                       }}
-                      className={`relative aspect-square bg-black/40 border-2 rounded-xl flex items-center justify-center overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-inner ${
+                      className={`relative aspect-square bg-black/40 border-2 rounded-xl flex items-center justify-center overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-inner p-1.5 ${
                         selectedChar === idx 
                           ? isAkatsuki 
                             ? 'border-red-400 shadow-[0_0_10px_rgba(200,16,46,0.4)] bg-red-950/20' 
@@ -234,11 +234,7 @@ const CardGenerator = () => {
                           : 'border-slate-800/80 hover:border-slate-600'
                       }`}
                     >
-                      <img 
-                        src={char.image} 
-                        alt={char.name} 
-                        className="w-full h-full object-cover select-none pointer-events-none" 
-                      />
+                      <div className={`w-full h-full rounded-full ${char.bgClass} opacity-80`} />
                     </button>
                   ))}
                 </div>
@@ -337,16 +333,12 @@ const CardGenerator = () => {
                   }}
                 />
 
-                <div className={`w-32 h-32 rounded-full overflow-hidden border-3 shadow-xl bg-black/50 relative z-10 ${
+                <div className={`w-32 h-32 rounded-full overflow-hidden border-3 shadow-xl bg-black/50 relative z-10 flex items-center justify-center p-2.5 preserve-3d ${
                   isAkatsuki 
                     ? 'border-red-600 shadow-red-500/20 bg-red-950/20' 
                     : 'border-amber-700 shadow-orange-500/20 bg-amber-950/20'
                 }`}>
-                  <img 
-                    src={characters[selectedChar].image} 
-                    alt={characters[selectedChar].name} 
-                  className="w-full h-full object-cover brightness-110 contrast-105 saturate-110" 
-                  />
+                  <div className={`w-24 h-24 rounded-full ${characters[selectedChar].bgClass} opacity-80 animate-pulse`} />
                 </div>
               </div>
 

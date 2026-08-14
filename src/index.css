@@ -497,3 +497,159 @@ body {
   pointer-events: none;
   animation: dustFloat 15s linear infinite;
 }
+
+/* Pinterest Masonry Grid */
+.pinterest-grid {
+  column-count: 1;
+  column-gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .pinterest-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pinterest-grid {
+    column-count: 3;
+  }
+}
+
+.pinterest-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Pinterest Card Styles & 3D Interactive Hover Effects */
+.pinterest-card {
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.pinterest-card:hover {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+}
+
+.pinterest-card-glow-akatsuki:hover {
+  box-shadow: 0 20px 40px rgba(239, 68, 68, 0.25), 0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+.pinterest-card-glow-leaf:hover {
+  box-shadow: 0 20px 40px rgba(249, 115, 22, 0.25), 0 0 0 1px rgba(249, 115, 22, 0.2);
+}
+
+/* 3D Flip Card Animation for Modal and Grid Cards */
+.flip-card-3d {
+  perspective: 1200px;
+}
+
+.flip-card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-3d:hover .flip-card-3d-inner,
+.flip-card-3d.flipped .flip-card-3d-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-3d-front,
+.flip-card-3d-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-3d-back {
+  transform: rotateY(180deg);
+}
+
+/* 3D Glassmorphic Spheres */
+.sphere-3d-red {
+  background: radial-gradient(circle at 35% 35%, #ff4d6d 0%, #c8102e 50%, #50000a 100%);
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 15px rgba(255, 255, 255, 0.4), 0 10px 20px rgba(239, 68, 68, 0.4);
+  border-radius: 50%;
+}
+
+.sphere-3d-orange {
+  background: radial-gradient(circle at 35% 35%, #ffd166 0%, #ff9f1c 50%, #9e3d00 100%);
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 15px rgba(255, 255, 255, 0.4), 0 10px 20px rgba(249, 115, 22, 0.4);
+  border-radius: 50%;
+}
+
+.sphere-3d-sky {
+  background: radial-gradient(circle at 35% 35%, #a0c4ff 0%, #0077b6 50%, #03045e 100%);
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 15px rgba(255, 255, 255, 0.4), 0 10px 20px rgba(0, 119, 182, 0.4);
+  border-radius: 50%;
+}
+
+.sphere-3d-purple {
+  background: radial-gradient(circle at 35% 35%, #c77dff 0%, #7b2cbf 50%, #3c096c 100%);
+  box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.6), inset 5px 5px 15px rgba(255, 255, 255, 0.4), 0 10px 20px rgba(123, 44, 191, 0.4);
+  border-radius: 50%;
+}
+
+/* Floating 3D Crystal Gem */
+.crystal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 600px;
+}
+
+.crystal-3d {
+  width: 60px;
+  height: 80px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatCrystal 5s ease-in-out infinite, spinCrystal 12s linear infinite;
+}
+
+@keyframes floatCrystal {
+  0%, 100% { transform: translateY(0px) rotateY(0deg); }
+  50% { transform: translateY(-12px) rotateY(180deg); }
+}
+
+@keyframes spinCrystal {
+  from { transform: rotateY(0deg) rotateX(15deg); }
+  to { transform: rotateY(360deg) rotateX(15deg); }
+}
+
+.crystal-face {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  transform-origin: 50% 100%;
+}
+
+/* Top pyramid faces */
+.crystal-face-top1 {
+  border-bottom: 40px solid rgba(239, 68, 68, 0.65);
+  transform: rotateY(0deg) translateZ(0px) rotateX(30deg);
+}
+.crystal-face-top2 {
+  border-bottom: 40px solid rgba(251, 191, 36, 0.65);
+  transform: rotateY(90deg) translateZ(0px) rotateX(30deg);
+}
+.crystal-face-top3 {
+  border-bottom: 40px solid rgba(56, 189, 248, 0.65);
+  transform: rotateY(180deg) translateZ(0px) rotateX(30deg);
+}
+.crystal-face-top4 {
+  border-bottom: 40px solid rgba(168, 85, 247, 0.65);
+  transform: rotateY(270deg) translateZ(0px) rotateX(30deg);
+}
+
